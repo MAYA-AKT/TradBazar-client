@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+        --color-primary: "#7C3AED";    /* Purple*/
+        --color-secondary: "#22C55E";  /* Fresh Green */
+        --color-accent: "#F97316";     /* Warm Orange */
+        --color-base-100: "#F3F4F6";   /* Soft Cream  */
+        --color-base-content: "#334155"; /* Dark Slate Gray  */
+        --color-info: "#3B82F6";       /* Info Blue */
+        --color-success: "#22C55E";    /*  Green */
+        --color-warning: "#F59E0B";    /*  Yellow/Orange */
+        --color-error: "#EF4444";      /* Error Red */
+        --color-highlight: "#795548";  /* Earthy Brown -  */
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+a.active {
+  border-bottom: 2px solid green;
+}
