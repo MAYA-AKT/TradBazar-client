@@ -32,7 +32,7 @@ const Navbar = () => {
                             <IoCloseOutline />
                         </button>
                     </div>
-                    <div className="my-10 p-4 text-gray-700 space-y-2">
+                    <div className="p-4 text-gray-700 space-y-2">
                         <CategoryLinks />
                     </div>
                 </div>
