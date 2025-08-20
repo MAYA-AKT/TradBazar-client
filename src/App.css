@@ -1,32 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
 
-@import "tailwindcss";
 
-@plugin "daisyui" {
-  themes: light --default;
-}
 
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true;
-        --color-primary: "#7C3AED";    /* Purple*/
-        --color-secondary: "#22C55E";  /* Fresh Green */
-        --color-accent: "#F97316";     /* Warm Orange */
-        --color-base-100: "#F3F4F6";   /* Soft Cream  */
-        --color-base-content: "#334155"; /* Dark Slate Gray  */
-        --color-info: "#3B82F6";       /* Info Blue */
-        --color-success: "#22C55E";    /*  Green */
-        --color-warning: "#F59E0B";    /*  Yellow/Orange */
-        --color-error: "#EF4444";      /* Error Red */
-        --color-highlight: "#795548";  /* Earthy Brown -  */
-}
+
+
+/* Usage	Color Name	HEX Code	Tailwind Class
+Primary Color	Emerald Green	#047857	bg-green-700
+Accent Color	Bangladesh Red	#D62828	bg-red-600
+Secondary Color	Warm Yellow	#FBBF24	bg-yellow-400
+Light Background	Soft Beige	#F9F5F0	bg-[#F9F5F0]
+Text Dark	Charcoal	#333333	text-gray-800
+Text Light	Soft White	#FAFAFA	text-gray-50 */
+
 
 * {
-  font-family: "Poppins", sans-serif;
+
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: 'Merriweather', serif;
+}
+
 a.active {
-  border-bottom: 2px solid green;
+  border-bottom: 4px solid green;
 }

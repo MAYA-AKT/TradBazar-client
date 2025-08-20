@@ -1,0 +1,46 @@
+[
+  {
+    "id": 0,
+    "name": "Home Decor",
+    "image": "https://i.ibb.co.com/MF8GnNn/4aa100519c39e133f0c031c6c14e8093.jpg"
+  },
+  {
+    "id": 1,
+    "name": "Handicrafts & Art",
+    "image":"https://i.ibb.co.com/v4hHWV0k/360-F-566341036-f2m-Cz-Wy-Hi9-I4a-MOSSiy1-XUUhv-Eqd-UKJ1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Clothing & Textiles"
+   
+  },
+  {
+    "id": 3,
+    "name": "Jewelry & Accessories",
+    "image":"https://i.ibb.co.com/prvYB4N6/images-q-tbn-ANd9-Gc-Sqp-O1-C8-Mp-WKwez-LWOW8ha-479tx0y8-QB4n-EJxt-Kctwz-P0p-GLA2hd-Ef-Ig-HEDU2j62w4.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Musical Instruments",
+    "image":"https://i.ibb.co.com/RkhSNHPY/group-different-musical-instruments-white-background-226168897.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Organic Foods & Spices",
+    "image":"https://i.ibb.co.com/ks6sbmF9/81-Rr-ROSAb-KL.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Festivals & Gift Items",
+    "image":"https://i.ibb.co.com/FkC7MzD3/images-q-tbn-ANd9-Gc-Txh-Of-Yw5f-Pw3-DXKvl-E8ah7-Jc-U37q-Plz-HBrx-Wo54e-Q3dm-F1-G-UC4-Cm-H-FIV8z8-YX.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Books "
+  },
+  {
+    "id": 8,
+    "name": "Pottery"
+  }
+  
+]
