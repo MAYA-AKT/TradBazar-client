@@ -2,17 +2,13 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Header from '../shared/header/Header';
 
-
-
-const RootLayout = () => {
+const AuthLayout = () => {
     return (
-        <div>
-            <Header />
-            <Outlet />
-          
-
+        <div> 
+            <Header/>
+            <Outlet/>
         </div>
     );
 };
 
-export default RootLayout;
+export default AuthLayout;

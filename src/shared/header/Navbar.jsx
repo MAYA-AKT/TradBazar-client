@@ -2,7 +2,7 @@ import Searchbar from '../Searchbar';
 import { IoMenu } from "react-icons/io5";
 import { useState } from 'react';
 import { IoCloseOutline } from "react-icons/io5";
-import CategoryLinks from '../../components/category/CategoryLinks';
+
 
 
 const Navbar = () => {
@@ -32,9 +32,7 @@ const Navbar = () => {
                             <IoCloseOutline />
                         </button>
                     </div>
-                    <div className="p-4 text-gray-700 space-y-2">
-                        <CategoryLinks />
-                    </div>
+                   
                 </div>
             </div>
 

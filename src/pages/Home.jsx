@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from '../shared/header/Navbar';
-import Slider from '../components/slider/Slider';
+
 import Searchbar from '../shared/Searchbar';
-import CategoryList from '../components/category/CategoryList';
+
 
 const Home = () => {
     return (
@@ -19,14 +19,10 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=" my-2 md:my-0 col-span-10 ">
-                        <Slider />
-                    </div>
+                    
                 </div>
 
-                <div>
-                    <CategoryList/>
-                </div>
+                
 
             </main>
         </div>

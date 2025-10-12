@@ -1,23 +1,33 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "../layouts/RootLayout";
-import Home from "../pages/Home";
-import CategoryList from "../components/category/CategoryList";
-import Category from "../components/category/Category";
+import AuthLayout from "../layouts/AuthLayout";
+import SignUp from '../pages/Authentication/SignUp';
+import SignIn from '../pages/Authentication/Signin';
+import ErrorPage from "../pages/ErrorPage";
 
 
 export const router = createBrowserRouter([
    {
     path:'/',
     Component:RootLayout,
+    errorElement:<ErrorPage/>,
     children:[
-        {
-            index:true,
-            Component:Home
-        },
-        {
-            path:'category/:id',
-            Component:Category,
-        }
+       
+        
     ]
+   },
+   {
+      path:'/',
+      Component:AuthLayout,
+      children:[
+         {
+            path:'signup',
+            Component:SignUp
+         },
+         {
+            path:'signin',
+            Component:SignIn
+         }
+      ]
    }
 ])
