@@ -1,17 +1,24 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import axios from 'axios';
 import districts from '../../../public/districts.json';
 import SocialLogin from './SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
+import { savedUserInDb } from '../../api/utils';
+import useUserRole from '../../hooks/useUserRole';
 
 const SignUp = () => {
 
     const { createUser, updateUserProfile } = useAuth();
+    const { role } = useUserRole();
+    console.log('role signUp', role);
+
+    const navigate = useNavigate();
+    const from = location.state?.from || '/';
 
 
     const {
@@ -61,13 +68,13 @@ const SignUp = () => {
     const onSubmit = (data) => {
         setError("");
         data.photo = imageUrl;
-        const { email, password, name, photo } = data;
+        const { email, password, name, photo, district } = data;
         console.log(data);
 
 
         // create User
         createUser(email, password)
-            .then(res => {
+            .then(async (res) => {
                 console.log(res);
 
 
@@ -84,10 +91,31 @@ const SignUp = () => {
 
                     });
                 toast.success("User Create SuccessFully");
+
+
+                const userData = {
+                    name,
+                    email,
+
+                    photo,
+                    district
+                }
+                // update user from db
+                await savedUserInDb(userData)
+
+                if (role === 'admin') {
+                    navigate('/admin-dashboard');
+                }else{
+                    navigate(from)
+                }
+
             }).catch(err => {
                 console.log(err);
                 setError(err.message)
             })
+
+
+
 
         reset();
     };

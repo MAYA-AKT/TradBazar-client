@@ -1,6 +1,8 @@
-// api call for upload image on imbb from client side to autometically host image
-export const imageUpload=async(imageUrl)=>{
-    const imageFormData = new FormData();
-    imageFormData.append('image',imageUrl);
+import axios from "axios";
+
+// saved and update user in db
+export const savedUserInDb =async (user)=>{
+    const {data} =await axios.post(`${import.meta.env.VITE_API_URL}/users`,user);
+    console.log('user data',data);
     
 }

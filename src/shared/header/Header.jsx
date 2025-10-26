@@ -92,6 +92,7 @@ const Header = () => {
                                     >
                                         <li><NavLink to="/profile">Profile</NavLink></li>
                                         <li><NavLink to="/orders">My Orders</NavLink></li>
+                                        
                                         <li>
                                             <button onClick={handleLogOut}>Log out</button>
                                         </li>

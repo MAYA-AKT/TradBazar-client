@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SocialLogin from './SocialLogin';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
+import { savedUserInDb } from '../../api/utils';
+import useUserRole from '../../hooks/useUserRole';
 
 
 const SignIn = () => {
-    const { signInUSer } = useAuth();
-
+    const { user, loading: authLoading ,signInUSer} = useAuth();
+    const { role, isLoading: roleLoading } = useUserRole();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from || "/";
     const {
         register,
         handleSubmit,
@@ -26,9 +31,19 @@ const SignIn = () => {
 
 
         signInUSer(email, password)
-            .then(res => {
+            .then(async (res) => {
                 console.log(res);
                 toast.success("User Login Successfully")
+
+                const userData = {
+                    name,
+                    email,
+
+
+                }
+                // update user from db
+                await savedUserInDb(userData)
+
 
             }).catch(err => {
                 console.log(err);
@@ -38,7 +53,16 @@ const SignIn = () => {
 
         reset();
     };
-
+    useEffect(() => {
+        if (!authLoading && !roleLoading && user) {
+            console.log("Redirecting user with role:", role);
+            if (role === "admin") {
+                navigate("/admin-dashboard");
+            } else {
+                navigate(from);
+            }
+        }
+    }, [user, role, authLoading, roleLoading, navigate, from]);
     return (
         <>
             <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
