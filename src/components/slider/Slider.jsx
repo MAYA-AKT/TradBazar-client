@@ -10,15 +10,15 @@ const Slider = () => {
         <div className='my-4'>
             <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
                 <div>
-                    <img src={banner1} />
+                    <img src={banner1} className="w-full h-[150px] md:h-[200px] lg:h-[450px] object-cover"/>
 
                 </div>
                 <div>
-                    <img src={banner2} />
+                    <img src={banner2} className="w-full h-[150px] md:h-[200px] lg:h-[450px] object-cover"/>
 
                 </div>
                 <div>
-                    <img src={banner3} />
+                    <img src={banner3} className="w-full h-[150px] md:h-[200px] lg:h-[450px] object-cover"/>
 
                 </div>
             </Carousel>

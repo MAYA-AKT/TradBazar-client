@@ -55,7 +55,14 @@ const Sidebar = () => {
               {/*Links */}
               {
                 role === 'admin' && <>
-                <NavLink to='/admin-dashboard/add-category'>Add Category</NavLink>
+                <NavLink to='/admin-dashboard/categories'>Categories</NavLink>
+               
+                </>
+              }
+              {
+                role === 'seller' && <>
+                  <NavLink to='/seller-dashboard/add-product'>Add Products</NavLink>
+                  <NavLink to='/seller-dashboard/my-product'>My Products</NavLink>
                 </>
               }
              

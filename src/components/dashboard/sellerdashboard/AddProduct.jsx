@@ -3,10 +3,17 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useCategories from "../../../hooks/useCategories";
+import LoadingSpiner from "../../../pages/error pages/LoadingSpiner";
 
 
 const AddProduct = () => {
     const { user } = useAuth();
+   
+    
+    const { categories, isLoading, isError } = useCategories();
+    console.log(categories);
+
     const axiosSecure = useAxiosSecure();
     const [uploading, setUploading] = useState(false);
 
@@ -80,6 +87,13 @@ const AddProduct = () => {
         }
     };
 
+
+    if (isLoading || isError) {
+        return <LoadingSpiner />
+    }
+
+
+
     return (
         <div className="max-w-5xl mx-auto p-8 bg-base-100 shadow-lg rounded-2xl mt-8">
             <h2 className="text-3xl font-bold text-center mb-8 text-orange-500">
@@ -110,12 +124,15 @@ const AddProduct = () => {
                             className="select select-bordered w-full"
                             {...register("category", { required: "Category is required" })}
                         >
-                            <option value="">Select category</option>
-                            <option value="Fruits">Fruits</option>
-                            <option value="Vegetables">Vegetables</option>
-                            <option value="Plants">Plants</option>
-                            <option value="Handmade">Handmade</option>
-                            <option value="Clothes">Clothes</option>
+                            {
+                                categories?.map((cate) => (
+                                    <option key={cate._id} value={cate.name}>
+                                        {cate.name}
+                                    </option>
+                                ))
+                            }
+
+
                         </select>
                         {errors.category && (
                             <p className="text-error text-sm">{errors.category.message}</p>
@@ -152,7 +169,7 @@ const AddProduct = () => {
                         <label className="label-text font-medium">Price (৳)</label>
                         <input
                             type="number"
-                            step="0.01"
+                           
                             placeholder="Enter price"
                             className="input input-bordered w-full"
                             {...register("price", { required: "Price is required" })}
@@ -203,34 +220,7 @@ const AddProduct = () => {
                         />
                     </div>
 
-                    {/* Seller Photo */}
-                    <div>
-                        <label className="label-text font-medium">Seller Photo</label>
-                        <div className="flex items-center gap-3">
-                            <img
-                                src={user?.photoURL || "https://i.ibb.co/ZYW3VTp/brown-brim.png"}
-                                alt="Seller"
-                                className="w-14 h-14 rounded-full border"
-                            />
-                            <p className="text-sm text-gray-500">Auto fetched from profile</p>
-                        </div>
-                    </div>
-
-                    {/* Seller District */}
-                    <div>
-                        <label className="label-text font-medium">Seller District</label>
-                        <input
-                            type="text"
-                            placeholder="Enter your district"
-                            className="input input-bordered w-full"
-                            {...register("sellerDistrict", { required: "District is required" })}
-                        />
-                        {errors.sellerDistrict && (
-                            <p className="text-error text-sm">
-                                {errors.sellerDistrict.message}
-                            </p>
-                        )}
-                    </div>
+                  
 
                     {/* Description */}
                     <div>

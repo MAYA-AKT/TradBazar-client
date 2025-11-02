@@ -6,11 +6,16 @@ import SignIn from '../pages/Authentication/SignIn';
 import ErrorPage from "../pages/error pages/ErrorPage";
 import DashboardLayouts from "../layouts/DashboardLayouts";
 import Home from "../pages/Home";
-import AddProduct from "../components/dashboard/sellerdashboard/AddProduct";
+
 import AdminRoute from "./AdminRoute";
-import AddCategory from "../components/dashboard/adminDashboard/AddCategory";
+import AddCategory from "../components/dashboard/adminDashboard/category/AddCategory";
 import PrivateRoute from "./PrivateRoute";
 import AdminDashboard from "../components/dashboard/adminDashboard/AdminDashboard";
+
+import Categories from "../components/dashboard/adminDashboard/category/Categories";
+import SellerRoute from "./SellerRoute";
+import AddProduct from "../components/dashboard/sellerdashboard/AddProduct";
+import SellerDashboard from "../components/dashboard/sellerdashboard/SellerDashboard";
 
 
 
@@ -51,8 +56,17 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index:true,
-        Component:AdminDashboard
+        index: true,
+        Component: AdminDashboard
+      },
+      {
+        path: 'categories',
+        element: (
+          <AdminRoute>
+            <Categories />
+          </AdminRoute>
+        ),
+
       },
       {
         path: 'add-category',
@@ -63,6 +77,28 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: 'seller-dashboard',
+    element: (
+      <PrivateRoute>
+        <DashboardLayouts />
+      </PrivateRoute>
+    ),
+    children:[
+       {
+        index: true,
+        Component: SellerDashboard
+      },
+      {
+        path:'add-product',
+        element:(
+          <SellerRoute>
+             <AddProduct/>
+          </SellerRoute>
+        )
+      }
+    ]
   }
 
 

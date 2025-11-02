@@ -105,7 +105,10 @@ const SignUp = () => {
 
                 if (role === 'admin') {
                     navigate('/admin-dashboard');
-                }else{
+                } if (role === "seller") {
+                    navigate("/seller-dashboard")
+                }
+                else {
                     navigate(from)
                 }
 
