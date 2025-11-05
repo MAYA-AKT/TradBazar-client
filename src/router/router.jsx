@@ -16,6 +16,8 @@ import Categories from "../components/dashboard/adminDashboard/category/Categori
 import SellerRoute from "./SellerRoute";
 import AddProduct from "../components/dashboard/sellerdashboard/AddProduct";
 import SellerDashboard from "../components/dashboard/sellerdashboard/SellerDashboard";
+import AllProducts from "../components/dashboard/adminDashboard/products/AllProducts";
+import MyProducts from "../components/dashboard/sellerdashboard/MyProducts";
 
 
 
@@ -76,6 +78,14 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: 'products',
+        element: (
+          <AdminRoute>
+            <AllProducts />
+          </AdminRoute>
+        ),
+      },
     ],
   },
   {
@@ -95,6 +105,14 @@ export const router = createBrowserRouter([
         element:(
           <SellerRoute>
              <AddProduct/>
+          </SellerRoute>
+        )
+      },
+      {
+        path:'myproducts',
+        element:(
+          <SellerRoute>
+             <MyProducts/>
           </SellerRoute>
         )
       }

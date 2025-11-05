@@ -55,14 +55,23 @@ const Sidebar = () => {
               {/*Links */}
               {
                 role === 'admin' && <>
-                <NavLink to='/admin-dashboard/categories'>Categories</NavLink>
+                <NavLink to='/admin-dashboard/users'>User Managment</NavLink>
+                <NavLink to='/admin-dashboard/categories'>Categories Managment</NavLink>
+                <NavLink to='/admin-dashboard/products'>Products Managment</NavLink>
+                <NavLink to='/admin-dashboard/Orders'>Order Managment</NavLink>
+                <NavLink to='/admin-dashboard/featured'>Featured Managment</NavLink>
+                <NavLink to='/admin-dashboard/sellers'>Seller Requests</NavLink>
                
                 </>
               }
               {
                 role === 'seller' && <>
                   <NavLink to='/seller-dashboard/add-product'>Add Products</NavLink>
-                  <NavLink to='/seller-dashboard/my-product'>My Products</NavLink>
+                  <NavLink to='/seller-dashboard/myproducts'>My Products</NavLink>
+                  
+                  <NavLink to='/seller-dashboard/orders'>Orders</NavLink>
+                  <NavLink to='/seller-dashboard/earnings'> Earnings</NavLink>
+                  <NavLink to='/seller-dashboard/profile'> Profile</NavLink>
                 </>
               }
              
@@ -73,7 +82,7 @@ const Sidebar = () => {
       </div>
 
 
-    </div >
+    </div>
     </>
   )
 }
