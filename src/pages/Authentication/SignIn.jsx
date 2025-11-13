@@ -32,7 +32,7 @@ const SignIn = () => {
 
         signInUSer(email, password)
             .then(async (res) => {
-                console.log(res);
+                console.log('user login',res);
                 toast.success("User Login Successfully")
 
                 const userData = {

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Link, useNavigate } from 'react-router';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import axios from 'axios';
-import districts from '../../../public/districts.json';
 import SocialLogin from './SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
@@ -68,20 +67,21 @@ const SignUp = () => {
     const onSubmit = (data) => {
         setError("");
         data.photo = imageUrl;
-        const { email, password, name, photo, district } = data;
+        const { email, password, name, photo } = data;
         console.log(data);
 
 
         // create User
         createUser(email, password)
             .then(async (res) => {
-                console.log(res);
+                console.log('user create',res);
 
 
                 // update User Profile with photo , name
                 const profileInfo = {
                     displayName: name,
-                    photoURL: photo
+                    photoURL: photo,
+                    
                 }
                 updateUserProfile(profileInfo)
                     .then(() => {
@@ -98,7 +98,7 @@ const SignUp = () => {
                     email,
 
                     photo,
-                    district
+                    
                 }
                 // update user from db
                 await savedUserInDb(userData)
@@ -204,7 +204,7 @@ const SignUp = () => {
                                 type="file"
                                 accept="image/*"
                                 className="file-input file-input-bordered w-full"
-                                {...register("photo", { required: "Photo is required" })}
+                                {...register("photo")}
                                 onChange={handleImageUpload} // 🔥 upload to Cloudinary on select
                             />
 
@@ -220,22 +220,7 @@ const SignUp = () => {
                         </div>
 
 
-                        {/* Address / District */}
-                        <div>
-                            <label className="label-text">District</label>
-                            <select
-                                {...register("district", { required: true })}
-                                className="select select-bordered w-full hover:border-gray-400 focus:border-gray-500 focus:outline-none"
-                            >
-                                <option value="">Select your district</option>
-                                {districts.map((district) => (
-                                    <option key={district.id} value={district.name}>
-                                        {district.name}
-                                    </option>
-                                ))}
-                            </select>
-
-                        </div>
+                        
                         <div>
                             <p className='text-sm text-red-500'>{error}</p>
                         </div>

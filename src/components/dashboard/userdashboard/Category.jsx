@@ -6,21 +6,21 @@ const Category = () => {
 
     if (isLoading) return <p>Loading categories...</p>;
     if (isError) return <p>Failed to load categories 😔</p>;
-    console.log(categories);
+
 
 
     return (
         <div className='my-10'>
-            <h3 className="text-xl font-semibold text-gray-800 ">
+            <h3 className="text-xl font-semibold text-gray-800 ml-2 md:ml-0">
                 Categories
             </h3>
 
 
-            <div className="my-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-8 gap-6">
+            <div className="my-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-8 gap-4 p-6 bg-white  shadow">
                 {categories.slice(0, 16).map((cat) => (
                     <div
                         key={cat._id}
-                        className="bg-white  shadow hover:shadow-lg transition p-3"
+                        className="bg-white hover:shadow-lg transition p-3"
                     >
                         <img
                             src={cat.image}

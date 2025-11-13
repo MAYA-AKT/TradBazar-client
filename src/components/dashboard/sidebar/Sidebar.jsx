@@ -26,7 +26,7 @@ const Sidebar = () => {
       {/* Small Screen Navbar */}
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
-          <a className="text-2xl text-orange-500 font-bold cursor-pointer">
+          <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer">
             tradBazar
           </a>
         </div>
@@ -46,7 +46,7 @@ const Sidebar = () => {
       >
         <div>
 
-          <a className="text-2xl text-orange-500 font-bold cursor-pointer hidden md:flex">
+          <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer hidden md:flex">
             tradBazar
           </a>
           {/* Nav Items */}
@@ -55,34 +55,34 @@ const Sidebar = () => {
               {/*Links */}
               {
                 role === 'admin' && <>
-                <NavLink to='/admin-dashboard/users'>User Managment</NavLink>
-                <NavLink to='/admin-dashboard/categories'>Categories Managment</NavLink>
-                <NavLink to='/admin-dashboard/products'>Products Managment</NavLink>
-                <NavLink to='/admin-dashboard/Orders'>Order Managment</NavLink>
-                <NavLink to='/admin-dashboard/featured'>Featured Managment</NavLink>
-                <NavLink to='/admin-dashboard/sellers'>Seller Requests</NavLink>
-               
+                  <NavLink to='/admin-dashboard/users'>User Managment</NavLink>
+                  <NavLink to='/admin-dashboard/categories'>Categories Managment</NavLink>
+                  <NavLink to='/admin-dashboard/products'>Products Managment</NavLink>
+                  <NavLink to='/admin-dashboard/Orders'>Order Managment</NavLink>
+                  <NavLink to='/admin-dashboard/featured'>Featured Managment</NavLink>
+                  <NavLink to='/admin-dashboard/seller-requests'>Seller Requests</NavLink>
+
                 </>
               }
               {
                 role === 'seller' && <>
                   <NavLink to='/seller-dashboard/add-product'>Add Products</NavLink>
                   <NavLink to='/seller-dashboard/myproducts'>My Products</NavLink>
-                  
+
                   <NavLink to='/seller-dashboard/orders'>Orders</NavLink>
                   <NavLink to='/seller-dashboard/earnings'> Earnings</NavLink>
                   <NavLink to='/seller-dashboard/profile'> Profile</NavLink>
                 </>
               }
-             
-           
 
-          </nav>
+
+
+            </nav>
+          </div>
         </div>
+
+
       </div>
-
-
-    </div>
     </>
   )
 }

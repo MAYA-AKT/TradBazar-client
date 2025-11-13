@@ -18,6 +18,9 @@ import AddProduct from "../components/dashboard/sellerdashboard/AddProduct";
 import SellerDashboard from "../components/dashboard/sellerdashboard/SellerDashboard";
 import AllProducts from "../components/dashboard/adminDashboard/products/AllProducts";
 import MyProducts from "../components/dashboard/sellerdashboard/MyProducts";
+import AllUsers from "../components/dashboard/adminDashboard/users/AllUsers";
+import BecomeSeller from "../pages/becomeSeller/BecomeSeller";
+import ManageSellerRequests from "../components/dashboard/adminDashboard/sellerRequests/ManageSellerRequests";
 
 
 
@@ -31,6 +34,14 @@ export const router = createBrowserRouter([
       {
         path: '/',
         Component: Home
+      },
+      {
+        path: '/becomeseller',
+        element: (
+          <PrivateRoute>
+            <BecomeSeller />
+          </PrivateRoute>
+        )
       }
 
     ]
@@ -86,6 +97,22 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: 'users',
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'seller-requests',
+        element: (
+          <AdminRoute>
+            <ManageSellerRequests />
+          </AdminRoute>
+        ),
+      },
     ],
   },
   {
@@ -95,24 +122,24 @@ export const router = createBrowserRouter([
         <DashboardLayouts />
       </PrivateRoute>
     ),
-    children:[
-       {
+    children: [
+      {
         index: true,
         Component: SellerDashboard
       },
       {
-        path:'add-product',
-        element:(
+        path: 'add-product',
+        element: (
           <SellerRoute>
-             <AddProduct/>
+            <AddProduct />
           </SellerRoute>
         )
       },
       {
-        path:'myproducts',
-        element:(
+        path: 'myproducts',
+        element: (
           <SellerRoute>
-             <MyProducts/>
+            <MyProducts />
           </SellerRoute>
         )
       }

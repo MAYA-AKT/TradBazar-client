@@ -6,13 +6,13 @@ import useSellerProducts from '../../../hooks/useSellerProducts';
 const MyProducts = () => {
   
     const [status, setStatus] = useState("All");
-    const [searchText, setSearchText] = useState(""); // new state for search
+    const [searchText, setSearchText] = useState("");
 
     const statuses = ["All", "Pending", "Approved", "Rejected"];
 
     // ✅ useProducts hook automatically refetches when `status` changes
     const {MyProducts, isLoading, isError} = useSellerProducts(status,searchText);
-    console.log('myProducts',MyProducts);
+   
     
     return (
         <div>

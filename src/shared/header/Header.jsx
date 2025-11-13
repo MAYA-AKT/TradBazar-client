@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
 
-    const { user,logOut } = useAuth();
+    const { user, logOut } = useAuth();
 
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -30,7 +30,7 @@ const Header = () => {
 
 
     return (
-        <div className="bg-base-200 sticky top-0 z-50">
+        <div className="bg-base-100 py-1 sticky top-0 z-50">
             {/* ===== MAIN NAVBAR ===== */}
             <div className="flex justify-between items-center h-14 px-3 md:px-6 max-w-7xl mx-auto">
                 {/* LEFT: Logo + Menu */}
@@ -45,16 +45,17 @@ const Header = () => {
                         </button>
 
                         {/* Logo */}
-                        <a className="text-2xl text-orange-500 font-bold cursor-pointer">
+                        <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer">
                             tradBazar
                         </a>
                     </div>
                 )}
 
                 {/* MIDDLE: Searchbar (desktop only) */}
-                <div className="hidden md:flex items-center w-full  pl-3 max-w-md">
+                <div className="hidden md:flex items-center w-full pl-3 max-w-md lg:max-w-lg">
                     <Searchbar />
                 </div>
+
 
                 {/* RIGHT: Icons */}
                 {!isSearchOpen && (
@@ -92,7 +93,8 @@ const Header = () => {
                                     >
                                         <li><NavLink to="/profile">Profile</NavLink></li>
                                         <li><NavLink to="/orders">My Orders</NavLink></li>
-                                        
+                                        <li><NavLink to="/becomeseller">Become a seller</NavLink></li>
+
                                         <li>
                                             <button onClick={handleLogOut}>Log out</button>
                                         </li>

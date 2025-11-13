@@ -38,8 +38,20 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
             Swal.fire("❌ Error", "Failed to update product status", error);
         }
     };
-
-
+    const handleFeatureToggle = async (id, featured) => {
+        try {
+            const res = await axiosSecure.patch(`/admin/products/featured/${id}`, { featured });
+            Swal.fire("Success", res.data.message, "success");
+            refetch(); // Refresh table after action
+        } catch (error) {
+            console.error(error);
+            Swal.fire(
+                "Error",
+                error.response?.data?.message || "Failed to update featured status",
+                "error"
+            );
+        }
+    };
 
     if (isLoading || isError)
         return <LoadingSpiner />
@@ -88,7 +100,10 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                                             className="w-16 h-16 object-cover rounded-lg"
                                         />
                                     </td>
-                                    <td className="py-3 px-4 border-gray-200 border-b font-medium">{product.name}</td>
+                                    <td>
+                                        {product.name}
+                                        {product.featured && <span className="text-yellow-500 ml-1">⭐</span>}
+                                    </td>
                                     <td className="py-3 px-4 border-gray-200 border-b font-medium">{product.category}</td>
                                     <td className="py-3 px-4 border-gray-200 border-b text-gray-600">
                                         {product.description.length > 60
@@ -131,6 +146,15 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                                             >
                                                 Reject
                                             </button>
+                                            {/* Only show Feature button for approved products */}
+                                            {product.status === "Approved" && (
+                                                <button
+                                                    onClick={() => handleFeatureToggle(product._id, !product.featured)}
+                                                    className={`btn btn-sm ml-2 ${product.featured ? "btn-warning" : "btn-outline"}`}
+                                                >
+                                                    {product.featured ? "Unfeature" : "Feature"}
+                                                </button>
+                                            )}
                                         </div>
 
                                     </td>

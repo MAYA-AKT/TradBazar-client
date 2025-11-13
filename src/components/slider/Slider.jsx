@@ -7,7 +7,7 @@ import banner3 from '../../assets/banner/banner3.png';
 
 const Slider = () => {
     return (
-        <div className='my-4'>
+        <div className=''>
             <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
                 <div>
                     <img src={banner1} className="w-full h-[150px] md:h-[200px] lg:h-[450px] object-cover"/>

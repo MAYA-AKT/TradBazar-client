@@ -12,7 +12,7 @@ const Navbar = () => {
 
         <div className='flex justify-between items-center gap-3'>
             <div className="relative ">
-                <p className="text-xl bg-gray-300 font-bold py-2 hidden md:block text-center">Categories</p>
+                <p className="text-xl bg-gray-300 font-bold py-2 hidden md:block text-center">Categoriess</p>
                 <button
                     className=" md:hidden "
                     onClick={() => setIsMenuOpen(!isMenuOpen)}

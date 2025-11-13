@@ -70,7 +70,7 @@ const AddProduct = () => {
                     email: user?.email,
                     district: data.sellerDistrict || "Unknown",
                 },
-                status: "pending",
+                status: "Pending",
                 isAvailable: true,
                 featured: false,
                 
