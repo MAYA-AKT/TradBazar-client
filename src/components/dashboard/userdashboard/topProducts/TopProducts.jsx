@@ -1,6 +1,7 @@
 import React from 'react';
 import useTopProducts from '../../../../hooks/useTopProducts';
 import LoadingSpiner from '../../../../pages/error pages/LoadingSpiner';
+import { NavLink } from 'react-router';
 
 const TopProducts = () => {
     const { topProducts, isLoading, isError } = useTopProducts();
@@ -26,7 +27,10 @@ const TopProducts = () => {
 
                     <div className="grid grid-cols-2  md:grid-cols-5 lg:grid-cols-6 gap-3">
                         {topProducts.map((product) => (
-                            <div key={product._id} className="rounded-lg  hover:shadow-lg transition ">
+                            <NavLink
+                                to={`/product/${product._id}`}
+                                key={product._id}
+                                className="rounded-lg  hover:shadow-lg transition ">
                                 <div>
                                     <img
                                         src={product.image}
@@ -40,7 +44,7 @@ const TopProducts = () => {
                                     <p className="text-orange-400  mt-2">{product.price}৳ <span className='text-gray-500'>({product.quantity})</span></p>
 
                                 </div>
-                            </div>
+                            </NavLink>
                         ))}
                     </div>
                 </section>

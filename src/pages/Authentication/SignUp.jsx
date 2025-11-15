@@ -13,7 +13,7 @@ import useUserRole from '../../hooks/useUserRole';
 const SignUp = () => {
 
     const { createUser, updateUserProfile } = useAuth();
-    const { role } = useUserRole();
+    const { role,isLoading, isError } = useUserRole();
     console.log('role signUp', role);
 
     const navigate = useNavigate();
@@ -122,6 +122,11 @@ const SignUp = () => {
 
         reset();
     };
+
+
+    if(isError || isLoading){
+        return <p>Loading...</p>
+    }
 
     return (
         <>

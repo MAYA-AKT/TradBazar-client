@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useCategories from "../../../hooks/useCategories";
 import LoadingSpiner from "../../../pages/error pages/LoadingSpiner";
+
 import axios from "axios";
 
 
@@ -50,6 +51,7 @@ const AddProduct = () => {
             });
     };
 
+    console.log('seller district ', user?.sellerRequest?.district);
 
     // ✅ Submit form handler
     const onSubmit = async (data) => {
@@ -68,14 +70,14 @@ const AddProduct = () => {
                 seller: {
                     name: user?.displayName || "Unknown Seller",
                     email: user?.email,
-                    district: data.sellerDistrict || "Unknown",
+                    district:data.sellerDistrict || "Unknown",
                 },
                 status: "Pending",
                 isAvailable: true,
                 featured: false,
-                
+
             };
-           
+
 
 
             const res = await axiosSecure.post("/products", productData);
@@ -250,8 +252,9 @@ const AddProduct = () => {
                                 type="text"
                                 placeholder="Enter district"
                                 className="input input-bordered w-full"
-                                {...register("sellerDistrict", { required: "district is required" })}
+                                {...register("sellerDistrict")}
                             />
+                            
                             {errors.name && (
                                 <p className="text-error text-sm">{errors.sellerDistrict.message}</p>
                             )}

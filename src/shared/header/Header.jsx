@@ -5,12 +5,14 @@ import { NavLink } from "react-router";
 import Searchbar from "../Searchbar";
 import { IoIosArrowBack } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
+import useUserRole from "../../hooks/useUserRole";
+import LoadingSpiner from "../../pages/error pages/LoadingSpiner";
 
 
 const Header = () => {
 
     const { user, logOut } = useAuth();
-
+    const { role, isLoading, isError } = useUserRole();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -28,7 +30,9 @@ const Header = () => {
             })
     }
 
-
+    if (isLoading || isError) {
+        return <LoadingSpiner />
+    }
     return (
         <div className="bg-base-100 py-1 sticky top-0 z-50">
             {/* ===== MAIN NAVBAR ===== */}
@@ -91,13 +95,38 @@ const Header = () => {
                                         tabIndex={0}
                                         className="menu menu-sm dropdown-content bg-base-100 z-10 mt-3 w-52 p-2 shadow"
                                     >
-                                        <li><NavLink to="/profile">Profile</NavLink></li>
-                                        <li><NavLink to="/orders">My Orders</NavLink></li>
-                                        <li><NavLink to="/becomeseller">Become a seller</NavLink></li>
 
-                                        <li>
-                                            <button onClick={handleLogOut}>Log out</button>
-                                        </li>
+                                        {role === 'admin' && (
+                                            <>
+                                                <li><NavLink to="/profile">Profile</NavLink></li>
+                                                <li><NavLink to="/admin-dashboard">Dashboard</NavLink></li>
+                                                <li><button onClick={handleLogOut}>Log out</button></li>
+                                            </>
+                                        )
+
+                                        }
+                                        {
+                                            role === 'seller' && (
+                                                <>
+                                                    <li><NavLink to="/profile">Profile</NavLink></li>
+
+                                                    <li><NavLink to="/seller-dashboard">Dashboard</NavLink></li>
+                                                    <li><button onClick={handleLogOut}>Log out</button></li>
+                                                </>
+                                            )
+                                        }
+                                        {
+                                            role === 'user' && (
+                                                <>
+                                                    <li><NavLink to="/profile">Profile</NavLink></li>
+                                                    <li><NavLink to="/orders">My Orders</NavLink></li>
+                                                    <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
+                                                    <li><button onClick={handleLogOut}>Log out</button></li>
+                                                </>
+                                            )
+                                        }
+
+
                                     </ul>
                                 </div>
 

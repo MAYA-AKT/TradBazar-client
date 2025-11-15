@@ -21,6 +21,9 @@ import MyProducts from "../components/dashboard/sellerdashboard/MyProducts";
 import AllUsers from "../components/dashboard/adminDashboard/users/AllUsers";
 import BecomeSeller from "../pages/becomeSeller/BecomeSeller";
 import ManageSellerRequests from "../components/dashboard/adminDashboard/sellerRequests/ManageSellerRequests";
+import Profile from "../pages/profile/Profile";
+import UserCategory from "../pages/category section/UserCategory";
+import ProductDetails from "../pages/products/ProductDetails";
 
 
 
@@ -42,7 +45,32 @@ export const router = createBrowserRouter([
             <BecomeSeller />
           </PrivateRoute>
         )
-      }
+      },
+      {
+        path: '/profile',
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: '/category/:categoryName',
+        element: (
+          <PrivateRoute>
+            <UserCategory />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: '/product/:id',
+        element: (
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        )
+      },
+      
 
     ]
   },

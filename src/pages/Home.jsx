@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div className='bg-gray-100'>
             <div className='max-w-7xl mx-auto '>
-                <div >
+                <div className='mt-2' >
                     <Slider />
                 </div>
                 <div >

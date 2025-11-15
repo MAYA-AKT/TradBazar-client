@@ -11,7 +11,8 @@ import useUserRole from '../../../hooks/useUserRole'
 const Sidebar = () => {
 
   const { role } = useUserRole();
-
+  console.log(role);
+  
   const [isActive, setActive] = useState(false)
 
   // Sidebar Responsive Handler

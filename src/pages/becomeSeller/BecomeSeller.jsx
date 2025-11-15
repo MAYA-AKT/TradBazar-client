@@ -5,12 +5,15 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCategories from "../../hooks/useCategories";
 import districts from '../../../public/districts.json';
 import toast from "react-hot-toast";
+import LoadingSpiner from '../../pages/error pages/LoadingSpiner';
+
 
 
 const BecomeSeller = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { categories, isLoading, isError } = useCategories();
+    
     const [submitting, setSubmitting] = useState(false);
 
     const {
@@ -22,7 +25,7 @@ const BecomeSeller = () => {
         defaultValues: {
             name: user?.displayName || "",
             email: user?.email || "",
-
+            
         },
     });
 
@@ -32,15 +35,15 @@ const BecomeSeller = () => {
 
         setSubmitting(true);
         try {
-          const res =  await axiosSecure.post("/sellers/request", {
+            const res = await axiosSecure.post("/sellers/request", {
                 ...data,
 
             });
 
-           if( res.status === 200 && res.data.success){
-               toast.success(res.data.message);
-               reset();
-           }
+            if (res.status === 200 && res.data.success) {
+                toast.success(res.data.message);
+                reset();
+            }
         } catch (err) {
             console.error(err);
             if (err.response && err.response.status === 400) {
@@ -66,7 +69,7 @@ const BecomeSeller = () => {
 
 
     return (
-        <div className="min-h-screen bg-orange-100 py-10 px-4">
+        <div className="min-h-screen bg-gray-100 py-10 px-4">
             {/* Hero / Intro */}
             <div className="max-w-3xl mx-auto text-center mb-10">
                 <h1 className="text-4xl font-bold text-gray-800 mb-4">
@@ -155,6 +158,7 @@ const BecomeSeller = () => {
                                     </option>
                                 ))}
                             </select>
+                           
                             {errors.district && <p className="text-red-500 text-sm mt-1">{errors.district.message}</p>}
                         </div>
 
