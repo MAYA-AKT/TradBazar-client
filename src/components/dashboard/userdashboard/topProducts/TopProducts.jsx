@@ -21,7 +21,7 @@ const TopProducts = () => {
     return (
         <>
             <div className='my-10'>
-                <h2 className="text-xl font-semibold text-gray-800 mb-4 ml-2 md:ml-0">Top Products</h2>
+                <h2 className="text-xl text-gray-800 mb-4 ml-2 md:ml-0">Top Products</h2>
                 <section className="p-6 bg-white  shadow">
 
 

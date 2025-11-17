@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 const CardView = ({ products }) => {
     return (
         <>
-            <div className="grid grid-cols-2  lg:grid-cols-4 gap-3 bg-white p-6">
+            <div className="grid grid-cols-2  lg:grid-cols-4 gap-3 bg-white p-4 md:p-6">
                 {products.map((product) => (
                     <NavLink
                         to={`/product/${product._id}`}

@@ -4,18 +4,18 @@ import { NavLink } from 'react-router';
 const GridView = ({ products }) => {
     return (
         <>
-            <div className="flex flex-col gap-3 bg-white p-4">
+            <div className="flex flex-col gap-0 md:gap-3 bg-white p-4">
                 {products.map((product) => (
                     <NavLink
                         to={`/product/${product._id}`}
                         key={product._id}
-                        className="flex  gap-4 bg-white hover:shadow-md transition rounded p-3"
+                        className="flex gap-4 bg-white hover:shadow-md transition rounded p-3"
                     >
                         {/* Left Image */}
                         <img
                             src={product.image}
                             alt={product.name}
-                            className="w-58 h-48 object-cover"
+                            className=" w-20 h-25 md:w-58 md:h-48  object-cover"
                         />
 
                         {/* Right Content */}

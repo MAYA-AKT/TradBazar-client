@@ -7,13 +7,14 @@ import { IoIosArrowBack } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
 import useUserRole from "../../hooks/useUserRole";
 import LoadingSpiner from "../../pages/error pages/LoadingSpiner";
+import useCategories from "../../hooks/useCategories";
 
 
 const Header = () => {
 
     const { user, logOut } = useAuth();
     const { role, isLoading, isError } = useUserRole();
-
+    const { categories, isLoading: categoryLoading, isError: categoryError } = useCategories();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -30,7 +31,7 @@ const Header = () => {
             })
     }
 
-    if (isLoading || isError) {
+    if (isLoading || isError || categoryLoading || categoryError) {
         return <LoadingSpiner />
     }
     return (
@@ -177,15 +178,24 @@ const Header = () => {
                     onClick={() => setIsDrawerOpen(false)}
                 >
                     <div
-                        className="absolute top-0 left-0 bg-base-100 w-64 h-full p-5 shadow-lg overflow-y-auto"
+                        className="absolute top-0 left-0 bg-base-100 w-70 h-full p-5 shadow-lg overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <h2 className="text-xl font-semibold text-orange-500 mb-3">Categories</h2>
                         <ul className="menu">
-                            <li><NavLink to="/products?category=fruits">Fruits</NavLink></li>
-                            <li><NavLink to="/products?category=vegetables">Vegetables</NavLink></li>
-                            <li><NavLink to="/products?category=handicrafts">Handicrafts</NavLink></li>
-                            <li><NavLink to="/products?category=clothing">Clothing</NavLink></li>
+                            {categories.map((cat) => (
+                                <li key={cat._id}>
+                                    <NavLink
+                                        to={`/category/${encodeURIComponent(cat.name)}`}
+                                        className={({ isActive }) =>
+                                            `block p-2 rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : "text-gray-600 text-sm"
+                                            }`
+                                        }
+                                    >
+                                        {cat.name}
+                                    </NavLink>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

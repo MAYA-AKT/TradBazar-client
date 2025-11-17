@@ -82,7 +82,7 @@ const Profile = () => {
                                     : signleUser?.sellerRequest?.status === "rejected"
                                         ? "bg-red-100 text-red-800 border border-red-300"
                                         : signleUser?.sellerRequest?.status === "Pending"
-                                            ? "bg-yellow-100 text-yellow-800 border border-yellow-300"
+                                            ? "bg-yellow-100 text-yellow-800 "
                                             : ""
                                     }`}
                             >
@@ -92,7 +92,7 @@ const Profile = () => {
                                         ? "❌ Your seller request was rejected. Please review and reapply."
                                         : signleUser?.sellerRequest?.status === "pending"
                                             ? "⏳ Your seller request is currently under review."
-                                            : "👤 Regular User – Apply to become a seller to start selling products."}
+                                            : ""}
                             </div>
                         </div>
 

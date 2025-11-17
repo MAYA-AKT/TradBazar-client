@@ -24,6 +24,7 @@ import ManageSellerRequests from "../components/dashboard/adminDashboard/sellerR
 import Profile from "../pages/profile/Profile";
 import UserCategory from "../pages/category section/UserCategory";
 import ProductDetails from "../pages/products/ProductDetails";
+import Checkout from "../pages/checkout/Checkout";
 
 
 
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
         Component: Home
       },
       {
-        path: '/becomeseller',
+        path: 'becomeseller',
         element: (
           <PrivateRoute>
             <BecomeSeller />
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
         )
       },
       {
-        path: '/profile',
+        path: 'profile',
         element: (
           <PrivateRoute>
             <Profile />
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
         )
       },
       {
-        path: '/category/:categoryName',
+        path: 'category/:categoryName',
         element: (
           <PrivateRoute>
             <UserCategory />
@@ -63,10 +64,18 @@ export const router = createBrowserRouter([
         )
       },
       {
-        path: '/product/:id',
+        path: 'product/:id',
         element: (
           <PrivateRoute>
             <ProductDetails />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: 'checkout/:id',
+        element: (
+          <PrivateRoute>
+            <Checkout />
           </PrivateRoute>
         )
       },
@@ -152,7 +161,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index: true,
+        index:'overview',
         Component: SellerDashboard
       },
       {
