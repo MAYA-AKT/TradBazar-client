@@ -25,6 +25,7 @@ import Profile from "../pages/profile/Profile";
 import UserCategory from "../pages/category section/UserCategory";
 import ProductDetails from "../pages/products/ProductDetails";
 import Checkout from "../pages/checkout/Checkout";
+import StripePaymentPage from "../pages/checkout/StripePaymentPage";
 
 
 
@@ -79,7 +80,15 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
-      
+      {
+        path: 'payment',
+        element: (
+          <PrivateRoute>
+            <StripePaymentPage />
+          </PrivateRoute>
+        )
+      },
+
 
     ]
   },
@@ -161,7 +170,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index:'overview',
+        index: 'overview',
         Component: SellerDashboard
       },
       {

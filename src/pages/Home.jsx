@@ -17,6 +17,7 @@ const Home = () => {
                     <TopProducts />
                 </div>
             </div>
+            <div>Footer</div>
         </div>
     );
 };

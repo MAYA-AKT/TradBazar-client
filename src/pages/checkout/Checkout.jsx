@@ -1,37 +1,38 @@
-import React from 'react';
-import { useParams, useSearchParams } from 'react-router';
-
-import UserInfoSection from './UserInfoSection';
+import { useNavigate, useParams, useSearchParams } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useProduct from "../../hooks/useProduct";
+import { useForm } from "react-hook-form";
+import UserInfoSection from "./UserInfoSection";
 import ShippingInfo from './ShippingInfo';
-import { useForm } from 'react-hook-form';
-import useProduct from '../../hooks/useProduct';
-import LoadingSpiner from '../error pages/LoadingSpiner';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
-import useAuth from '../../hooks/useAuth';
-
+import LoadingSpiner from "../error pages/LoadingSpiner";
+import toast from 'react-hot-toast';
 
 const Checkout = () => {
-
     const { user } = useAuth();
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
     const [searchParams] = useSearchParams();
     const quantity = parseInt(searchParams.get("quantity") || 1);
+    const navigate = useNavigate();
+    
     const { product, productLoading, productError } = useProduct(id);
 
     const totalPrice = product?.price * quantity;
-    const grandTotal = totalPrice + 50
+    const grandTotal = totalPrice + 50;
 
-
-
-
-
-
-
+   
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    // COD Order Submit
     const onSubmit = async (data) => {
         try {
+            // If user selected Stripe → Don't run COD API
+            if (data.paymentMethod === "STRIPE") {
+                console.log("Stripe selected → COD order not created");
+                return;
+            }
+
             const orderInfo = {
                 userEmail: user?.email,
                 productId: product?._id,
@@ -43,20 +44,22 @@ const Checkout = () => {
                 totalPrice,
                 shippingCost: 50,
                 grandTotal,
-                sellerInfo:{
-                    name:product?.seller?.name,
-                    email:product?.seller?.email,
-                    district:product?.seller?.district,
-                }
-            }
-            console.log('order INfo ' , orderInfo);
-            
+                sellerInfo: {
+                    name: product?.seller?.name,
+                    email: product?.seller?.email,
+                    district: product?.seller?.district,
+                },
+                paymentMethod: "COD",
+                paymentStatus: "Pending",
+            };
+
+            console.log("COD Order Info:", orderInfo);
+
             const res = await axiosSecure.post("/orders", orderInfo);
 
             if (res.data.success) {
-                alert("Order placed successfully!");
-                // Redirect to orders page
-                // navigate("/orders");
+                toast.success("Order placed successfully!");
+                navigate(`/product/${product?._id}`)
             }
         } catch (err) {
             console.error(err);
@@ -64,29 +67,37 @@ const Checkout = () => {
         }
     };
 
-
     if (productLoading || productError) {
         return <LoadingSpiner />
     }
 
-
     return (
         <>
-            <div className='bg-gray-100 h-screen'>
+            <div className='bg-gray-100 min-h-screen'>
                 <div className='max-w-7xl mx-auto md:flex gap-4 py-5'>
-                    {/* left div */}
-                    <div className=' mx-3 md:mx-0 md:w-4/6 p-10  bg-white shadow-md'>
+
+                   {/* left side  */}
+                    <div className='mx-3 md:mx-0 md:w-4/6 p-10 bg-white shadow-md rounded'>
                         <UserInfoSection register={register} errors={errors} />
                     </div>
-                    {/* right div */}
-                    <div className='my-4 mx-3 md:mx-0 md:my-0 md:w-2/6 p-6  bg-white shadow-md'>
-                        <ShippingInfo handleSubmit={handleSubmit} onSubmit={onSubmit} product={product} quantity={quantity} />
+
+                   {/* right side */}
+                    <div className='my-4 mx-3 md:mx-0 md:my-0 md:w-2/6 p-6 bg-white shadow-md rounded'>
+                        <ShippingInfo
+                            handleSubmit={handleSubmit}
+                            onSubmit={onSubmit}
+                            product={product}
+                            quantity={quantity}
+                        />
                     </div>
 
                 </div>
-                <div>
-                    display order product
-                    <h1 className='text-red-600 '>{product?.name}</h1>
+
+                {/* display ordered Product  */}
+                <div className='text-center py-4'>
+                    <h1 className='text-red-600 text-xl font-semibold'>
+                        {product?.name}
+                    </h1>
                 </div>
             </div>
         </>
