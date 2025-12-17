@@ -8,7 +8,8 @@ import useAuth from "../../hooks/useAuth";
 import useUserRole from "../../hooks/useUserRole";
 import LoadingSpiner from "../../pages/error pages/LoadingSpiner";
 import useCategories from "../../hooks/useCategories";
-
+import { AiOutlineClose } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Header = () => {
 
@@ -76,22 +77,30 @@ const Header = () => {
                         {/* Profile dropdown */}
                         {
                             user ? <>
-                                <div className="dropdown dropdown-end">
+                                <div className="dropdown dropdown-end ">
+
                                     <div
                                         tabIndex={0}
                                         role="button"
-                                        className="btn btn-ghost btn-circle avatar"
+                                        className="flex justify-center items-center"
                                     >
+
                                         <div className="w-9 rounded-full">
+
                                             <img
-                                                alt="User Avatar"
+                                                alt={user?.displayName}
                                                 title={user?.displayName}
                                                 src={user?.photoURL}
+                                                className="h-9 w-full rounded-full"
                                             />
 
                                         </div>
+                                        <div className="">
+                                            <h3 className=" text-gray-600 pl-1"><IoIosArrowDown /></h3>
+                                        </div>
 
                                     </div>
+
                                     <ul
                                         tabIndex={0}
                                         className="menu menu-sm dropdown-content bg-base-100 z-10 mt-3 w-52 p-2 shadow"
@@ -120,7 +129,7 @@ const Header = () => {
                                             role === 'user' && (
                                                 <>
                                                     <li><NavLink to="/profile">Profile</NavLink></li>
-                                                    <li><NavLink to="/orders">My Orders</NavLink></li>
+                                                    <li><NavLink to="/myOrders">My Orders</NavLink></li>
                                                     <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
                                                     <li><button onClick={handleLogOut}>Log out</button></li>
                                                 </>
@@ -178,9 +187,13 @@ const Header = () => {
                     onClick={() => setIsDrawerOpen(false)}
                 >
                     <div
-                        className="absolute top-0 left-0 bg-base-100 w-70 h-full p-5 shadow-lg overflow-y-auto"
+                        className="absolute top-0 left-0 bg-base-100 w-65 h-full p-5 shadow-lg overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
+                        <div onClick={() => setIsDrawerOpen(false)}
+                            className="flex justify-end text-xl text-gray-500">
+                            <AiOutlineClose />
+                        </div>
                         <h2 className="text-xl font-semibold text-orange-500 mb-3">Categories</h2>
                         <ul className="menu">
                             {categories.map((cat) => (

@@ -13,12 +13,12 @@ const ProductReviews = ({product}) => {
     const [comment, setComment] = useState("");
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
-    const { reviews, reviewLoading, reviewError,refetch } = useReview(product._id);
+    const { reviews, reviewLoading, reviewError,refetch } = useReview(product?._id);
      
     // Calculate average rating
     const average =
-        reviews.length > 0
-            ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
+        reviews?.length > 0
+            ? (reviews?.reduce((acc, r) => acc + r.rating, 0) / reviews?.length).toFixed(1)
             : 0;
 
 
@@ -127,7 +127,7 @@ const ProductReviews = ({product}) => {
                     {reviews.length === 0 ? (
                         <p className="text-gray-500">No reviews for this product yet.</p>
                     ) : (
-                        reviews.map((review, index) => (
+                        reviews?.map((review, index) => (
                             <div
                                 key={index}
                                 className="border-b pb-5 flex gap-4 items-start"

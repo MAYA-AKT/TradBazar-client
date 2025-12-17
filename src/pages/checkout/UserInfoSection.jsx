@@ -5,8 +5,8 @@ import districts from '../../../public/districts.json';
 
 const UserInfoSection = ({ register, errors }) => {
     const { user } = useAuth();
-    
-   
+
+
 
 
 
@@ -15,10 +15,12 @@ const UserInfoSection = ({ register, errors }) => {
     return (
         <>
 
-            <div>
-                <h3 className="text-gray-500">Billing Information</h3>
-                <hr className="text-gray-300 mb-5 mt-2" />
-                <form  className="space-y-4">
+            <div className="pt-10">
+                <div className="pb-5">
+                    <h3 className="text-gray-500">Billing Information</h3>
+                    <hr className="text-gray-300 mb-5 mt-2" />
+                </div>
+                <form className="space-y-4">
                     {/* Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>

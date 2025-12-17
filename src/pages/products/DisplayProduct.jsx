@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-
 import { FaShoppingCart } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
 import { NavLink } from 'react-router';
 
+const DisplayProduct = ({ product, reviews }) => {
 
-
-const DisplayProduct = ({ product }) => {
-
-    const { name, image, category, price, unit, description, featured, quantity } = product || {};
+    const { name, image, category, price, unit, description, quantity } = product || {};
     const [selectedQuantity, setselectedQuantity] = useState(1);
-    // const totalPrice = selectedQuantity * price;
 
+    // Calculate average rating
+    const averageRating = reviews?.length
+        ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
+        : 0;
 
     return (
         <>
             <div className="bg-gray-100 pt-5 pb-10">
-                <div className="max-w-7xl mx-auto bg-white shadow-lg p-6">
+                <div className="max-w-7xl mx-auto bg-white p-6">
 
                     {/* TOP SECTION */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -26,7 +26,7 @@ const DisplayProduct = ({ product }) => {
                             <img
                                 src={image}
                                 alt={name}
-                                className="w-full max-h-[420px] object-cover  shadow"
+                                className="w-full max-h-[420px] object-cover shadow"
                             />
                         </div>
 
@@ -40,27 +40,31 @@ const DisplayProduct = ({ product }) => {
                                 {name}
                             </h1>
 
-                            <p className=" text-gray-500 leading-relaxed">
+                            <p className="text-gray-500 leading-relaxed">
                                 {description}
                             </p>
 
-                            <p className="text-orange-500 text-xl font-semibold ">
+                            <p className="text-orange-500 text-xl font-semibold">
                                 {price}৳
                                 <span className="text-gray-600 text-lg"> / {unit}</span>
                             </p>
 
-                            {featured && (
-                                <p className=" text-yellow-600 font-semibold">
-                                    ⭐⭐⭐⭐
-                                </p>
-                            )}
+                            {/* ⭐ Rating */}
+                            <div className="mt-2 flex items-center gap-2">
+                                <p className="text-yellow-500 text-xl">⭐</p>
+                                <span className="">{averageRating}</span>
+                                <span className="text-gray-500">
+                                    ({reviews?.length || 0} reviews)
+                                </span>
+                            </div>
 
                             <p className="mt-1 text-gray-500">
-                                Stock : <span className="font-semibold">{quantity}/ {unit}</span>
+                                Stock : <span className="">{quantity} / {unit}</span>
                             </p>
-                            <div className="flex items-center gap-2 mt-6">
-                                <p>Quantity : </p>
 
+                            {/* Quantity Selector */}
+                            <div className="flex items-center gap-2 mt-6">
+                                <p>Quantity:</p>
 
                                 <button
                                     className="px-3 py-1 bg-gray-200 text-xl rounded"
@@ -69,11 +73,9 @@ const DisplayProduct = ({ product }) => {
                                     -
                                 </button>
 
-
                                 <span className="text-lg font-semibold w-8 text-center">
                                     {selectedQuantity}
                                 </span>
-
 
                                 <button
                                     className="px-3 py-1 bg-gray-200 text-xl rounded"
@@ -86,24 +88,14 @@ const DisplayProduct = ({ product }) => {
                                 </button>
                             </div>
 
-
-
-                            <div>
-
-                            </div>
-
-
-
-
-
                             {/* BUTTONS */}
                             <div className="mt-8 flex flex-col gap-3">
-
-                                <button className="flex items-center justify-center gap-2 border border-blue-300 hover:bg-blue-300 hover:text-white py-3 rounded-lg text-lg font-medium shadow">
+                                <button
+                                    className="flex items-center justify-center gap-2 border border-blue-300 hover:bg-blue-300 hover:text-white py-3 rounded-lg text-lg font-medium shadow"
+                                >
                                     <FaShoppingCart className="text-xl" />
                                     Add to Cart
                                 </button>
-
 
                                 <NavLink
                                     to={`/checkout/${product._id}?quantity=${selectedQuantity}`}
@@ -112,20 +104,13 @@ const DisplayProduct = ({ product }) => {
                                     <FaArrowRight className="text-xl" />
                                     Order Now
                                 </NavLink>
-
-
                             </div>
-
-
                         </div>
                     </div>
 
-
-
+                   
 
                 </div>
-                {/* seller details section */}
-
             </div>
         </>
     );

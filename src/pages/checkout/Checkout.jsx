@@ -7,6 +7,8 @@ import UserInfoSection from "./UserInfoSection";
 import ShippingInfo from './ShippingInfo';
 import LoadingSpiner from "../error pages/LoadingSpiner";
 import toast from 'react-hot-toast';
+import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadge/CategoryBadge";
+import DisplayOrderProduct from "./displayOrderProduct";
 
 const Checkout = () => {
     const { user } = useAuth();
@@ -15,13 +17,13 @@ const Checkout = () => {
     const [searchParams] = useSearchParams();
     const quantity = parseInt(searchParams.get("quantity") || 1);
     const navigate = useNavigate();
-    
+
     const { product, productLoading, productError } = useProduct(id);
 
     const totalPrice = product?.price * quantity;
-    const grandTotal = totalPrice + 50;
+    const grandTotal = totalPrice + 60;
 
-   
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     // COD Order Submit
@@ -42,7 +44,7 @@ const Checkout = () => {
                 area: data.area,
                 quantity,
                 totalPrice,
-                shippingCost: 50,
+                shippingCost: 60,
                 grandTotal,
                 sellerInfo: {
                     name: product?.seller?.name,
@@ -72,17 +74,18 @@ const Checkout = () => {
     }
 
     return (
-        <>
+        <div className="">
+            <CategoryBadge />
             <div className='bg-gray-100 min-h-screen'>
                 <div className='max-w-7xl mx-auto md:flex gap-4 py-5'>
 
-                   {/* left side  */}
-                    <div className='mx-3 md:mx-0 md:w-4/6 p-10 bg-white shadow-md rounded'>
+                    {/* left side  */}
+                    <div className='mx-3 md:mx-0 md:w-4/6 p-10 bg-white '>
                         <UserInfoSection register={register} errors={errors} />
                     </div>
 
-                   {/* right side */}
-                    <div className='my-4 mx-3 md:mx-0 md:my-0 md:w-2/6 p-6 bg-white shadow-md rounded'>
+                    {/* right side */}
+                    <div className='my-4 mx-3 md:mx-0 md:my-0 md:w-2/6 p-6 bg-white '>
                         <ShippingInfo
                             handleSubmit={handleSubmit}
                             onSubmit={onSubmit}
@@ -94,13 +97,14 @@ const Checkout = () => {
                 </div>
 
                 {/* display ordered Product  */}
-                <div className='text-center py-4'>
-                    <h1 className='text-red-600 text-xl font-semibold'>
-                        {product?.name}
-                    </h1>
+                <div className="py-5 p-6 max-w-7xl mx-auto bg-white ">
+                    <DisplayOrderProduct
+                    product={product}            
+                    quantity={quantity}
+                />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

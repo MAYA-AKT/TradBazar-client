@@ -26,6 +26,13 @@ import UserCategory from "../pages/category section/UserCategory";
 import ProductDetails from "../pages/products/ProductDetails";
 import Checkout from "../pages/checkout/Checkout";
 import StripePaymentPage from "../pages/checkout/StripePaymentPage";
+import CreateCoupon from "../components/dashboard/adminDashboard/coupon/CreateCoupon";
+import Coupons from "../components/dashboard/adminDashboard/coupon/Coupons";
+
+import SellerOrders from "../components/dashboard/sellerdashboard/SellerOrders";
+import AdminOrders from "../components/dashboard/adminDashboard/sellerRequests/orders/AdminOrders";
+import MyOrders from "../pages/myOrders/myOrders";
+import Tracking from "../pages/myOrders/Tracking";
 
 
 
@@ -56,6 +63,23 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
+      {
+        path: 'myOrders',
+        element: (
+          <PrivateRoute>
+            <MyOrders />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: 'track-order/:id',
+        element: (
+          <PrivateRoute>
+            <Tracking />
+          </PrivateRoute>
+        )
+      },
+       
       {
         path: 'category/:categoryName',
         element: (
@@ -159,6 +183,30 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: 'coupon',
+        element: (
+          <AdminRoute>
+            <Coupons />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'create-coupon',
+        element: (
+          <AdminRoute>
+            <CreateCoupon />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'orders',
+        element: (
+          <AdminRoute>
+            <AdminOrders />
+          </AdminRoute>
+        ),
+      },
     ],
   },
   {
@@ -186,6 +234,14 @@ export const router = createBrowserRouter([
         element: (
           <SellerRoute>
             <MyProducts />
+          </SellerRoute>
+        )
+      },
+       {
+        path: 'orders',
+        element: (
+          <SellerRoute>
+            <SellerOrders />
           </SellerRoute>
         )
       }

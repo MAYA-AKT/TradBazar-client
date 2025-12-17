@@ -9,17 +9,10 @@ const RootLayout = () => {
     return (
         <div>
        
-        {/* Users/Buyers Dashboard */}
+        
            <UserDashboard/>
-        {/* Seller dashboard
-        
-        
-        */}
-
-         {/* Admin dashboard 
-         
-         
-        */}
+           
+       
 
         </div>
     );

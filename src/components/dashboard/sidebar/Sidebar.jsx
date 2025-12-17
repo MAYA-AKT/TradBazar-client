@@ -54,27 +54,20 @@ const Sidebar = () => {
       >
         <div>
 
-          <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer hidden md:flex">
+          <a href="/" className="px-10 text-2xl text-orange-500 font-bold cursor-pointer hidden md:flex">
             tradBazar
           </a>
-          {/* Nav Items */}
-          <div className='flex flex-col justify-between flex-1 mt-6'>
-            <nav className='flex flex-col'>
-              {/*Links */}
-              {/* {
-                role === 'admin' && <>
-                  <NavLink to='/admin-dashboard/users'>User Managment</NavLink>
-                  <NavLink to='/admin-dashboard/categories'>Categories Managment</NavLink>
-                  <NavLink to='/admin-dashboard/products'>Products Managment</NavLink>
-                  <NavLink to='/admin-dashboard/Orders'>Order Managment</NavLink>
-                  <NavLink to='/admin-dashboard/featured'>Featured Managment</NavLink>
-                  <NavLink to='/admin-dashboard/seller-requests'>Seller Requests</NavLink>
-
-                </>
-              } */}
+          <hr className='mt-5 text-gray-300'/>
+          <div className='flex flex-col justify-between flex-1 mt-6 px-10'>
+            <nav className='flex flex-col space-y-2'>
+              
               {
                 role === 'admin' && <>
-                  <NavLink to='/admin-dashboard/users'>
+                  <NavLink 
+
+                  to='/admin-dashboard/users'
+                 
+                  >
                     <FaUsers className="inline mr-2" /> User Management
                   </NavLink>
 
@@ -97,25 +90,17 @@ const Sidebar = () => {
                   <NavLink to='/admin-dashboard/seller-requests'>
                     <FaUserCheck className="inline mr-2" /> Seller Approvals
                   </NavLink>
+                  <NavLink to='/admin-dashboard/coupon'>
+                    <FaUserCheck className="inline mr-2" /> Coupon Managment
+                  </NavLink>
                 </>
               }
 
-              {/* {
-                role === 'seller' && <>
-                  <NavLink to='/seller-dashboard/add-product'>Add Products</NavLink>
-                  <NavLink to='/seller-dashboard/myproducts'>My Products</NavLink>
-
-                  <NavLink to='/seller-dashboard/orders'>Orders</NavLink>
-                  <NavLink to='/seller-dashboard/earnings'> Earnings</NavLink>
-                  <NavLink to='/seller-dashboard/profile'> Profile</NavLink>
-                </>
-              } */}
+             
 
               {
                 role === 'seller' && <>
-                  <NavLink to='/seller-dashboard/overview'>
-                    <FaPlusCircle className="inline mr-2" /> Overview
-                  </NavLink>
+                 
                   <NavLink to='/seller-dashboard/add-product'>
                     <FaPlusCircle className="inline mr-2" /> Add New Product
                   </NavLink>

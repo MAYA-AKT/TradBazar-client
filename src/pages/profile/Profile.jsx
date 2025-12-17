@@ -9,10 +9,10 @@ import useUserRole from '../../hooks/useUserRole';
 
 const Profile = () => {
     const { user } = useAuth();
-    const {role} = useUserRole();
-    
+    const { role } = useUserRole();
+
     const { signleUser, isLoading, isError } = useSignleUser(user?.email);
-    console.log(signleUser);
+    
 
 
     if (isLoading || isError) {
@@ -28,27 +28,27 @@ const Profile = () => {
                     <div className="w-full md:w-1/4 bg-gray-50 p-6 mr-4">
 
                         <nav className="flex flex-col ">
-                            
-                            <NavLink
 
+                            <NavLink
+                                to="/myOrders"
                                 className="px-4 py-2 rounded-md hover:bg-orange-100 hover:text-orange-600 transition"
                             >
                                 My Orders
                             </NavLink>
                             <NavLink
-                                
+                                to="/becomeseller"
                                 className="px-4 py-2 rounded-md hover:bg-orange-100 hover:text-orange-600 transition"
                             >
                                 Become a Seller
                             </NavLink>
                             <NavLink
-                                
+
                                 className="px-4 py-2 rounded-md hover:bg-orange-100 hover:text-orange-600 transition"
                             >
                                 My Products
                             </NavLink>
                             <NavLink
-                               
+
                                 className="px-4 py-2 rounded-md hover:bg-orange-100 hover:text-orange-600 transition"
                             >
                                 Account Settings

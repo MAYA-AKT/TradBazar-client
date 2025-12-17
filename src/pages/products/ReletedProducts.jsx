@@ -15,15 +15,15 @@ const ReletedProducts = ({ category }) => {
         <div className="bg-gray-100 py-10">
             <div className="max-w-7xl mx-auto">
                 <h3 className="text-xl mb-4 ml-2">Related Products</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mx-2">
                     {sliceProducts.map(p => (
                         <div
                             key={p._id}
-                            className="cursor-pointer rounded-lg hover:shadow-lg transition p-3 bg-white"
+                            className="cursor-pointer hover:shadow-lg transition p-3 bg-white"
                             onClick={() => navigate(`/product/${p._id}`)} // ✅ Navigate to new product
                         >
                             <img src={p.image} alt={p.name} className="w-full h-40 object-cover mb-3" />
-                            <h3 className="text-md font-semibold text-gray-800">{p.name.toUpperCase()}</h3>
+                            <h3 className="text-md font-semibold text-gray-800 pl-2 md:pl-4">{p.name.toUpperCase()}</h3>
                         </div>
                     ))}
                 </div>

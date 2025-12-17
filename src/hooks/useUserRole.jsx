@@ -17,7 +17,7 @@ const useUserRole = () => {
     enabled: !!user?.email && !authLoading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/user/role?email=${user?.email}`);
-      console.log("Role response:", res.data); // <-- should log { role: "admin" }
+     
       return res.data;
     },
   });
