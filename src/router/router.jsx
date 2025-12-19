@@ -33,6 +33,8 @@ import SellerOrders from "../components/dashboard/sellerdashboard/SellerOrders";
 import AdminOrders from "../components/dashboard/adminDashboard/sellerRequests/orders/AdminOrders";
 import MyOrders from "../pages/myOrders/myOrders";
 import Tracking from "../pages/myOrders/Tracking";
+import CartPage from "../pages/cart/CartPage";
+import CartCheckoutPage from "../pages/cart/CartCheckoutPage";
 
 
 
@@ -72,6 +74,22 @@ export const router = createBrowserRouter([
         )
       },
       {
+        path: 'cart',
+        element: (
+          <PrivateRoute>
+            <CartPage />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: 'cart-checkout',
+        element: (
+          <PrivateRoute>
+            <CartCheckoutPage />
+          </PrivateRoute>
+        )
+      },
+      {
         path: 'track-order/:id',
         element: (
           <PrivateRoute>
@@ -79,7 +97,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
-       
+
       {
         path: 'category/:categoryName',
         element: (
@@ -97,7 +115,7 @@ export const router = createBrowserRouter([
         )
       },
       {
-        path: 'checkout/:id',
+        path: 'checkout/:id?',
         element: (
           <PrivateRoute>
             <Checkout />
@@ -237,7 +255,7 @@ export const router = createBrowserRouter([
           </SellerRoute>
         )
       },
-       {
+      {
         path: 'orders',
         element: (
           <SellerRoute>

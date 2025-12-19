@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiSolidCart } from "react-icons/bi";
 import { FiMenu, FiSearch } from "react-icons/fi";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Searchbar from "../Searchbar";
 import { IoIosArrowBack } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
@@ -10,6 +10,7 @@ import LoadingSpiner from "../../pages/error pages/LoadingSpiner";
 import useCategories from "../../hooks/useCategories";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
+import useCartCount from "../../hooks/useCartCount";
 
 const Header = () => {
 
@@ -31,6 +32,11 @@ const Header = () => {
 
             })
     }
+
+
+    // cart count
+   
+    const { data: cartCount = 0 } = useCartCount(user?.email);
 
     if (isLoading || isError || categoryLoading || categoryError) {
         return <LoadingSpiner />
@@ -151,12 +157,13 @@ const Header = () => {
 
 
                         {/* Cart */}
-                        <div className="relative cursor-pointer">
+                        <Link to='/cart'
+                        className="relative cursor-pointer">
                             <BiSolidCart size={26} />
                             <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                                0
+                            {cartCount}
                             </span>
-                        </div>
+                        </Link>
 
 
                     </div>

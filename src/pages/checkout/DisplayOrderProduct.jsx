@@ -1,35 +1,57 @@
 import React from 'react';
 
-const DisplayOrderProduct = ({ product, quantity }) => {
+const DisplayOrderProduct = ({ products = [] }) => {
+  if (!products.length) {
     return (
-        <div className='p-4 bg-white hover:shadow-sm transition'>
-
-            <div className="flex flex-col items-center md:flex-row gap-4 ">
-                <div className="w-40 h-40  overflow-hidden bg-gray-100">
-                    <img
-                        src={product?.image}
-                        alt={product?.name}
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-
-                <div className="">
-                    <p className="text-lg font-semibold text-gray-800">{product?.name}</p>
-                    <p className="text-md  text-gray-500">{product?.description}</p>
-                    <p className="text-sm ">Quantity : {quantity}</p>
-
-                </div>
-
-            </div>
-            <div className='text-end'>
-                <p className="text-lg font-medium text-orange-500"> Price :
-                    {product?.price} <span className="text-gray-400 text-sm">{product?.unit}</span>
-                </p>
-            </div>
-
-
-        </div>
+      <p className="text-center text-gray-500 py-6">
+        No products selected
+      </p>
     );
+  }
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-xl font-semibold text-gray-700 mb-4">
+        Ordered Products
+      </h3>
+
+      {products.map((product) => (
+        <div
+          key={product._id}
+          className="flex items-center gap-4 border-b pb-4"
+        >
+          {/* Image */}
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-20 h-20 object-cover rounded"
+          />
+
+          {/* Info */}
+          <div className="flex-1">
+            <p className="font-semibold text-gray-800">
+              {product.name}
+            </p>
+            <p className="text-sm text-gray-500">
+              Quantity: {product.quantity}
+            </p>
+          </div>
+
+          {/* Price */}
+          <div className="text-right">
+            <p className="font-medium">
+              {product.price * product.quantity}৳
+            </p>
+            <p className="text-xs text-gray-500">
+              {product.price}৳ × {product.quantity}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default DisplayOrderProduct;
+
+

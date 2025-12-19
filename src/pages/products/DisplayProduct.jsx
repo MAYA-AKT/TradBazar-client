@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
+import useAuth from '../../hooks/useAuth';
+import useAddToCart from '../../hooks/useAddToCart';
 
 const DisplayProduct = ({ product, reviews }) => {
+    
+    
+    const { user } = useAuth();
+    const addToCart = useAddToCart();
+    const navigate = useNavigate();
 
-    const { name, image, category, price, unit, description, quantity } = product || {};
+    const { _id, name, image, category, price, unit, description, quantity ,seller} = product || {};
     const [selectedQuantity, setselectedQuantity] = useState(1);
+
 
     // Calculate average rating
     const averageRating = reviews?.length
         ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
         : 0;
+
+
+    // add to cart 
+
+
+    const handleAddToCart = () => {
+        addToCart.mutate({
+            userEmail: user?.email,
+            productId: _id,
+            name: name,
+            image: image,
+            price: price,
+            seller:seller
+        });
+    };
+
 
     return (
         <>
@@ -90,25 +114,40 @@ const DisplayProduct = ({ product, reviews }) => {
 
                             {/* BUTTONS */}
                             <div className="mt-8 flex flex-col gap-3">
-                                <button
+                                <NavLink
+                                    to='/cart'
+                                    onClick={handleAddToCart}
                                     className="flex items-center justify-center gap-2 border border-blue-300 hover:bg-blue-300 hover:text-white py-3 rounded-lg text-lg font-medium shadow"
                                 >
                                     <FaShoppingCart className="text-xl" />
                                     Add to Cart
-                                </button>
+                                </NavLink>
 
-                                <NavLink
-                                    to={`/checkout/${product._id}?quantity=${selectedQuantity}`}
+                                <button
+                                    onClick={() =>
+                                        navigate("/checkout", {
+                                            state: {
+                                                products: [
+                                                    {
+                                                        ...product,
+                                                        quantity: selectedQuantity,
+                                                    },
+                                                ],
+                                            },
+                                        })
+                                    }
                                     className="flex items-center justify-center gap-2 bg-orange-400 hover:bg-orange-500 text-white py-3 rounded-lg text-lg font-medium shadow"
                                 >
                                     <FaArrowRight className="text-xl" />
                                     Order Now
-                                </NavLink>
+                                </button>
+
+
                             </div>
                         </div>
                     </div>
 
-                   
+
 
                 </div>
             </div>
