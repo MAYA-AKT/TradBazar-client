@@ -7,12 +7,14 @@ import districts from "../../../public/districts.json";
 import DisplayOrderProduct from "./displayOrderProduct";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
 
 const Checkout = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const [paymentMethod, setPaymentMethod] = useState("COD");
 
     const {
         handleSubmit,
@@ -40,14 +42,28 @@ const Checkout = () => {
     const grandTotal = totalPrice + shippingCost;
     const onSubmit = async (data) => {
         try {
-
+            if (paymentMethod === "STRIPE") {
+                navigate("/payment", {
+                    state: {
+                        userEmail: user?.email,
+                        products,
+                        phone: data.phone,
+                        address: data.address,
+                        district: data.district,
+                        area: data.area,
+                        shippingCost,
+                        grandTotal,
+                    }
+                });
+                return;
+            }
             const orders = products.map((p) => ({
                 userEmail: user?.email,
                 productId: p._id,
                 quantity: p.quantity,
                 totalPrice: p.price * p.quantity,
                 shippingCost,
-                grandTotal: p.price * p.quantity + shippingCost,
+                grandTotal,
                 address: data.address,
                 phone: data.phone,
                 district: data.district,
@@ -56,7 +72,6 @@ const Checkout = () => {
                 paymentMethod: "COD",
                 paymentStatus: "pending",
             }));
-
             // Send all orders to backend
             const res = await axiosSecure.post("/orders", { orders });
 
@@ -158,6 +173,8 @@ const Checkout = () => {
                         totalPrice={totalPrice}
                         shippingCost={shippingCost}
                         grandTotal={grandTotal}
+                        paymentMethod={paymentMethod}
+                        setPaymentMethod={setPaymentMethod}
                     />
                 </div>
             </div>

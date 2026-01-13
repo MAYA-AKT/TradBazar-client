@@ -1,14 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const CheckoutStripeForm = ({ orderData }) => {
     
+
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-
+    const navigate = useNavigate();
     const [clientSecret, setClientSecret] = useState("");
 
     // Create PaymentIntent
@@ -52,7 +54,7 @@ const CheckoutStripeForm = ({ orderData }) => {
 
         if (paymentIntent?.status === "succeeded") {
 
-            
+
             const finalOrder = {
                 ...orderData,
                 paymentMethod: "STRIPE",
@@ -62,9 +64,27 @@ const CheckoutStripeForm = ({ orderData }) => {
 
             console.log("Final Order Sending:", finalOrder);
 
-            await axiosSecure.post("/orders", finalOrder);
+            await axiosSecure.post("/orders", {
+                orders: orderData.products.map(p => ({
+                    userEmail: orderData.userEmail,
+                    productId: p._id,
+                    quantity: p.quantity,
+                    totalPrice: p.price * p.quantity,
+                    shippingCost: orderData.shippingCost,
+                    grandTotal: orderData.grandTotal,
+                    address: orderData.address,
+                    phone: orderData.phone,
+                    district: orderData.district,
+                    area: orderData.area,
+                    sellerInfo: p.seller,
+                    paymentMethod: "STRIPE",
+                    paymentStatus: "paid",
+                    transactionId: paymentIntent.id
+                }))
+            });
 
-            alert("Payment Successful & Order Placed!");
+             toast.success("Payment Successful");
+             navigate('/');
         }
     };
 

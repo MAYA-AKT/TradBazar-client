@@ -186,10 +186,11 @@ const ShippingInfo = ({
     totalPrice,
     shippingCost,
     grandTotal,
+    paymentMethod,
+    setPaymentMethod
 }) => {
     const axiosSecure = useAxiosSecure();
 
-    const [paymentMethod, setPaymentMethod] = useState("COD");
 
 
     const [couponCode, setCouponCode] = useState("");
@@ -263,7 +264,7 @@ const ShippingInfo = ({
             )}
 
 
-           
+
             <div className="flex justify-between text-sm">
                 <span>Total Products</span>
                 <span>{products.length} items</span>

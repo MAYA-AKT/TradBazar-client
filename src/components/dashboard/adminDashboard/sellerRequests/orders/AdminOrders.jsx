@@ -12,7 +12,8 @@ const AdminOrders = () => {
     const [filterStatus, setFilterStatus] = useState("");
     const [page, setPage] = useState(1);
     const [selectedOrder, setSelectedOrder] = useState(null);
-
+    console.log('selected orders',selectedOrder);
+    
     const limit = 10; 
 
     // Fetch orders
@@ -27,6 +28,8 @@ const AdminOrders = () => {
     });
 
     const orders = data?.orders || [];
+    console.log('orders',orders);
+    
     const totalPages = data?.totalPages || 1;
 
     const handleStatusUpdate = async (orderId, status) => {
@@ -153,11 +156,9 @@ const AdminOrders = () => {
                         <p><b>Status:</b> {selectedOrder.orderStatus}</p>
                         <p className="mt-2 font-semibold">Items:</p>
                         <ul className="ml-5 list-disc">
-                            {selectedOrder.items?.map((item, i) => (
-                                <li key={i}>
-                                    {item.name} × {item.quantity} ({item.price}৳ each)
-                                </li>
-                            )) || <li>No items</li>}
+                            <li>
+                                Total Product price : {selectedOrder.grandTotal}
+                            </li>
                         </ul>
                     </div>
                 </div>
