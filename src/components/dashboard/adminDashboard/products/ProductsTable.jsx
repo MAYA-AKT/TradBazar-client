@@ -18,13 +18,15 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                 text: `You are about to mark this product as ${newStatus}.`,
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: newStatus === "Approved" ? "#16a34a" : "#dc2626",
+                confirmButtonColor: newStatus === "verified" ? "#16a34a" : "#dc2626",
                 cancelButtonColor: "#6b7280",
                 confirmButtonText: `Yes, ${newStatus}`,
             });
 
             if (result.isConfirmed) {
-                const res = await axiosSecure.patch(`/products/status/${id}`, { status: newStatus });
+                const res = await axiosSecure.patch(`/products/status/${id}`, {
+                    verificationStatus: newStatus
+                });
 
                 if (res.data.success) {
                     Swal.fire("✅ Success!", res.data.message, "success");
@@ -42,7 +44,7 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
         try {
             const res = await axiosSecure.patch(`/admin/products/featured/${id}`, { featured });
             Swal.fire("Success", res.data.message, "success");
-            refetch(); // Refresh table after action
+            refetch();
         } catch (error) {
             console.error(error);
             Swal.fire(
@@ -82,7 +84,8 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                                 <th className="py-3 px-4 border-b">Price</th>
                                 <th className="py-3 px-4 border-b">Unit</th>
                                 <th className="py-3 px-4 border-b">SellerEmail</th>
-                                <th className="py-3 px-4 border-b">status</th>
+                                <th className="py-3 px-4 border-b">Origin</th>
+                                <th className="py-3 px-4 border-b">VerificationStatus</th>
                                 <th className="py-3 px-4 border-b text-center">Actions</th>
                             </tr>
                         </thead>
@@ -113,20 +116,21 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                                     <td className="py-3 px-4 border-gray-200 border-b font-medium">{product.quantity}</td>
                                     <td className="py-3 px-4 border-gray-200 border-b font-medium">{product.price}</td>
                                     <td className="py-3 px-4 border-gray-200 border-b font-medium">{product.unit}</td>
-                                    <td className="py-3 px-4 border-gray-200 border-b font-medium">{product.seller.email}</td>
+                                    <td className="py-3 px-4 border-gray-200 border-b font-medium">{product?.seller?.email}</td>
+                                    <td className="py-3 px-4 border-gray-200 border-b font-medium">{product?.origin?.village}</td>
                                     <td className="py-3 px-4 border-gray-200 border-b font-medium text-center">
                                         <span
                                             className={`px-3 py-1 rounded-full text-sm font-semibold
-                                                    ${product.status === "Pending"
+                                                    ${product.verificationStatus === "pending"
                                                     ? "bg-yellow-100 text-yellow-700 border border-yellow-300"
-                                                    : product.status === "Approved"
+                                                    : product.verificationStatus === "verified"
                                                         ? "bg-green-100 text-green-700 border border-green-300"
-                                                        : product.status === "Rejected"
+                                                        : product.verificationStatus === "rejected"
                                                             ? "bg-red-100 text-red-700 border border-red-300"
                                                             : "bg-gray-100 text-gray-600 border border-gray-300"
                                                 }`}
                                         >
-                                            {product.status || "Pending"}
+                                            {product.verificationStatus || "pending"}
                                         </span>
                                     </td>
 
@@ -134,20 +138,20 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                                         <div className="flex gap-2">
                                             <button
                                                 className="btn btn-sm btn-success"
-                                                disabled={product.status === "Approved"}
-                                                onClick={() => handleStatusChange(product._id, "Approved")}
+                                                disabled={product.verificationStatus === "verified"}
+                                                onClick={() => handleStatusChange(product._id, "verified")}
                                             >
-                                                Approve
+                                                Verified
                                             </button>
                                             <button
                                                 className="btn btn-sm btn-error"
-                                                disabled={product.status === "Rejected"}
-                                                onClick={() => handleStatusChange(product._id, "Rejected")}
+                                                disabled={product.verificationStatus === "rejected"}
+                                                onClick={() => handleStatusChange(product._id, "rejected")}
                                             >
                                                 Reject
                                             </button>
                                             {/* Only show Feature button for approved products */}
-                                            {product.status === "Approved" && (
+                                            {product.verificationStatus === "verified" && (
                                                 <button
                                                     onClick={() => handleFeatureToggle(product._id, !product.featured)}
                                                     className={`btn btn-sm ml-2 ${product.featured ? "btn-warning" : "btn-outline"}`}

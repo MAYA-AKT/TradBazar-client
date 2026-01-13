@@ -11,14 +11,12 @@ const DisplayOrderProduct = ({ products = [] }) => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-gray-700 mb-4">
-        Ordered Products
-      </h3>
+      
 
       {products.map((product) => (
         <div
           key={product._id}
-          className="flex items-center gap-4 border-b pb-4"
+          className="flex items-center gap-4  pb-4"
         >
           {/* Image */}
           <img

@@ -11,6 +11,8 @@ import useCategories from "../../hooks/useCategories";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import useCartCount from "../../hooks/useCartCount";
+import NotificationDropdown from "../../pages/notification/NotificationDropdown";
+// import logo from "../../assets/ChatGPT Image Dec 21, 2025, 03_09_14 AM.png";
 
 const Header = () => {
 
@@ -35,30 +37,29 @@ const Header = () => {
 
 
     // cart count
-   
+
     const { data: cartCount = 0 } = useCartCount(user?.email);
 
     if (isLoading || isError || categoryLoading || categoryError) {
         return <LoadingSpiner />
     }
     return (
-        <div className="bg-base-100 py-1 sticky top-0 z-50">
-            {/* ===== MAIN NAVBAR ===== */}
-            <div className="flex justify-between items-center h-14 px-3 md:px-6 max-w-7xl mx-auto">
-                {/* LEFT: Logo + Menu */}
+        <div className="bg-base-200 py-1 sticky top-0 z-50">
+
+            <div className="flex justify-between items-center h-14 px-4 md:px-6 max-w-7xl mx-auto">
+
                 {!isSearchOpen && (
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center ">
                         {/* Hamburger Menu (mobile) */}
                         <button
                             onClick={() => setIsDrawerOpen(true)}
-                            className="md:hidden text-2xl text-gray-700"
+                            className="md:hidden text-2xl text-gray-800"
                         >
                             <FiMenu />
                         </button>
-
                         {/* Logo */}
                         <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer">
-                            tradBazar
+                            Tradbazar
                         </a>
                     </div>
                 )}
@@ -67,7 +68,6 @@ const Header = () => {
                 <div className="hidden md:flex items-center w-full pl-3 max-w-md lg:max-w-lg">
                     <Searchbar />
                 </div>
-
 
                 {/* RIGHT: Icons */}
                 {!isSearchOpen && (
@@ -79,91 +79,112 @@ const Header = () => {
                         >
                             <FiSearch />
                         </button>
+                        <div className="w-9 flex md:hidden  rounded-full">
+
+                            <img
+                                alt={user?.displayName}
+                                title={user?.displayName}
+                                src={user?.photoURL}
+                                className="h-9 w-full rounded-full"
+                            />
+
+                        </div>
+
+
 
                         {/* Profile dropdown */}
-                        {
-                            user ? <>
-                                <div className="dropdown dropdown-end ">
+                        <div className="hidden md:flex">
+                            {
+                                user ? <>
+                                    <div className="dropdown dropdown-end ">
 
-                                    <div
-                                        tabIndex={0}
-                                        role="button"
-                                        className="flex justify-center items-center"
-                                    >
+                                        <div
+                                            tabIndex={0}
+                                            role="button"
+                                            className="flex justify-center items-center"
+                                        >
 
-                                        <div className="w-9 rounded-full">
+                                            <div className="w-9 rounded-full">
 
-                                            <img
-                                                alt={user?.displayName}
-                                                title={user?.displayName}
-                                                src={user?.photoURL}
-                                                className="h-9 w-full rounded-full"
-                                            />
+                                                <img
+                                                    alt={user?.displayName}
+                                                    title={user?.displayName}
+                                                    src={user?.photoURL}
+                                                    className="h-9 w-full rounded-full"
+                                                />
+
+                                            </div>
+                                            <div className="">
+                                                <h3 className=" text-gray-600 pl-1"><IoIosArrowDown /></h3>
+                                            </div>
 
                                         </div>
-                                        <div className="">
-                                            <h3 className=" text-gray-600 pl-1"><IoIosArrowDown /></h3>
-                                        </div>
 
-                                    </div>
+                                        <ul
+                                            tabIndex={0}
+                                            className="menu menu-sm dropdown-content bg-base-100 z-10 mt-3 w-52 p-2 shadow"
+                                        >
 
-                                    <ul
-                                        tabIndex={0}
-                                        className="menu menu-sm dropdown-content bg-base-100 z-10 mt-3 w-52 p-2 shadow"
-                                    >
-
-                                        {role === 'admin' && (
-                                            <>
-                                                <li><NavLink to="/profile">Profile</NavLink></li>
-                                                <li><NavLink to="/admin-dashboard">Dashboard</NavLink></li>
-                                                <li><button onClick={handleLogOut}>Log out</button></li>
-                                            </>
-                                        )
-
-                                        }
-                                        {
-                                            role === 'seller' && (
+                                            {role === 'admin' && (
                                                 <>
                                                     <li><NavLink to="/profile">Profile</NavLink></li>
-
-                                                    <li><NavLink to="/seller-dashboard">Dashboard</NavLink></li>
+                                                    <li><NavLink to="/admin-dashboard">Dashboard</NavLink></li>
                                                     <li><button onClick={handleLogOut}>Log out</button></li>
                                                 </>
                                             )
-                                        }
-                                        {
-                                            role === 'user' && (
-                                                <>
-                                                    <li><NavLink to="/profile">Profile</NavLink></li>
-                                                    <li><NavLink to="/myOrders">My Orders</NavLink></li>
-                                                    <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
-                                                    <li><button onClick={handleLogOut}>Log out</button></li>
-                                                </>
-                                            )
-                                        }
+
+                                            }
+                                            {
+                                                role === 'seller' && (
+                                                    <>
+                                                        <li><NavLink to="/profile">Profile</NavLink></li>
+
+                                                        <li><NavLink to="/seller-dashboard">Dashboard</NavLink></li>
+                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                    </>
+                                                )
+                                            }
+                                            {
+                                                role === 'user' && (
+                                                    <>
+                                                        <li><NavLink to="/profile">Profile</NavLink></li>
+                                                        <li><NavLink to="/myOrders">My Orders</NavLink></li>
+                                                        <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
+                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                    </>
+                                                )
+                                            }
 
 
-                                    </ul>
-                                </div>
-
-
-                            </> :
-                                <>
-                                    <div>
-                                        <NavLink to='/signup'>Sign Up</NavLink>
+                                        </ul>
                                     </div>
-                                </>
-                        }
 
+
+                                </> :
+                                    <>
+                                        <div>
+                                            <NavLink to='/signup'>Sign Up</NavLink>
+                                        </div>
+                                    </>
+                            }
+
+                        </div>
 
                         {/* Cart */}
-                        <Link to='/cart'
-                        className="relative cursor-pointer">
-                            <BiSolidCart size={26} />
-                            <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                            {cartCount}
-                            </span>
-                        </Link>
+                        <div className="hidden md:flex space-x-4">
+                            <Link to='/cart'
+                                className="relative cursor-pointer">
+                                <BiSolidCart size={26} />
+                                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                                    {cartCount}
+                                </span>
+                            </Link>
+
+
+
+                            <NotificationDropdown userEmail={user?.email} />
+
+                        </div>
 
 
                     </div>
@@ -194,29 +215,99 @@ const Header = () => {
                     onClick={() => setIsDrawerOpen(false)}
                 >
                     <div
-                        className="absolute top-0 left-0 bg-base-100 w-65 h-full p-5 shadow-lg overflow-y-auto"
+                        className="absolute top-0 left-0 bg-base-100 w-70 h-full p-5 shadow-lg overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div onClick={() => setIsDrawerOpen(false)}
                             className="flex justify-end text-xl text-gray-500">
+
                             <AiOutlineClose />
                         </div>
-                        <h2 className="text-xl font-semibold text-orange-500 mb-3">Categories</h2>
-                        <ul className="menu">
-                            {categories.map((cat) => (
-                                <li key={cat._id}>
-                                    <NavLink
-                                        to={`/category/${encodeURIComponent(cat.name)}`}
-                                        className={({ isActive }) =>
-                                            `block p-2 rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : "text-gray-600 text-sm"
-                                            }`
-                                        }
-                                    >
-                                        {cat.name}
-                                    </NavLink>
-                                </li>
-                            ))}
-                        </ul>
+                        {/* icons for mobile only */}
+                        <div>
+                            {/* Profile dropdown */}
+                            <div className=" md:flex">
+                                {
+                                    user ? <>
+                                        <ul
+                                            className="space-y-2 mt-4 "
+
+                                        >
+                                            <li><NavLink to="/">Home</NavLink></li>
+                                            {role === 'admin' && (
+                                                <>
+                                                    <li><NavLink to="/profile">Profile</NavLink></li>
+                                                    <li><NavLink to="/admin-dashboard">Dashboard</NavLink></li>
+                                                    <li><button onClick={handleLogOut}>Log out</button></li>
+                                                </>
+                                            )
+
+                                            }
+                                            {
+                                                role === 'seller' && (
+                                                    <>
+                                                        <li><NavLink to="/profile">Profile</NavLink></li>
+
+                                                        <li><NavLink to="/seller-dashboard">Dashboard</NavLink></li>
+                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                    </>
+                                                )
+                                            }
+                                            {
+                                                role === 'user' && (
+                                                    <>
+                                                        <li><NavLink to="/profile">Profile</NavLink></li>
+                                                        <li><NavLink to="/myOrders">My Orders</NavLink></li>
+                                                        <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
+                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                    </>
+                                                )
+                                            }
+
+
+                                        </ul>
+
+
+                                    </> :
+                                        <>
+                                            <div>
+                                                <NavLink to='/signup'>Sign Up</NavLink>
+                                            </div>
+                                        </>
+                                }
+
+                            </div>
+                            {/* Cart */}
+                            <Link to='/cart'
+                                className="relative cursor-pointer">
+                                <BiSolidCart size={26} />
+                                <span className="absolute -top-1 left-4 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                                    {cartCount}
+                                </span>
+                            </Link>
+
+                            {/* notification */}
+
+                            <NotificationDropdown userEmail={user?.email} />
+                        </div>
+                        <div className="">
+                            <h2 className="font-semibold text-orange-500">Categoriess</h2>
+                            <ul className="menu">
+                                {categories.map((cat) => (
+                                    <li key={cat._id}>
+                                        <NavLink
+                                            to={`/category/${encodeURIComponent(cat.name)}`}
+                                            className={({ isActive }) =>
+                                                `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : "text-gray-600 "
+                                                }`
+                                            }
+                                        >
+                                            {cat.name}
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             )}

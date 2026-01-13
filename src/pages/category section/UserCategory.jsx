@@ -13,6 +13,8 @@ const UserCategory = () => {
 
     const { categoryName } = useParams();
     const { products, isLoading, isError } = useUserCategoryProducts(categoryName);
+    console.log(products);
+    
     const { categories } = useCategories();
     const [view, setView] = useState("card");
 
@@ -21,10 +23,10 @@ const UserCategory = () => {
         return <LoadingSpiner />
     }
     return (
-        <div className='bg-gray-100 h-screen'>
+        <div className='bg-gray-100 '>
             <div className="w-full md:max-w-7xl mx-auto p-4 flex gap-4">
                 {/* Left Sidebar - Categories */}
-                <div className="w-1/4 bg-white p-4 hidden md:block">
+                <div className="w-1/4 bg-white p-4 hidden md:block h-fit">
                     <h3 className="text-md font-semibold mb-4">Categories</h3>
                     <ul className="-space-y-2">
                         {categories.map((cat) => (

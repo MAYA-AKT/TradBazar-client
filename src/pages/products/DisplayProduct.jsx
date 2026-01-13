@@ -6,13 +6,13 @@ import useAuth from '../../hooks/useAuth';
 import useAddToCart from '../../hooks/useAddToCart';
 
 const DisplayProduct = ({ product, reviews }) => {
-    
-    
+
+
     const { user } = useAuth();
     const addToCart = useAddToCart();
     const navigate = useNavigate();
 
-    const { _id, name, image, category, price, unit, description, quantity ,seller} = product || {};
+    const { _id, name, image, category, price, unit, description, quantity, seller } = product || {};
     const [selectedQuantity, setselectedQuantity] = useState(1);
 
 
@@ -32,7 +32,7 @@ const DisplayProduct = ({ product, reviews }) => {
             name: name,
             image: image,
             price: price,
-            seller:seller
+            seller: seller
         });
     };
 
@@ -81,6 +81,11 @@ const DisplayProduct = ({ product, reviews }) => {
                                     ({reviews?.length || 0} reviews)
                                 </span>
                             </div>
+                            {product?.verificationStatus === "verified" && (
+                                <span className="text-green-600 text-xs font-semibold">
+                                    ✔ Verified Authentic
+                                </span>
+                            )}
 
                             <p className="mt-1 text-gray-500">
                                 Stock : <span className="">{quantity} / {unit}</span>
@@ -113,11 +118,11 @@ const DisplayProduct = ({ product, reviews }) => {
                             </div>
 
                             {/* BUTTONS */}
-                            <div className="mt-8 flex flex-col gap-3">
+                            <div className="mt-17 flex flex-col md:flex-row  gap-3">
                                 <NavLink
                                     to='/cart'
                                     onClick={handleAddToCart}
-                                    className="flex items-center justify-center gap-2 border border-blue-300 hover:bg-blue-300 hover:text-white py-3 rounded-lg text-lg font-medium shadow"
+                                    className="flex items-center justify-center gap-2 bg-[#628141] text-white py-3 rounded-lg text-lg font-medium shadow w-full md:w-1/2"
                                 >
                                     <FaShoppingCart className="text-xl" />
                                     Add to Cart
@@ -136,7 +141,7 @@ const DisplayProduct = ({ product, reviews }) => {
                                             },
                                         })
                                     }
-                                    className="flex items-center justify-center gap-2 bg-orange-400 hover:bg-orange-500 text-white py-3 rounded-lg text-lg font-medium shadow"
+                                    className="flex items-center justify-center gap-2 bg-orange-400 hover:bg-orange-500 text-white py-3 rounded-lg text-lg font-medium shadow w-full md:w-1/2"
                                 >
                                     <FaArrowRight className="text-xl" />
                                     Order Now

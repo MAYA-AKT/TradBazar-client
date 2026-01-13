@@ -14,7 +14,7 @@ const useSellerProducts = (status,searchText) => {
         queryFn: async () => {
             let url = `/products/seller?email=${user?.email}`;
 
-            if (status && status !== "All") {
+            if (status && status !== "all") {
                 url += `&status=${status}`;
             }
 

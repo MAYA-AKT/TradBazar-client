@@ -12,7 +12,7 @@ const TopProducts = () => {
     if (topProducts.length === 0) {
         return (
             <h3 className="text-center text-gray-500 text-lg mt-20">
-                No products found for the selected filter. Please try a different status or add new products.
+                No products found .
             </h3>
         );
     }

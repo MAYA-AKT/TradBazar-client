@@ -23,7 +23,7 @@ const MyProductTable = ({ MyProducts, isLoading, isError }) => {
         mutationFn: async (id) => axiosSecure.delete(`/myProducts/${id}`),
         onSuccess: () => {
             Swal.fire("Deleted!", "The product has been deleted.", "success");
-            queryClient.invalidateQueries(["MyProducts", user?.email]); // ✅ matches queryKey
+            queryClient.invalidateQueries(["MyProducts", user?.email]); 
         },
         onError: (error) => {
             Swal.fire("Error", error?.response?.data?.message || "Failed to delete", "error");
@@ -98,16 +98,16 @@ const MyProductTable = ({ MyProducts, isLoading, isError }) => {
                                 <td className="py-3 px-4 border-gray-200 border-b font-medium text-center">
                                     <span
                                         className={`px-3 py-1 rounded-full text-sm font-semibold
-                                                    ${product.status === "Pending"
+                                                    ${product.verificationStatus === "pending"
                                                 ? "bg-yellow-100 text-yellow-700 border border-yellow-300"
-                                                : product.status === "Approved"
+                                                : product.verificationStatus === "verified"
                                                     ? "bg-green-100 text-green-700 border border-green-300"
-                                                    : product.status === "Rejected"
+                                                    : product.verificationStatus === "rejected"
                                                         ? "bg-red-100 text-red-700 border border-red-300"
                                                         : "bg-gray-100 text-gray-600 border border-gray-300"
                                             }`}
                                     >
-                                        {product.status || "Pending"}
+                                        {product.verificationStatus || "pending"}
                                     </span>
                                 </td>
                                 <td className="py-3 px-4 border-gray-200 border-b text-center space-x-2">

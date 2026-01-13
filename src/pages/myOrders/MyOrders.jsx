@@ -5,10 +5,14 @@ import useUserOrders from "../../hooks/useUserOrders";
 import OrderItemCard from "./OrderItemCard";
 import useAuth from "../../hooks/useAuth";
 import MyOrderLeft from "./MyOrderLeft";
+import useCartCount from "../../hooks/useCartCount";
+import { Link } from "react-router";
 
 const MyOrders = () => {
 
     const { user } = useAuth();
+     // cart count
+ const { data: cartCount = 0 } = useCartCount(user?.email);
     const [page, setPage] = useState(1);
 
     const {
@@ -37,9 +41,9 @@ const MyOrders = () => {
                         {/* TOTAL ORDERS */}
                         <div className="bg-white flex justify-between shadow  p-5 mb-6  border-1 border-gray-50">
                             <h2 className="text-xl md:text-xl ">
-                                Your Cart items : <span className="text-primary">0</span>
+                                Your Cart items : <span className="text-primary">{cartCount}</span>
                             </h2>
-                            <button className="btn">Go To Cart</button>
+                            <Link to='/cart' className="btn">Go To Cart</Link>
                         </div>
                         <div className="bg-white shadow  p-5 mb-6  border-1 border-gray-50">
                             <h2 className="text-xl md:text-xl ">

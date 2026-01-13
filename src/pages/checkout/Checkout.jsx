@@ -21,8 +21,8 @@ const Checkout = () => {
     } = useForm();
 
     const products = state?.products || [];
-    console.log('products',products);
-    
+    console.log('products', products);
+
 
     if (!products.length) {
         return (
@@ -40,7 +40,7 @@ const Checkout = () => {
     const grandTotal = totalPrice + shippingCost;
     const onSubmit = async (data) => {
         try {
-           
+
             const orders = products.map((p) => ({
                 userEmail: user?.email,
                 productId: p._id,
@@ -76,14 +76,15 @@ const Checkout = () => {
             <div className="max-w-7xl mx-auto md:flex gap-4 py-5">
 
                 {/* LEFT SIDE */}
-                <div className="mx-3 md:mx-0 md:w-4/6 p-10 bg-white space-y-4">
-
+                <div className="mx-3 md:mx-0 md:w-4/6 p-10 bg-white space-y-7 ">
+                    <p className="text-gray-500">Billing Information : </p>
+                    <hr className="text-gray-300 mb-10" />
                     {/* Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label>Full Name</label>
                             <input
-                                className="input input-bordered w-full bg-gray-100"
+                                className="input input-bordered focus:outline-none w-full bg-gray-100"
                                 defaultValue={user?.displayName}
                                 readOnly
                             />
@@ -91,7 +92,7 @@ const Checkout = () => {
                         <div>
                             <label>Email</label>
                             <input
-                                className="input input-bordered w-full bg-gray-100"
+                                className="input input-bordered focus:outline-none w-full bg-gray-100"
                                 defaultValue={user?.email}
                                 readOnly
                             />
@@ -99,12 +100,12 @@ const Checkout = () => {
                     </div>
 
                     {/* Phone & District */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
                         <div>
                             <label>Phone</label>
                             <input
                                 {...register("phone", { required: "Phone is required" })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered focus:outline-none w-full"
                             />
                             {errors.phone && (
                                 <p className="text-red-500 text-sm">{errors.phone.message}</p>
@@ -115,7 +116,7 @@ const Checkout = () => {
                             <label>District</label>
                             <select
                                 {...register("district", { required: "District is required" })}
-                                className="select select-bordered w-full"
+                                className="select select-bordered focus:outline-none w-full"
                             >
                                 <option value="">Select district</option>
                                 {districts.map((d) => (
@@ -131,12 +132,12 @@ const Checkout = () => {
                     </div>
 
                     {/* Address & Area */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
                         <div>
                             <label>Address</label>
                             <input
                                 {...register("address", { required: "Address is required" })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered focus:outline-none w-full"
                             />
                         </div>
 
@@ -144,14 +145,14 @@ const Checkout = () => {
                             <label>Area</label>
                             <input
                                 {...register("area", { required: "Area is required" })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered focus:outline-none w-full"
                             />
                         </div>
                     </div>
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className="md:w-2/6 p-6 bg-white">
+                <div className="md:w-2/6 p-6 bg-white ">
                     <ShippingInfo
                         products={products}
                         totalPrice={totalPrice}
@@ -160,9 +161,15 @@ const Checkout = () => {
                     />
                 </div>
             </div>
-            <div className="py-5 p-6 max-w-7xl mx-auto bg-white ">
-                <DisplayOrderProduct products={products} />
+            <div className="py-5 mt-4  max-w-7xl mx-auto">
+                <h3 className="text-xl text-gray-700 mb-4">
+                    Selected Products
+                </h3>
+                <div className=" bg-white p-10">
+                    <DisplayOrderProduct products={products} />
+                </div>
             </div>
+
         </form>
     );
 };

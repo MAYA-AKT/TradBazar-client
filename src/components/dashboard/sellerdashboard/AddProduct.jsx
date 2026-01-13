@@ -59,6 +59,25 @@ const AddProduct = () => {
             setUploading(true);
 
             data.image = imageUrl;
+            // const productData = {
+            //     name: data.name,
+            //     category: data.category,
+            //     description: data.description,
+            //     quantity: parseInt(data.quantity),
+            //     unit: data.unit,
+            //     price: parseFloat(data.price),
+            //     image: data.image,
+            //     seller: {
+            //         name: user?.displayName || "Unknown Seller",
+            //         email: user?.email,
+            //         district: data.sellerDistrict || "Unknown",
+            //     },
+            //     status: "Pending",
+            //     isAvailable: true,
+            //     featured: false,
+
+            // };
+
             const productData = {
                 name: data.name,
                 category: data.category,
@@ -67,18 +86,32 @@ const AddProduct = () => {
                 unit: data.unit,
                 price: parseFloat(data.price),
                 image: data.image,
+
+                // SELLER INFO
                 seller: {
                     name: user?.displayName || "Unknown Seller",
                     email: user?.email,
-                    district:data.sellerDistrict || "Unknown",
+                    district: data.sellerDistrict || "Unknown",
                 },
-                status: "Pending",
+
+                // AUTHENTICITY FIELDS (NEW)
+                productType: data.productType, // Farm / Handmade / Homemade / Shop
+                origin: {
+                    district: data.sellerDistrict || "Unknown",
+                    village: data.originVillage || ""
+                },
+                sellerStory: data.sellerStory || "",
+
+                // VERIFICATION SYSTEM
+                verificationStatus: "Pending", // pending | verified | rejected
+                verifiedBy: null,
+
+                // OTHER FLAGS
                 isAvailable: true,
                 featured: false,
 
+                createdAt: new Date()
             };
-
-
 
             const res = await axiosSecure.post("/products", productData);
 
@@ -224,6 +257,35 @@ const AddProduct = () => {
                     )}
                 </div>
 
+                <div className="my-6">
+                    <div className="input input-bordered w-full bg-gray-100">
+                        <select {...register("productType")} required>
+                            <option value="">Select Product Type</option>
+                            <option value="Farm">Farm</option>
+                            <option value="Handmade">Handmade</option>
+                            <option value="Homemade">Homemade</option>
+                            <option value="Shop">Shop</option>
+                        </select>
+                    </div>
+
+                    <div className="input input-bordered w-full bg-gray-100">
+                        <input
+                            type="text"
+                            placeholder="Origin Village (optional)"
+                            {...register("originVillage")}
+                        />
+                    </div>
+
+                    <div className="">
+                        <textarea
+                            placeholder="Tell the story of this product (who makes it, how)"
+                            {...register("sellerStory")}
+                            className="textarea textarea-bordered w-full"
+                        />
+
+                    </div>
+                </div>
+
                 {/* Seller info */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold mb-2 text-gray-700">Seller Information</h3>
@@ -254,7 +316,7 @@ const AddProduct = () => {
                                 className="input input-bordered w-full"
                                 {...register("sellerDistrict")}
                             />
-                            
+
                             {errors.name && (
                                 <p className="text-error text-sm">{errors.sellerDistrict.message}</p>
                             )}

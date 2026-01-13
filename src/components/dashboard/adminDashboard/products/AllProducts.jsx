@@ -4,12 +4,12 @@ import ProductsTable from "./ProductsTable";
 import LoadingSpiner from "../../../../pages/error pages/LoadingSpiner";
 
 const AllProducts = () => {
-    const [status, setStatus] = useState("All");
-    const [searchText, setSearchText] = useState(""); // new state for search
+    const [status, setStatus] = useState("all");
+    const [searchText, setSearchText] = useState(""); 
 
-    const statuses = ["All", "Pending", "Approved", "Rejected"];
+    const statuses = ["all", "pending", "verified", "rejected"];
 
-    // ✅ useProducts hook automatically refetches when `status` changes
+    
     const { products, isLoading, isError, refetch } = useProducts(status,searchText);
 
     if (isLoading) return <LoadingSpiner />;
@@ -40,7 +40,7 @@ const AllProducts = () => {
                                 }`}
                             onClick={() => setStatus(sta)}
                         >
-                            {sta}
+                            {sta.charAt(0).toUpperCase() + sta.slice(1)}
                         </button>
                     ))}
                 </div>

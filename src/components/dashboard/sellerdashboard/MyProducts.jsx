@@ -5,12 +5,12 @@ import useSellerProducts from '../../../hooks/useSellerProducts';
 
 const MyProducts = () => {
   
-    const [status, setStatus] = useState("All");
+    const [status, setStatus] = useState("all");
     const [searchText, setSearchText] = useState("");
 
-    const statuses = ["All", "Pending", "Approved", "Rejected"];
+    const statuses = ["all", "pending", "verified", "rejected"];
 
-    // ✅ useProducts hook automatically refetches when `status` changes
+    
     const {MyProducts, isLoading, isError} = useSellerProducts(status,searchText);
    
     
@@ -39,7 +39,7 @@ const MyProducts = () => {
                                     }`}
                                 onClick={() => setStatus(sta)}
                             >
-                                {sta}
+                                {sta.charAt(0).toUpperCase() + sta.slice(1)}
                             </button>
                         ))}
                     </div>

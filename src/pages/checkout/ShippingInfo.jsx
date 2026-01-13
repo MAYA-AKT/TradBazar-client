@@ -241,12 +241,12 @@ const ShippingInfo = ({
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value)}
                     placeholder="Enter coupon code"
-                    className="input input-bordered w-full"
+                    className="input input-bordered focus:outline-none  w-full"
                 />
                 <button
                     type="button"   // ✅ IMPORTANT
                     onClick={handleApplyCoupon}
-                    className="btn bg-blue-500 text-white"
+                    className="btn bg-[#FFD41D] font-bold text-white"
                 >
                     Apply
                 </button>
@@ -263,7 +263,7 @@ const ShippingInfo = ({
             )}
 
 
-            <hr />
+           
             <div className="flex justify-between text-sm">
                 <span>Total Products</span>
                 <span>{products.length} items</span>
@@ -286,7 +286,7 @@ const ShippingInfo = ({
                 </div>
             )}
 
-            <hr />
+            <hr className="text-gray-300" />
 
             <div className="flex justify-between font-bold text-lg">
                 <span>Grand Total</span>

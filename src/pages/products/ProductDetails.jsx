@@ -15,7 +15,7 @@ const ProductDetails = () => {
     
     const { id } = useParams();
     const { product, productLoading, productError } = useProduct(id);
-    const { reviews, reviewLoading, reviewError } = useReview(product?._id)
+    const { reviews, reviewLoading, reviewError } = useReview(product?._id);
 
 
 

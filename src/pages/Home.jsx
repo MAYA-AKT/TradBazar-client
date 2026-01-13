@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from '../components/slider/Slider';
 import Category from '../components/dashboard/userdashboard/Category';
 import TopProducts from '../components/dashboard/userdashboard/topProducts/TopProducts';
+import ChooseUs from '../components/dashboard/userdashboard/chooseUs/ChooseUs';
+import Footer from '../components/dashboard/userdashboard/footer/Footer';
 
 const Home = () => {
     return (
@@ -16,8 +18,11 @@ const Home = () => {
                 <div>
                     <TopProducts />
                 </div>
+                <div>
+                    <ChooseUs/>
+                </div>
             </div>
-            <div>Footer</div>
+            
         </div>
     );
 };

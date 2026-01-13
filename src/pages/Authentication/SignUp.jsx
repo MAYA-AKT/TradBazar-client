@@ -14,7 +14,7 @@ const SignUp = () => {
 
     const { createUser, updateUserProfile } = useAuth();
     const { role,isLoading, isError } = useUserRole();
-    console.log('role signUp', role);
+   
 
     const navigate = useNavigate();
     const from = location.state?.from || '/';
