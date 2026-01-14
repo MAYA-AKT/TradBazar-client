@@ -60,7 +60,7 @@ const DisplayProduct = ({ product, reviews }) => {
                                 {category}
                             </span>
 
-                            <h1 className="text-xl font-bold text-gray-800 mt-3">
+                            <h1 className="text-xl font-bold text-gray-800 mt-3 uppercase">
                                 {name}
                             </h1>
 

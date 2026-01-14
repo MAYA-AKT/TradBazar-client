@@ -8,6 +8,7 @@ import ReletedProducts from "./ReletedProducts";
 import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadge/CategoryBadge";
 import useReview from "../../hooks/useReview";
 import useProduct from "../../hooks/useProduct";
+import AuthenticityAndSellerStory from "./AuthenticityAndSellerStory";
 
 
 
@@ -29,6 +30,8 @@ const ProductDetails = () => {
              <CategoryBadge/>
 
              <DisplayProduct product={product} reviews={reviews} />
+             <AuthenticityAndSellerStory product={product} />
+
              <ReletedProducts productId={id} category={product.category} />   
              <ProductReviews product={product}/>
 
