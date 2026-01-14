@@ -1,28 +1,37 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
-
+import { useState, useEffect, useCallback } from "react";
 
 const useNotifications = (userEmail) => {
   const axiosSecure = useAxiosSecure();
+  const [notifications, setNotifications] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const {
-    data: notifications = [],
+  // 🔔 extract fetch logic
+  const fetchNotifications = useCallback(async () => {
+    if (!userEmail) return;
+
+    setIsLoading(true);
+    try {
+      const res = await axiosSecure.get(`/notifications/${userEmail}`);
+      setNotifications(res.data);
+    } catch (error) {
+      console.error("Notification fetch failed", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [userEmail, axiosSecure]);
+
+  // initial fetch
+  useEffect(() => {
+    fetchNotifications();
+  }, [fetchNotifications]);
+
+  return {
+    notifications,
+    setNotifications,
     isLoading,
-    isError,
-    refetch,
-  } = useQuery({
-    queryKey: ["notifications", userEmail],
-    queryFn: async () => {
-      if (!userEmail) return [];
-      const res = await axiosSecure.get(`/notifications/${encodeURIComponent(userEmail)}`);
-      return res.data;
-    },
-    keepPreviousData: true,
-    staleTime: 1000 * 30, 
-    enabled: !!userEmail, 
-  });
-
-  return { notifications, isLoading, isError, refetch };
+    refetch: fetchNotifications, // 🔥 THIS FIXES RELOAD ISSUE
+  };
 };
 
 export default useNotifications;

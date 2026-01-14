@@ -57,16 +57,23 @@ const Sidebar = () => {
           <a href="/" className="px-10 text-2xl text-orange-500 font-bold cursor-pointer hidden md:flex">
             tradBazar
           </a>
-          <hr className='mt-5 text-gray-300'/>
+          <hr className='mt-5 text-gray-300' />
           <div className='flex flex-col justify-between flex-1 mt-6 px-10'>
             <nav className='flex flex-col space-y-2'>
-              
+
               {
                 role === 'admin' && <>
-                  <NavLink 
 
-                  to='/admin-dashboard/users'
-                 
+
+                  <NavLink to='/admin-dashboard'>
+                    <FaListUl className="inline mr-2" /> Dashboard
+                  </NavLink>
+
+
+                  <NavLink
+
+                    to='/admin-dashboard/users'
+
                   >
                     <FaUsers className="inline mr-2" /> User Management
                   </NavLink>
@@ -96,11 +103,14 @@ const Sidebar = () => {
                 </>
               }
 
-             
+
 
               {
                 role === 'seller' && <>
-                 
+                  <NavLink to='/seller-dashboard'>
+                    <FaPlusCircle className="inline mr-2" />Dashboard
+                  </NavLink>
+
                   <NavLink to='/seller-dashboard/add-product'>
                     <FaPlusCircle className="inline mr-2" /> Add New Product
                   </NavLink>

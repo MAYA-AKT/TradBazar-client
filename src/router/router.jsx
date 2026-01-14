@@ -236,8 +236,12 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        index: 'overview',
-        Component: SellerDashboard
+         index: true, 
+        element: (
+          <PrivateRoute>
+            <SellerDashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'add-product',

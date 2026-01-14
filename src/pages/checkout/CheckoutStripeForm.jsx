@@ -84,7 +84,7 @@ const CheckoutStripeForm = ({ orderData }) => {
             });
 
              toast.success("Payment Successful");
-             navigate('/');
+             navigate('/');    
         }
     };
 
