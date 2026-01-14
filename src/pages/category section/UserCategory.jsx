@@ -7,16 +7,23 @@ import { BsGridFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
 import CardView from '../../components/view/CardView';
 import GridView from '../../components/view/GridView';
+import { useEffect } from 'react';
 
 const UserCategory = () => {
 
 
     const { categoryName } = useParams();
-    const { products, isLoading, isError } = useUserCategoryProducts(categoryName);
-    console.log(products);
-    
+    const [page, setPage] = useState(1);
+
+    const { products, isLoading, isError, totalPages } = useUserCategoryProducts(categoryName, page);
+
+
     const { categories } = useCategories();
     const [view, setView] = useState("card");
+
+    useEffect(() => {
+        setPage(1);
+    }, [categoryName]);
 
 
     if (isLoading || isError) {
@@ -73,8 +80,41 @@ const UserCategory = () => {
                         <>
                             {view === "grid" && <GridView products={products} />}
                             {view === "card" && <CardView products={products} />}
+
                         </>
                     )}
+                    {/* pagination */}
+                    <div className="flex justify-center mt-6 gap-2">
+                        <button
+                            disabled={page === 1}
+                            onClick={() => setPage(page - 1)}
+                            className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50"
+                        >
+                            Prev
+                        </button>
+
+                        {[...Array(totalPages).keys()].map((num) => (
+                            <button
+                                key={num}
+                                onClick={() => setPage(num + 1)}
+                                className={`px-3 py-1 rounded ${page === num + 1
+                                    ? "bg-orange-500 text-white"
+                                    : "bg-gray-200"
+                                    }`}
+                            >
+                                {num + 1}
+                            </button>
+                        ))}
+
+                        <button
+                            disabled={page === totalPages}
+                            onClick={() => setPage(page + 1)}
+                            className="px-3 py-1 rounded bg-gray-200 disabled:opacity-50"
+                        >
+                            Next
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
