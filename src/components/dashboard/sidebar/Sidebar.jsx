@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import { MdInventory } from "react-icons/md";
 
-
+import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineBars } from 'react-icons/ai'
 import { NavLink } from 'react-router'
 import useUserRole from '../../../hooks/useUserRole'
@@ -66,7 +66,7 @@ const Sidebar = () => {
 
 
                   <NavLink to='/admin-dashboard'>
-                    <FaListUl className="inline mr-2" /> Dashboard
+                    <AiOutlineHome className="inline mr-2" /> Dashboard
                   </NavLink>
 
 
@@ -90,10 +90,7 @@ const Sidebar = () => {
                     <FaShoppingCart className="inline mr-2" /> Order Management
                   </NavLink>
 
-                  <NavLink to='/admin-dashboard/featured'>
-                    <FaStar className="inline mr-2" /> Featured Items
-                  </NavLink>
-
+                 
                   <NavLink to='/admin-dashboard/seller-requests'>
                     <FaUserCheck className="inline mr-2" /> Seller Approvals
                   </NavLink>
@@ -108,7 +105,7 @@ const Sidebar = () => {
               {
                 role === 'seller' && <>
                   <NavLink to='/seller-dashboard'>
-                    <FaPlusCircle className="inline mr-2" />Dashboard
+                    <AiOutlineHome className="inline mr-2" />Dashboard
                   </NavLink>
 
                   <NavLink to='/seller-dashboard/add-product'>

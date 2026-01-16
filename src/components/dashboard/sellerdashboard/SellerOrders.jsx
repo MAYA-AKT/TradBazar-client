@@ -18,8 +18,9 @@ const SellerOrders = () => {
         pageSize
     );
 
-   
-    
+    console.log(orders);
+
+
 
     const [selectedOrder, setSelectedOrder] = useState(null);
     const { mutate: shipOrder } = useShipOrder(refetch);
@@ -60,19 +61,20 @@ const SellerOrders = () => {
     };
 
     return (
-        <div className="p-6">
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">
-                Seller Order Management
+        <div className="max-w-7xl mx-auto mt-10">
+            <h2 className="text-xl font-semibold mb-4 text-gray-800 py-5">
+                 Order Management
             </h2>
 
             {/* Desktop Table */}
             <div className="hidden md:block">
-                <table className="w-full border rounded-lg overflow-hidden shadow-sm">
+                <table className="w-full  rounded-lg overflow-hidden shadow-sm">
                     <thead className="bg-gray-100">
                         <tr className="text-left text-gray-700">
-                            <th className="p-3">Order ID</th>
+
+                            <th className="p-3">Product</th>
                             <th className="p-3">Customer</th>
-                            <th className="p-3">Status</th>
+                            <th className="p-3">Order Status</th>
                             <th className="p-3">Payment</th>
                             <th className="p-3">Total</th>
                             <th className="p-3">Action</th>
@@ -83,9 +85,13 @@ const SellerOrders = () => {
                         {orders?.map((order) => (
                             <tr
                                 key={order._id}
-                                className="border-b hover:bg-gray-50 transition"
+                                className="border-b border-gray-200 hover:bg-gray-50 transition"
                             >
-                                <td className="p-3">{order._id}</td>
+
+                                <td className="flex items-center gap-2">
+                                    <img src={order.productImage} className="w-20 h-20 rounded" />
+                                    {order.productName}
+                                </td>
                                 <td className="p-3">{order.userEmail}</td>
                                 <td className="p-3">
                                     <span
@@ -96,7 +102,18 @@ const SellerOrders = () => {
                                         {order.orderStatus.toUpperCase()}
                                     </span>
                                 </td>
-                                <td className="p-3">{order.paymentStatus}</td>
+                                <td className="p-3">
+                                    <span
+                                        className={`px-2 py-1 rounded-full text-sm font-semibold ${order.paymentStatus === "paid"
+                                            ? "bg-green-100 text-green-800"
+                                            : order.paymentStatus === "pending"
+                                                ? "bg-orange-100 text-orange-800"
+                                                : "bg-gray-100 text-gray-800"
+                                            }`}
+                                    >
+                                        {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                                    </span>
+                                </td>
                                 <td className="p-3">{order.grandTotal} ৳</td>
                                 <td className="p-3">
                                     {order.orderStatus === "processing" ? (
@@ -143,7 +160,17 @@ const SellerOrders = () => {
                             </span>
                         </p>
                         <p>
-                            <b>Payment:</b> {order.paymentStatus}
+
+                            <span
+                                className={`px-2 py-1 rounded-full text-sm font-semibold ${order.paymentStatus === "paid"
+                                    ? "bg-green-100 text-green-800"
+                                    : order.paymentStatus === "pending"
+                                        ? "bg-orange-100 text-orange-800"
+                                        : "bg-gray-100 text-gray-800"
+                                    }`}
+                            >
+                                {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                            </span>
                         </p>
                         <p>
                             <b>Total:</b> {order.grandTotal} ৳
@@ -173,8 +200,8 @@ const SellerOrders = () => {
                         key={i}
                         onClick={() => setPage(i + 1)}
                         className={`px-3 py-1 rounded border ${page === i + 1
-                                ? "bg-blue-600 text-white"
-                                : "bg-white text-gray-700 hover:bg-gray-100"
+                            ? "bg-blue-600 text-white"
+                            : "bg-white text-gray-700 hover:bg-gray-100"
                             }`}
                     >
                         {i + 1}

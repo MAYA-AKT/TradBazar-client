@@ -4,16 +4,12 @@ import { Outlet } from 'react-router';
 
 const DashboardLayouts = () => {
     return (
-        <div className='relative min-h-screen md:flex bg-white'>
-            
+        <div className="relative min-h-screen bg-white">
             <Sidebar />
-           
-            <div className='flex-1  md:ml-64'>
-                <div className='p-5'>
-                   
-                    <Outlet />
-                </div>
-            </div>
+
+            <main className="md:ml-70 p-4 bg-base-200 ">
+                <Outlet />
+            </main>
         </div>
     );
 };

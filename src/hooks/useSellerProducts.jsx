@@ -1,33 +1,36 @@
-import React from 'react';
-import useAxiosSecure from './useAxiosSecure';
-import useAuth from './useAuth';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
-const useSellerProducts = (status,searchText) => {
+const useSellerProducts = (status, searchText, page = 1, limit = 8) => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    console.log('status-searchText',status,searchText);
-    
-    const { data: MyProducts = [], isLoading, isError, refetch } = useQuery({
-        queryKey: ["MyProducts", user?.email, status, searchText],
+
+    const { data = {}, isLoading, isError, refetch } = useQuery({
+        queryKey: ["MyProducts", user?.email, status, searchText, page],
         enabled: !!user?.email,
         queryFn: async () => {
-            let url = `/products/seller?email=${user?.email}`;
-
-            if (status && status !== "all") {
-                url += `&status=${status}`;
-            }
-
-            if (searchText) {
-                url += `&search=${encodeURIComponent(searchText)}`;
-            }
-
-            const res = await axiosSecure.get(url);
+            const res = await axiosSecure.get("/products/seller", {
+                params: {
+                    email: user?.email,
+                    status,
+                    search: searchText,
+                    page,
+                    limit,
+                },
+            });
             return res.data;
         },
     });
 
-    return { MyProducts, isLoading, isError, refetch };
+    return {
+        MyProducts: data.products || [],
+        totalPages: data.totalPages || 1,
+        totalProducts: data.totalProducts || 0,
+        isLoading,
+        isError,
+        refetch,
+    };
 };
 
 export default useSellerProducts;

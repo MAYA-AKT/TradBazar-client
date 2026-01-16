@@ -77,7 +77,7 @@ const AuthenticityAndSellerStory = ({ product }) => {
 
                     {open && (
                         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                            {product.sellerStory} by Rahima Begum, a rural artisan from Jamalpur. Each piece takes 10–15 days to complete and reflects traditional Bengali cultu
+                            {product.sellerStory} 
                         </p>
                     )}
 

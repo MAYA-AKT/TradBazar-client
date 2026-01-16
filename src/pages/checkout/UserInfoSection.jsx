@@ -7,11 +7,6 @@ const UserInfoSection = ({ register, errors }) => {
     const { user } = useAuth();
 
 
-
-
-
-
-
     return (
         <>
 

@@ -10,7 +10,7 @@ const AllUsers = () => {
     const { users, isLoading, isError, refetch } = useUsers(searchText);
     return (
         <div>
-            <div className="p-6">
+            <div className="max-w-7xl mx-auto">
                 <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
                     Manage Products
                 </h3>

@@ -6,6 +6,7 @@ import useCart from "../../hooks/useCart";
 import useUpdateCartQuantity from "../../hooks/useUpdateCartQuantity";
 import useDeleteCartItem from "../../hooks/useDeleteCartItem";
 import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadge/CategoryBadge";
+import toast from "react-hot-toast";
 
 const CartPage = () => {
     const { user } = useAuth();
@@ -23,7 +24,9 @@ const CartPage = () => {
         return <p className="text-center py-10">Loading...</p>;
     }
 
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const selectedTotal = cart
+        .filter(item => selectedItems.includes(item._id))
+        .reduce((sum, item) => sum + item.price * item.quantity, 0);
 
 
     const handleSelectItem = (itemId) => {
@@ -57,11 +60,11 @@ const CartPage = () => {
             }));
 
         if (productsToOrder.length === 0) {
-            alert("Please select at least one product to proceed");
+            toast.error("Please select at least one product to proceed");
             return;
         }
 
-        console.log("Products to checkout:", productsToOrder);
+
 
 
         navigate("/checkout", {
@@ -76,10 +79,9 @@ const CartPage = () => {
         <>
             <CategoryBadge />
             <div className="max-w-7xl mx-auto p-4">
-                {/* <div className="bg-white text-center py-4">
-                <h2 className="">My Cart</h2>
 
-            </div> */}
+
+
                 {cart.length === 0 ? (
                     <p className="text-center text-gray-500 py-10">Your cart is empty</p>
                 ) : (
@@ -88,7 +90,7 @@ const CartPage = () => {
                         <div className="flex justify-between items-center mb-4 bg-white py-3 px-4 my-2">
                             <button
                                 onClick={handleSelectAll}
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 font-semibold"
+                                className="bg-green-600 hover:bg-green-700 text-white px-4 font-semibold rounded"
                             >
                                 {selectedItems.length === cart.length ? "Deselect All" : "Select All"}
                             </button>
@@ -163,19 +165,21 @@ const CartPage = () => {
 
                                 <div className="flex justify-between mb-2">
                                     <span>Subtotal</span>
-                                    <span>Tk {total}</span>
+                                    <span>Tk {selectedTotal}</span>
                                 </div>
 
                                 <div className="flex justify-between mb-2">
                                     <span>Shipping</span>
-                                    <span>Tk 60</span>
+                                    <span>Tk {selectedTotal > 0 ? 60 : 0}</span>
                                 </div>
 
                                 <hr className="my-3" />
 
                                 <div className="flex justify-between text-lg font-bold">
                                     <span>Total</span>
-                                    <span>Tk {total + 60}</span>
+                                    <span>
+                                        Tk {selectedTotal > 0 ? selectedTotal + 60 : 0}
+                                    </span>
                                 </div>
 
                                 <button

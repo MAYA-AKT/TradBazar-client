@@ -7,7 +7,7 @@ import Footer from '../components/dashboard/userdashboard/footer/Footer';
 
 const Home = () => {
     return (
-        <div className='bg-gray-100'>
+        <div className=''>
             <div className='max-w-7xl mx-auto '>
                 <div className='mt-2' >
                     <Slider />

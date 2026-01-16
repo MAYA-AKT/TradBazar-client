@@ -69,10 +69,10 @@ const BecomeSeller = () => {
 
 
     return (
-        <div className="bg-yellow-100 px-30 max-w-7md mx-auto   ">
+        <div className="bg-yellow-100 px-30  ">
 
             <div className=" flex gap-10 items-center">
-                <div className=" bg-amber-700">
+                <div className=" ">
                     <div className="mb-10 ">
                         <h1 className="text-4xl text-center font-bold text-gray-800 mb-4">
                             Become a Seller
@@ -108,7 +108,7 @@ const BecomeSeller = () => {
 
                 </div>
 
-                <div className="bg-green-500 p-10">
+                <div className=" p-10">
                     <h2 className="text-2xl font-bold mb-6 text-gray-800 ">
                         Seller Registration Form
                     </h2>

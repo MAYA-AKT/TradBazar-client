@@ -5,10 +5,12 @@ import Footer from './footer/Footer';
 
 const UserDashboard = () => {
     return (
-        <div>
-            <Header/>
-            <Outlet/>
-            <Footer/>
+        <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1 bg-gray-100">
+                <Outlet />
+            </main>
+            <Footer />
         </div>
     );
 };

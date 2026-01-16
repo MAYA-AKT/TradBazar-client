@@ -58,7 +58,7 @@ const CheckoutStripeForm = ({ orderData }) => {
             const finalOrder = {
                 ...orderData,
                 paymentMethod: "STRIPE",
-                paymentStatus: "Paid",
+                paymentStatus: "paid",
                 transactionId: paymentIntent.id,
             };
 
@@ -91,7 +91,7 @@ const CheckoutStripeForm = ({ orderData }) => {
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             <CardElement className="p-3 border rounded" />
-            <button disabled={!stripe} className="btn w-full mt-3">
+            <button disabled={!stripe} className="btn bg-amber-500 text-white w-full mt-3">
                 Pay Now
             </button>
         </form>

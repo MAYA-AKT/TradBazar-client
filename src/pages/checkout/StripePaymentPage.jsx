@@ -33,9 +33,9 @@ const StripePaymentPage = () => {
 
 
     return (
-        <div className="bg-gray-100 min-h-screen flex  justify-center p-3 md:p-0 ">
-            <div className="bg-white shadow-lg rounded-lg max-w-xl w-full p-9 mt-20 h-[250px]">
-                <h2 className="text-xl font-bold mb-4">Complete Your Payment</h2>
+        <div className=" flex  justify-center items-center p-3 md:p-0 ">
+            <div className="bg-white shadow-lg rounded-lg max-w-xl w-full p-9 mt-10 md:mt-20 ">
+                <h2 className="text-xl font-bold mb-4 text-center pb-6">Complete Your Payment</h2>
 
                 <Elements
                     stripe={stripePromise}

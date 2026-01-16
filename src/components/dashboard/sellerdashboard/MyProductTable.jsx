@@ -5,12 +5,15 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import LoadingSpiner from '../../../pages/error pages/LoadingSpiner';
 import EditMyProductsModal from '../../modal/EditMyProductsModal';
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
-
-const MyProductTable = ({ MyProducts, isLoading, isError }) => {
+const MyProductTable = ({ MyProducts, isLoading, isError, totalPages, page, setPage }) => {
 
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
+
+
+
 
 
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -23,7 +26,7 @@ const MyProductTable = ({ MyProducts, isLoading, isError }) => {
         mutationFn: async (id) => axiosSecure.delete(`/myProducts/${id}`),
         onSuccess: () => {
             Swal.fire("Deleted!", "The product has been deleted.", "success");
-            queryClient.invalidateQueries(["MyProducts", user?.email]); 
+            queryClient.invalidateQueries(["MyProducts", user?.email]);
         },
         onError: (error) => {
             Swal.fire("Error", error?.response?.data?.message || "Failed to delete", "error");
@@ -48,7 +51,7 @@ const MyProductTable = ({ MyProducts, isLoading, isError }) => {
 
 
     if (isLoading || isError) return <LoadingSpiner />;
-     if (MyProducts.length === 0) {
+    if (MyProducts.length === 0) {
         return (
             <h3 className="text-center text-gray-500 text-lg mt-20">
                 No products found for the selected filter. Please try a different status or add new products.
@@ -57,8 +60,8 @@ const MyProductTable = ({ MyProducts, isLoading, isError }) => {
     }
 
     return (
-        <div className="p-4">
-            <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+        <div className="">
+            <div className="overflow-x-auto bg-white shadow-md">
                 <table className="min-w-full border-collapse">
                     <thead>
                         <tr className="bg-gray-100 text-gray-700 text-left">
@@ -110,26 +113,44 @@ const MyProductTable = ({ MyProducts, isLoading, isError }) => {
                                         {product.verificationStatus || "pending"}
                                     </span>
                                 </td>
-                                <td className="py-3 px-4 border-gray-200 border-b text-center space-x-2">
+                                <td className=" border-gray-200 border-b text-center">
                                     <button
                                         onClick={() => setSelectedProduct(product)}
-                                        className="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600"
+                                        className="text-orange-500 px-3 py-1 rounded hover:text-orange-600"
                                     >
-                                        Edit
+                                        <FiEdit className="text-blue-600 hover:text-blue-800 cursor-pointer" />
+
                                     </button>
                                     <button
                                         onClick={() => handleDelete(product._id)}
-                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                                        className=" text-white px-3 py-2 rounded "
                                     >
-                                        Delete
+                                        <FiTrash2 className="text-red-600 hover:text-red-800 cursor-pointer" />
+
                                     </button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-            </div>
 
+
+            </div>
+            {/* pagination */}
+            <div className="flex justify-center gap-2 mt-4">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
+                    <button
+                        key={num}
+                        onClick={() => setPage(num)}
+                        className={`px-3 py-1 rounded ${page === num
+                            ? "bg-green-500 text-white"
+                            : "bg-gray-200 hover:bg-gray-300"
+                            }`}
+                    >
+                        {num}
+                    </button>
+                ))}
+            </div>
             {/* ✅ Edit Modal */}
             {selectedProduct && (
                 <EditMyProductsModal

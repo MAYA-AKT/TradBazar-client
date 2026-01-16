@@ -3,21 +3,31 @@ import MyProductTable from './MyProductTable';
 import { NavLink } from 'react-router';
 import useSellerProducts from '../../../hooks/useSellerProducts';
 
+
+
 const MyProducts = () => {
-  
+
     const [status, setStatus] = useState("all");
     const [searchText, setSearchText] = useState("");
 
     const statuses = ["all", "pending", "verified", "rejected"];
 
-    
-    const {MyProducts, isLoading, isError} = useSellerProducts(status,searchText);
-   
-    
+
+    const [page, setPage] = useState(1);
+
+    const { MyProducts, totalPages,isError,isLoading } = useSellerProducts(
+        status,
+        searchText,
+        page,
+        8
+    );
+
+
+
     return (
         <div>
-            <div className="p-6">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+            <div className="max-w-8xl mx-auto mt-10 px-20">
+                <h3 className="text-xl font-semibold  text-gray-800 py-5">
                     Manage Products
                 </h3>
                 {/* Filter & Search Bar */}
@@ -46,11 +56,14 @@ const MyProducts = () => {
                 </div>
                 <div>
                     <MyProductTable
-                     MyProducts={MyProducts}
-                     isError={isError}
-                     isLoading={isLoading}
-                     
-                     />
+                        MyProducts={MyProducts}
+                        isError={isError}
+                        isLoading={isLoading}
+                        totalPages={totalPages}
+                        page={page}
+                        setPage={setPage}
+
+                    />
                 </div>
             </div>
         </div>

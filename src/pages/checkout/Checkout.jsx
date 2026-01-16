@@ -8,6 +8,7 @@ import DisplayOrderProduct from "./displayOrderProduct";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
+import useSellerEarningsByDate from "../../hooks/useSellerEarningsByDate";
 
 const Checkout = () => {
     const { state } = useLocation();
@@ -16,6 +17,12 @@ const Checkout = () => {
     const axiosSecure = useAxiosSecure();
     const [paymentMethod, setPaymentMethod] = useState("COD");
 
+
+    const today = new Date();
+    const month = today.getMonth() + 1; // JS months are 0-based
+    const year = today.getFullYear();
+    const {  refetch } = useSellerEarningsByDate(user?.email, month, year);
+
     const {
         handleSubmit,
         register,
@@ -23,7 +30,7 @@ const Checkout = () => {
     } = useForm();
 
     const products = state?.products || [];
-    console.log('products', products);
+
 
 
     if (!products.length) {
@@ -74,6 +81,7 @@ const Checkout = () => {
             }));
             // Send all orders to backend
             const res = await axiosSecure.post("/orders", { orders });
+             refetch();
 
             if (res.data.success) {
                 toast.success("Orders placed successfully!");
@@ -163,6 +171,15 @@ const Checkout = () => {
                                 className="input input-bordered focus:outline-none w-full"
                             />
                         </div>
+                    </div>
+                    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded mb-6">
+                        <h3 className="font-semibold text-gray-800 mb-2">Order Instructions</h3>
+                        <ul className="text-sm text-gray-700 list-disc list-inside space-y-1">
+                            <li>Please double-check your billing and shipping information.</li>
+                            <li>Orders are usually processed within 24 hours.</li>
+                            <li>For handmade items, slight variations may occur.</li>
+                            <li>You will receive a tracking ID once your order is confirmed.</li>
+                        </ul>
                     </div>
                 </div>
 

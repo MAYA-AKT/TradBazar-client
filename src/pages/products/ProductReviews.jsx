@@ -9,6 +9,8 @@ import useReview from "../../hooks/useReview";
 
 
 const ProductReviews = ({product}) => {
+    console.log('product',product);
+    
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const {user} = useAuth();
@@ -32,6 +34,7 @@ const ProductReviews = ({product}) => {
         try {
             const reviewData = {
                 productId: product?._id,
+                sellerEmail:product?.seller?.email,
                 userEmail: user?.email,
                 rating,
                 comment,

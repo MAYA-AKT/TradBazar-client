@@ -35,6 +35,7 @@ import MyOrders from "../pages/myOrders/myOrders";
 import Tracking from "../pages/myOrders/Tracking";
 import CartPage from "../pages/cart/CartPage";
 import CartCheckoutPage from "../pages/cart/CartCheckoutPage";
+import SellerEarningsOverview from "../components/dashboard/sellerdashboard/SellerEarningsOverview";
 
 
 
@@ -264,6 +265,15 @@ export const router = createBrowserRouter([
         element: (
           <SellerRoute>
             <SellerOrders />
+          </SellerRoute>
+        ),
+       
+      },
+       {
+        path: 'earnings',
+        element: (
+          <SellerRoute>
+            <SellerEarningsOverview />
           </SellerRoute>
         )
       }

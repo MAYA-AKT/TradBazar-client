@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-
+import { FiTrash2 } from "react-icons/fi";
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useMutation } from '@tanstack/react-query';
 import LoadingSpiner from '../../../../pages/error pages/LoadingSpiner';
@@ -56,8 +56,8 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
     }
 
     return (
-        <div className="p-4">
-            <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+        <div className="">
+            <div className="overflow-x-auto bg-white ">
                 <table className="min-w-full border-collapse">
                     <thead>
                         <tr className="bg-gray-100 text-gray-700 text-left">
@@ -92,9 +92,9 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
 
                                     <button
                                         onClick={() => handleDelete(user._id)}
-                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                                        className="text-red-500 text-xl px-3 py-1 rounded hover:text-red-600"
                                     >
-                                        Delete
+                                        <FiTrash2/>
                                     </button>
                                 </td>
                             </tr>
