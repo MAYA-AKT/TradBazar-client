@@ -12,7 +12,12 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import useCartCount from "../../hooks/useCartCount";
 import NotificationDropdown from "../../pages/notification/NotificationDropdown";
-// import logo from "../../assets/ChatGPT Image Dec 21, 2025, 03_09_14 AM.png";
+import { AiOutlineHome } from "react-icons/ai";
+import { RxDashboard } from "react-icons/rx";
+import { FiUser, FiLogOut } from "react-icons/fi";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { MdStorefront } from "react-icons/md";
+
 
 const Header = () => {
 
@@ -53,12 +58,12 @@ const Header = () => {
                         {/* Hamburger Menu (mobile) */}
                         <button
                             onClick={() => setIsDrawerOpen(true)}
-                            className="md:hidden text-2xl text-gray-800"
+                            className="md:hidden text-xl p-2  text-gray-800"
                         >
-                            <FiMenu />
+                            <FiMenu className=" " />
                         </button>
                         {/* Logo */}
-                        <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer">
+                        <a href="/" className="text-xl text-orange-500 font-bold cursor-pointer">
                             Tradbazar
                         </a>
                     </div>
@@ -92,7 +97,7 @@ const Header = () => {
 
 
 
-                        {/* Profile dropdown */}
+                        {/* Profile dropdown lg decice */}
                         <div className="hidden md:flex">
                             {
                                 user ? <>
@@ -122,14 +127,28 @@ const Header = () => {
 
                                         <ul
                                             tabIndex={0}
-                                            className="menu menu-sm dropdown-content bg-base-100 z-10 mt-3 w-52 p-2 shadow"
+                                            className="menu menu-sm dropdown-content bg-base-100 space-y-2 z-10 mt-3 w-52 p-2 shadow"
                                         >
 
                                             {role === 'admin' && (
                                                 <>
-                                                    <li><NavLink to="/profile">Profile</NavLink></li>
-                                                    <li><NavLink to="/admin-dashboard">Dashboard</NavLink></li>
-                                                    <li><button onClick={handleLogOut}>Log out</button></li>
+                                                    <li className="text-md">
+                                                        <NavLink to="/profile" className='flex items-center gap-2'>
+                                                            <FiUser className="text-lg" />
+                                                            Profile
+                                                        </NavLink>
+                                                    </li>
+                                                    <li className="text-md">
+                                                        <NavLink to="/admin-dashboard" className='flex items-center gap-2'>
+                                                            <RxDashboard className="text-lg" />
+                                                            Dashboard
+                                                        </NavLink>
+                                                    </li>
+                                                    <li className="text-md">
+                                                        <button onClick={handleLogOut}>
+                                                            <FiLogOut className="text-lg" />
+                                                            Log out</button>
+                                                    </li>
                                                 </>
                                             )
 
@@ -137,20 +156,49 @@ const Header = () => {
                                             {
                                                 role === 'seller' && (
                                                     <>
-                                                        <li><NavLink to="/profile">Profile</NavLink></li>
+                                                        <li className="text-md">
+                                                            <NavLink to="/profile" className='flex items-center gap-2'>
+                                                                <FiUser className="text-lg" />
+                                                                Profile
+                                                            </NavLink>
+                                                        </li>
 
-                                                        <li><NavLink to="/seller-dashboard">Dashboard</NavLink></li>
-                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                        <li className="text-md">
+                                                            <NavLink to="/seller-dashboard" className='flex items-center'>
+                                                                <RxDashboard className="text-lg" />
+                                                                Dashboard
+                                                            </NavLink>
+                                                        </li>
+                                                        <li className="text-md">
+                                                            <button onClick={handleLogOut}>
+                                                                <FiLogOut className="text-lg" />
+                                                                Log out</button>
+                                                        </li>
                                                     </>
                                                 )
                                             }
                                             {
                                                 role === 'user' && (
                                                     <>
-                                                        <li><NavLink to="/profile">Profile</NavLink></li>
-                                                        <li><NavLink to="/myOrders">My Orders</NavLink></li>
-                                                        <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
-                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                        <li className="text-lg"><NavLink to="/profile" className='flex items-center'>
+                                                            <FiUser className="text-lg" />
+                                                            Profile
+                                                        </NavLink>
+                                                        </li>
+                                                       
+                                                        <li className="text-md"><NavLink to="/myOrders" className='flex items-center'>
+                                                            <HiOutlineShoppingBag className="text-lg" />
+                                                            My Orders
+                                                        </NavLink></li>
+                                                        <li className="text-md"><NavLink to="/becomeseller" className='flex items-center'>
+                                                            <MdStorefront className="text-lg" />
+                                                            Become a Seller
+                                                        </NavLink></li>
+                                                        <li className="text-md">
+                                                            <button onClick={handleLogOut} className='flex items-center'>
+                                                                <FiLogOut className="text-lg" />
+                                                                Log out</button>
+                                                        </li>
                                                     </>
                                                 )
                                             }
@@ -225,20 +273,42 @@ const Header = () => {
                         </div>
                         {/* icons for mobile only */}
                         <div>
+                            <a href="/" className="text-2xl text-orange-500 font-bold cursor-pointer">
+                                Tradbazar
+                            </a>
                             {/* Profile dropdown */}
                             <div className=" md:flex">
                                 {
                                     user ? <>
                                         <ul
-                                            className="space-y-2 mt-4 "
+                                            className="space-y-4 mt-4 "
 
                                         >
-                                            <li><NavLink to="/">Home</NavLink></li>
+                                            <li className="text-md">
+                                                <NavLink to="/" className='flex items-center gap-2'>
+                                                    <AiOutlineHome className="text-xl" />
+                                                    Home
+                                                </NavLink>
+                                            </li>
                                             {role === 'admin' && (
                                                 <>
-                                                    <li><NavLink to="/profile">Profile</NavLink></li>
-                                                    <li><NavLink to="/admin-dashboard">Dashboard</NavLink></li>
-                                                    <li><button onClick={handleLogOut}>Log out</button></li>
+                                                    <li className="text-md">
+                                                        <NavLink to="/profile" className='flex items-center gap-2'>
+                                                            <FiUser className="text-xl" />
+                                                            Profile
+                                                        </NavLink>
+                                                    </li>
+                                                    <li className="text-md">
+                                                        <NavLink to="/admin-dashboard" className='flex items-center gap-2'>
+                                                            <RxDashboard className="text-xl" />
+                                                            Dashboard
+                                                        </NavLink>
+                                                    </li>
+                                                    <li className="text-md">
+                                                        <button onClick={handleLogOut} className='flex items-center gap-2'>
+                                                            <FiLogOut className="text-xl" />
+                                                            Log out</button>
+                                                    </li>
                                                 </>
                                             )
 
@@ -246,20 +316,59 @@ const Header = () => {
                                             {
                                                 role === 'seller' && (
                                                     <>
-                                                        <li><NavLink to="/profile">Profile</NavLink></li>
+                                                        <li className="text-md">
+                                                            <NavLink to="/profile" className='flex items-center gap-2'>
+                                                                <FiUser className="text-xl" />
+                                                                Profile
+                                                            </NavLink>
+                                                        </li>
 
-                                                        <li><NavLink to="/seller-dashboard">Dashboard</NavLink></li>
-                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                        <li className="text-md"><NavLink to="/seller-dashboard" className='flex items-center gap-2'>
+                                                            <RxDashboard className="text-xl" />
+                                                            Dashboard
+                                                        </NavLink>
+                                                        </li>
+                                                        <li className="text-md">
+                                                            <button onClick={handleLogOut} className='flex items-center gap-2'>
+                                                                <FiLogOut className="text-xl" />
+                                                                Log out</button>
+                                                        </li>
                                                     </>
                                                 )
                                             }
                                             {
                                                 role === 'user' && (
                                                     <>
-                                                        <li><NavLink to="/profile">Profile</NavLink></li>
-                                                        <li><NavLink to="/myOrders">My Orders</NavLink></li>
-                                                        <li><NavLink to="/becomeseller">Become a Seller</NavLink></li>
-                                                        <li><button onClick={handleLogOut}>Log out</button></li>
+                                                        <li className="text-md"><NavLink to="/profile" className='flex items-center gap-2'>
+                                                            <FiUser className="text-xl" />
+                                                            Profile
+                                                        </NavLink>
+                                                        </li>
+                                                        <li className="text-md"><NavLink to="/myOrders" className='flex items-center gap-2'>
+                                                            <HiOutlineShoppingBag className="text-xl" />
+                                                            My Orders
+                                                        </NavLink></li>
+                                                        <li className="text-md"><NavLink to="/becomeseller" className='flex items-center gap-2'>
+                                                            <MdStorefront className="text-xl" />
+                                                            Become a Seller
+                                                        </NavLink></li>
+                                                        <li>
+                                                            <Link to='/cart'
+                                                                className="relative cursor-pointer">
+                                                                <BiSolidCart size={26} />
+                                                                <span className="absolute -top-1 left-4 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                                                                    {cartCount}
+                                                                </span>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <NotificationDropdown userEmail={user?.email} />
+                                                        </li>
+                                                        <li className="text-md">
+                                                            <button onClick={handleLogOut} className='flex items-center gap-2'>
+                                                                <FiLogOut className="text-xl" />
+                                                                Log out</button>
+                                                        </li>
                                                     </>
                                                 )
                                             }
@@ -277,28 +386,24 @@ const Header = () => {
                                 }
 
                             </div>
-                            {/* Cart */}
-                            <Link to='/cart'
-                                className="relative cursor-pointer">
-                                <BiSolidCart size={26} />
-                                <span className="absolute -top-1 left-4 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                                    {cartCount}
-                                </span>
-                            </Link>
+                            {/* Cart mobile device */}
+                            <div className="flex flex-col mt-2 space-y-2">
 
-                            {/* notification */}
 
-                            <NotificationDropdown userEmail={user?.email} />
+                                {/* notification */}
+
+
+                            </div>
                         </div>
-                        <div className="">
-                            <h2 className="font-semibold text-orange-500">Categoriess</h2>
-                            <ul className="menu">
+                        <div className="mt-4">
+                            <h2 className=" text-orange-500">Categories</h2>
+                            <ul className="space-y-2 ml-3 mt-2 text-md">
                                 {categories.map((cat) => (
-                                    <li key={cat._id}>
+                                    <li key={cat._id} className="text-m">
                                         <NavLink
                                             to={`/category/${encodeURIComponent(cat.name)}`}
                                             className={({ isActive }) =>
-                                                `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : "text-gray-600 "
+                                                `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
                                                 }`
                                             }
                                         >
