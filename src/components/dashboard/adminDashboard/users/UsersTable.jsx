@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { FiTrash2 } from "react-icons/fi";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useMutation } from '@tanstack/react-query';
 import LoadingSpiner from '../../../../pages/error pages/LoadingSpiner';
@@ -94,7 +94,7 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
                                         onClick={() => handleDelete(user._id)}
                                         className="text-red-500 text-xl px-3 py-1 rounded hover:text-red-600"
                                     >
-                                        <FiTrash2/>
+                                        <FaTrash/>
                                     </button>
                                 </td>
                             </tr>

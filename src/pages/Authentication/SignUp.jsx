@@ -130,7 +130,7 @@ const SignUp = () => {
 
     return (
         <>
-            <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+            <div className="flex items-center justify-center bg-base-200 px-4">
                 <div className="w-full max-w-md bg-base-100 shadow-lg rounded-2xl p-6">
                     <h2 className="text-2xl font-bold text-center text-orange-500 mb-4">
                         Create Your Account

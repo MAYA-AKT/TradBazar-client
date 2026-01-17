@@ -68,10 +68,10 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
 
     return (
         <>
-            <div className="p-4">
+            <div className="">
 
 
-                <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+                <div className="overflow-x-auto bg-white">
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-gray-100 text-gray-700 text-left">

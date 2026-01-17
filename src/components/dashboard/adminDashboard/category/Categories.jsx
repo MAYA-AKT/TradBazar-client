@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 const Categories = () => {
 
   return (
-    <div className="p-6">
+    <div className="max-w-7xl mx-auto mt-10">
       <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
         Manage Categories
       </h3>
@@ -19,7 +19,7 @@ const Categories = () => {
         />
 
 
-        <NavLink  to='/admin-dashboard/add-category' className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-5 py-2 rounded-lg shadow transition" > + Add Category</NavLink>
+        <NavLink to='/admin-dashboard/add-category' className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-5 py-2 rounded-lg shadow transition" > + Add Category</NavLink>
       </div>
       <div>
         <CategoryTable />

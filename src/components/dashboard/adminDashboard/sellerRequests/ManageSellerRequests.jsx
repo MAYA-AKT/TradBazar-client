@@ -2,11 +2,12 @@ import React from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import LoadingSpiner from '../../../../pages/error pages/LoadingSpiner';
 
 const ManageSellerRequests = () => {
 
     const axiosSecure = useAxiosSecure();
-    const { data: requests = [], refetch } = useQuery({
+    const { data: requests = [], refetch ,isLoading,isError} = useQuery({
         queryKey: ["sellerRequests"],
         queryFn: async () => {
             const res = await axiosSecure.get("/admin/seller-requests");
@@ -31,10 +32,13 @@ const ManageSellerRequests = () => {
         }
     };
 
+    if(isError || isLoading){
+        return <LoadingSpiner/>
+    }
     return (
         <div>
-            <div className="p-6">
-                <h2 className="text-2xl font-bold mb-4">Manage Seller Requests : {requests.length} </h2>
+            <div className="max-w-7xl mx-auto mt-10">
+                <h2 className="text-2xl font-bold mb-6">Manage Seller Requests : {requests.length} </h2>
                 <table className="table w-full bg-white shadow rounded-lg">
                     <thead>
                         <tr>

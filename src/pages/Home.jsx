@@ -3,7 +3,9 @@ import Slider from '../components/slider/Slider';
 import Category from '../components/dashboard/userdashboard/Category';
 import TopProducts from '../components/dashboard/userdashboard/topProducts/TopProducts';
 import ChooseUs from '../components/dashboard/userdashboard/chooseUs/ChooseUs';
-import Footer from '../components/dashboard/userdashboard/footer/Footer';
+import TopSellingProducts from '../components/dashboard/userdashboard/topSellingProduct/TopSellingProducts';
+
+
 
 const Home = () => {
     return (
@@ -16,13 +18,16 @@ const Home = () => {
                     <Category />
                 </div>
                 <div>
+                    <TopSellingProducts />
+                </div>
+                <div>
                     <TopProducts />
                 </div>
                 <div>
-                    <ChooseUs/>
+                    <ChooseUs />
                 </div>
             </div>
-            
+
         </div>
     );
 };

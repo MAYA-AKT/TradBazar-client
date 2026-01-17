@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import LoadingSpiner from "../../../../../pages/error pages/LoadingSpiner";
+import { AiOutlineEye } from "react-icons/ai";
 
 
 const AdminOrders = () => {
@@ -50,7 +51,7 @@ const AdminOrders = () => {
     
 
     return (
-        <div className="p-10">
+        <div className="max-w-7xl mx-auto mt-10">
             <h2 className="text-2xl font-bold mb-4 text-center my-10"> Orders Management</h2>
 
             {/* Search & Filter */}
@@ -90,7 +91,7 @@ const AdminOrders = () => {
                             <th className="p-2">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="ml-10">
                         {orders.map((order) => (
                             <tr key={order._id} className="border-b border-gray-200">
                                 <td className="p-2">{order._id}</td>
@@ -101,9 +102,10 @@ const AdminOrders = () => {
                                 <td className="p-2 flex gap-2">
                                     <button
                                         onClick={() => setSelectedOrder(order)}
-                                        className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                        className=" px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                                        title="View"
                                     >
-                                        View
+                                        <AiOutlineEye/>
                                     </button>
                                     <select
                                         onChange={(e) => handleStatusUpdate(order._id, e.target.value)}

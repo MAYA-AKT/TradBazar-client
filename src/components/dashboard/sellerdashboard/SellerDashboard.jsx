@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import { FiPackage, FiShoppingCart, FiDollarSign, FiStar } from "react-icons/fi";
 import {
     ResponsiveContainer,
@@ -14,6 +12,12 @@ import {
 } from "recharts";
 import useSellerOverview from "../../../hooks/useSellerOverview";
 import useAuth from "../../../hooks/useAuth";
+import SellerCall from "../../videoConference/SellerCall";
+
+
+
+
+
 
 const StatCard = ({ title, value, icon }) => (
     <div className="flex items-center justify-between p-4 rounded shadow bg-white">
@@ -24,9 +28,25 @@ const StatCard = ({ title, value, icon }) => (
         <div className="text-3xl text-gray-400">{icon}</div>
     </div>
 );
+
+
+
+
+
 const SellerDashboard = () => {
+
     const { user } = useAuth();
     const { overview = {}, isLoading, isError } = useSellerOverview(user?.email);
+
+   console.log('overview',overview);
+   
+  
+
+
+
+
+
+
 
     if (isLoading)
         return <p className="text-center py-10">Loading dashboard...</p>;
@@ -57,6 +77,8 @@ const SellerDashboard = () => {
         month: new Date(0, idx).toLocaleString("default", { month: "short" }),
         earnings: total,
     }));
+    console.log('chartData',chartData);
+    
     const colors = [
         "#f97316",
         "#facc15",
@@ -71,8 +93,21 @@ const SellerDashboard = () => {
         "#a78bfa",
         "#f472b6",
     ];
+
+
+
+
+
+
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
+
+           
+           {/* Video Call Button */}
+            <SellerCall sellerEmail={user?.email} />
+            {/* end */}
+
+
             {/* Greeting */}
             <h1 className="text-2xl font-bold mb-2">Welcome, {user?.name}!</h1>
             <p className="text-gray-500 mb-6">

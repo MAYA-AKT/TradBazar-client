@@ -25,9 +25,9 @@ const Coupons = () => {
 
 
     return (
-        <div className="p-6">
+        <div className="max-w-7xl mx-auto mt-10">
             <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-                Coupon Categories
+                Coupon 
             </h3>
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 shadow mb-6">

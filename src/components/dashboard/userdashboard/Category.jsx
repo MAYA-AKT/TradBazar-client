@@ -1,10 +1,11 @@
 import React from 'react';
-import useCategories from '../../../hooks/useCategories';
 import { NavLink } from 'react-router';
+import useUserCategories from '../../../hooks/userUserCategories';
 
 const Category = () => {
-    const { categories, isLoading, isError } = useCategories();
-  
+    const { categories, isLoading, isError } = useUserCategories();
+    console.log(categories);
+    
     if (isLoading) return <p>Loading categories...</p>;
     if (isError) return <p>Failed to load categories 😔</p>;
 
@@ -17,8 +18,8 @@ const Category = () => {
             </h3>
 
 
-            <div className="my-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-8 gap-4 p-6 bg-white  shadow">
-                {categories.slice(0, 16).map((cat) => (
+            <div className="my-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-8 gap-3 p-2 md:p-6 bg-white  shadow">
+                {categories?.slice(0, 16).map((cat) => (
                     <NavLink
                         to={`/category/${encodeURIComponent(cat.name)}`}
                         key={cat._id}

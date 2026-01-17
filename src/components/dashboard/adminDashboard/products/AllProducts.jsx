@@ -5,18 +5,18 @@ import LoadingSpiner from "../../../../pages/error pages/LoadingSpiner";
 
 const AllProducts = () => {
     const [status, setStatus] = useState("all");
-    const [searchText, setSearchText] = useState(""); 
+    const [searchText, setSearchText] = useState("");
 
     const statuses = ["all", "pending", "verified", "rejected"];
 
-    
-    const { products, isLoading, isError, refetch } = useProducts(status,searchText);
+    const [page, setPage] = useState(1);
+    const { products,totalPages, isLoading, isError, refetch } = useProducts(status, searchText, page, 8);
 
     if (isLoading) return <LoadingSpiner />;
     if (isError) return <p className="text-red-500 text-center">Failed to load products.</p>;
 
     return (
-        <div className="p-4">
+        <div className="px-10">
             <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
                 Manage Products
             </h3>
@@ -53,6 +53,18 @@ const AllProducts = () => {
                 isError={isError}
                 refetch={refetch}
             />
+            {/* pagination */}
+            <div className="flex gap-2 justify-center my-15">
+                {[...Array(totalPages).keys()].map(i => (
+                    <button
+                        key={i}
+                        onClick={() => setPage(i + 1)}
+                        className={`px-3 py-1 border ${page === i + 1 ? "bg-green-500 text-white" : ""}`}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };

@@ -55,7 +55,7 @@ const SignIn = () => {
     };
     useEffect(() => {
         if (!authLoading && !roleLoading && user) {
-            console.log("Redirecting user with role:", role);
+           
             if (role === "admin") {
                 navigate("/admin-dashboard");
             } else if(role === "seller"){
@@ -68,10 +68,10 @@ const SignIn = () => {
     }, [user, role, authLoading, roleLoading, navigate, from]);
     return (
         <>
-            <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
-                <div className="w-full max-w-md bg-base-100 shadow-lg rounded-2xl p-6">
-                    <h2 className="text-2xl font-bold text-center text-orange-500 mb-4">
-                        Signin Your Account {name}
+            <div className="flex items-center justify-center mt-20  px-4">
+                <div className="w-full max-w-md  bg-white  p-6">
+                    <h2 className="text-2xl  font-bold text-center text-orange-500 ">
+                        Signin Your Account 
                     </h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

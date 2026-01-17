@@ -7,7 +7,7 @@ const DashboardLayouts = () => {
         <div className="relative min-h-screen bg-white">
             <Sidebar />
 
-            <main className="md:ml-70 p-4 bg-base-200 ">
+            <main className="md:ml-70 p-4 bg-base-200 h-screen">
                 <Outlet />
             </main>
         </div>

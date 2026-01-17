@@ -1,18 +1,33 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import useAxiosSecure from './useAxiosSecure';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
 
-const useCategories = () => {
+const useCategories = (page = 1, limit = 10) => {
     const axiosSecure = useAxiosSecure();
-    const { data: categories = [], isLoading, isError, refetch } = useQuery({
-        queryKey: ["categories"],
+
+    const {
+        data = {},
+        isLoading,
+        isError,
+        refetch,
+    } = useQuery({
+        queryKey: ["categories", page, limit],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/categories`);
+            const res = await axiosSecure.get(
+                `/categories?page=${page}&limit=${limit}`
+            );
             return res.data;
         },
+        keepPreviousData: true,
     });
 
-    return { categories, isLoading, isError, refetch };
+    return {
+        categories: data.categories || [],
+        totalCategories: data.totalCategories || 0,
+        totalPages: data.totalPages || 0,
+        isLoading,
+        isError,
+        refetch,
+    };
 };
 
 export default useCategories;

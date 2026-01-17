@@ -86,7 +86,7 @@ const AddCategory = () => {
                 transition={{ type: "spring", stiffness: 100 }}
                 className="bg-white shadow-2xl rounded-3xl w-full max-w-lg p-8"
             >
-                <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text">
+                <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text">
                     Add New Category
                 </h2>
 
@@ -134,7 +134,7 @@ const AddCategory = () => {
                     <motion.button
                         whileTap={{ scale: 0.95 }}
                         type="submit"
-                        className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition"
+                        className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition"
                     >
                         Add Category
                     </motion.button>

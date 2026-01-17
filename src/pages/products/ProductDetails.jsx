@@ -9,14 +9,19 @@ import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadg
 import useReview from "../../hooks/useReview";
 import useProduct from "../../hooks/useProduct";
 import AuthenticityAndSellerStory from "./AuthenticityAndSellerStory";
+import BuyerCall from "../../components/videoConference/BuyerCall";
+
+
+
 
 
 
 const ProductDetails = () => {
-    
+
     const { id } = useParams();
     const { product, productLoading, productError } = useProduct(id);
     const { reviews, reviewLoading, reviewError } = useReview(product?._id);
+
 
 
 
@@ -27,13 +32,19 @@ const ProductDetails = () => {
     return (
         <>
             {/* Category Badge */}
-             <CategoryBadge/>
+            <CategoryBadge />
 
-             <DisplayProduct product={product} reviews={reviews} />
-             <AuthenticityAndSellerStory product={product} />
+            <DisplayProduct product={product} reviews={reviews} />
 
-             <ReletedProducts productId={id} category={product.category} />   
-             <ProductReviews product={product}/>
+            <div>
+                <h1 className="text-xl font-bold mb-4">Product Name</h1>
+                <BuyerCall  sellerEmail={product?.seller?.email} />
+            </div>
+
+            <AuthenticityAndSellerStory product={product} />
+
+            <ReletedProducts productId={id} category={product.category} />
+            <ProductReviews product={product} />
 
         </>
     );

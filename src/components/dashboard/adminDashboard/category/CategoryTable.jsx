@@ -5,11 +5,14 @@ import Swal from "sweetalert2";
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useMutation } from '@tanstack/react-query';
 import EditCategoryModal from '../../../modal/EditCategoryModal';
-
-
+import { FaEdit, FaTrash } from "react-icons/fa";
 const CategoryTable = () => {
-    const { categories, isLoading, isError, refetch } = useCategories();
+    const [page, setPage] = useState(1);
+    const { categories, isLoading, isError, refetch, totalPages } = useCategories(page, 8);
     const axiosSecure = useAxiosSecure();
+
+
+
 
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,23 +72,11 @@ const CategoryTable = () => {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     if (isLoading || isError)
         return <LoadingSpiner />
 
     return (
-        <div className="p-4">
+        <div className="">
 
 
             <div className="overflow-x-auto bg-white rounded-lg shadow-md">
@@ -119,15 +110,15 @@ const CategoryTable = () => {
                                         ? cat.description.slice(0, 60) + "..."
                                         : cat.description}
                                 </td>
-                                <td className="py-3 px-4 border-gray-200 border-b text-center space-x-2">
+                                <td className="py-3 px-4 border-gray-200 border-b text-center ">
                                     <button onClick={() => handleEdit(cat)}
-                                        className="bg-orange-400 text-white px-3 py-1 font-bold rounded hover:bg-orange-500 transition">
-                                        Edit
+                                        className="text-blue-400 px-3 text-xl py-1 font-bold rounded hover:text-blue-500 transition">
+                                        <FaEdit />
                                     </button>
                                     <button
                                         onClick={() => handleDelete(cat._id)}
-                                        className="bg-red-500 text-white px-3 py-1 font-bold rounded hover:bg-red-600 transition">
-                                        Delete
+                                        className="text-red-500 text-xl  px-3 py-1 font-bold rounded text:bg-red-600 transition">
+                                        <FaTrash />
                                     </button>
                                 </td>
                             </tr>
@@ -135,6 +126,20 @@ const CategoryTable = () => {
                     </tbody>
                 </table>
             </div>
+            {/* pagination */}
+            <div className="flex gap-2 mt-4 justify-center mb-20">
+                {[...Array(totalPages).keys()].map(i => (
+                    <button
+                        key={i}
+                        onClick={() => setPage(i + 1)}
+                        className={`px-3 py-1 rounded ${page === i + 1 ? "bg-green-600 text-white" : "bg-gray-200"
+                            }`}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+            </div>
+
             {/* ✅ Edit Modal */}
             <EditCategoryModal
                 category={selectedCategory}

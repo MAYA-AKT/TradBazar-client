@@ -37,7 +37,7 @@ const CreateCoupon = () => {
     };
 
     return (
-         <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded mt-10">
+         <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded mt-50">
             <h2 className="text-2xl font-semibold mb-5 text-center">Add New Coupon</h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">

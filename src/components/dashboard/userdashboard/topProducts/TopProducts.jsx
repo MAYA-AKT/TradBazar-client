@@ -21,11 +21,11 @@ const TopProducts = () => {
     return (
         <>
             <div className='my-10'>
-                <h2 className="text-xl text-gray-800 mb-4 ml-2 md:ml-0">Top Products</h2>
-                <section className="p-6 bg-white  shadow">
+                <h2 className="text-xl text-gray-800 mb-4 ml-2 md:ml-0">Featured Products</h2>
+                <section className=" p-2 md:p-4 bg-white shadow">
 
 
-                    <div className="grid grid-cols-2  md:grid-cols-5 lg:grid-cols-6 gap-3">
+                    <div className="grid grid-cols-2  md:grid-cols-5 lg:grid-cols-6 gap-3 p-2 md:p-6">
                         {topProducts.map((product) => (
                             <NavLink
                                 to={`/product/${product._id}`}
