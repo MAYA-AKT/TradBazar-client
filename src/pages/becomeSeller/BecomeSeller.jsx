@@ -69,15 +69,15 @@ const BecomeSeller = () => {
 
 
     return (
-        <div className="max-w-7xl mx-auto mt-20">
+        <div className="max-w-7xl mx-auto mt-8 md:mt-20">
 
             <div className="">
                 <div className="">
                     <div className="mb-10 ">
-                        <h1 className="text-2xl text-center font-bold text-gray-800 mb-4">
+                        <h1 className="text-xl md:text-2xl text-center font-bold text-green-800 mb-4">
                             Join as a Local Seller & Grow Your Business
                         </h1>
-                        <p className="text-gray-600 text-lg text-center">
+                        <p className="text-gray-600 px-6 text-sm md:text-md text-center">
                             Join our platform to sell your products directly to customers,
                             reach a wider audience, and get fair prices for your hard work.
                             Share your traditional crafts, fresh produce, or homemade items today!
@@ -85,41 +85,56 @@ const BecomeSeller = () => {
                     </div>
 
 
-                    <div className=" grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                        <div className="bg-white shadow rounded-lg p-6 text-center">
-                            <h3 className="font-semibold text-lg mb-2">Direct Customers</h3>
-                            <p className="text-gray-500 text-sm">
+                    <div className="space-y-8 my-20 md:my-30">
+                        {/* Feature 1 */}
+                        <div className="text-center">
+                            <h3 className="text-md font-semibold text-orange-400">
+                                Direct Customers
+                            </h3>
+                            <p className="mt-2 px-2 text-gray-500 max-w-md mx-auto">
                                 Sell your products directly without intermediaries.
                             </p>
+                            <div className="w-12 h-1 bg-green-500 mx-auto mt-4 rounded"></div>
                         </div>
-                        <div className="bg-white shadow rounded-lg p-6 text-center">
-                            <h3 className="font-semibold text-lg mb-2">Fair Pricing</h3>
-                            <p className="text-gray-500 text-sm">
-                                Get fair prices for your produce and crafts.
-                            </p>
-                        </div>
-                        <div className="bg-white shadow rounded-lg p-6 text-center">
-                            <h3 className="font-semibold text-lg mb-2">Wider Reach</h3>
-                            <p className="text-gray-500 text-sm">
-                                Reach buyers across your district or city.
-                            </p>
+
+                        {/* Features Row */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
+                            <div>
+                                <h3 className="text-md font-semibold text-blue-400">
+                                    Fair Pricing
+                                </h3>
+                                <p className="mt-2 px-2 text-gray-500">
+                                    Get fair prices for your produce and crafts.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 className="text-md font-semibold text-green-400">
+                                    Wider Reach
+                                </h3>
+                                <p className="mt-2 px-2 text-gray-500">
+                                    Reach buyers across your district or city.
+                                </p>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
-                <section className=" mt-20">
-                    <h2 className="text-xl font-bold text-gray-800 mb-8 text-center">
+                <section className=" my-20 md:my-30">
+                    <h2 className="  text-lg md:text-xl font-bold text-gray-800 mb-10 text-center">
                         How Selling on Our Platform Works
                     </h2>
 
-                    <div className="relative border-l-2 border-green-500 ml-6 space-y-10">
+                    <div className="relative border-l-2 border-green-500 px-4 md:px-0 ml-6 space-y-10">
 
                         {/* Step 1 */}
-                        <div className="ml-6">
+                        <div className="ml-6 ">
                             <span className="absolute -left-3 w-6 h-6 bg-green-500 rounded-full"></span>
-                            <h3 className="text-xl font-semibold text-gray-800">
+                            <h3 className=" text-md md:text-xl font-semibold text-gray-800">
                                 Apply as a Seller
                             </h3>
-                            <p className="text-gray-600 mt-1">
+                            <p className="text-gray-600 mt-1 text-sm">
                                 Fill out the seller registration form with your product details and source.
                             </p>
                         </div>
@@ -127,10 +142,10 @@ const BecomeSeller = () => {
                         {/* Step 2 */}
                         <div className="ml-6">
                             <span className="absolute -left-3 w-6 h-6 bg-green-500 rounded-full"></span>
-                            <h3 className="text-xl font-semibold text-gray-800">
+                            <h3 className="text-md md:text-xl font-semibold text-gray-800">
                                 Admin Review & Verification
                             </h3>
-                            <p className="text-gray-600 mt-1">
+                            <p className="text-gray-600 mt-1 text-sm">
                                 Our admin verifies your information to ensure quality and authenticity.
                             </p>
                         </div>
@@ -138,10 +153,10 @@ const BecomeSeller = () => {
                         {/* Step 3 */}
                         <div className="ml-6">
                             <span className="absolute -left-3 w-6 h-6 bg-green-500 rounded-full"></span>
-                            <h3 className="text-xl font-semibold text-gray-800">
+                            <h3 className="text-md md:text-xl font-semibold text-gray-800">
                                 Add Your Products
                             </h3>
-                            <p className="text-gray-600 mt-1">
+                            <p className="text-gray-600 mt-1 text-sm">
                                 Upload products with images, prices, and stock quantity.
                             </p>
                         </div>
@@ -149,10 +164,10 @@ const BecomeSeller = () => {
                         {/* Step 4 */}
                         <div className="ml-6">
                             <span className="absolute -left-3 w-6 h-6 bg-green-500 rounded-full"></span>
-                            <h3 className="text-xl font-semibold text-gray-800">
+                            <h3 className="text-md md:text-xl font-semibold text-gray-800">
                                 Receive Orders & Earnings
                             </h3>
-                            <p className="text-gray-600 mt-1">
+                            <p className="text-gray-600 mt-1 text-sm">
                                 Get notified for orders and receive payments securely.
                             </p>
                         </div>
@@ -162,14 +177,14 @@ const BecomeSeller = () => {
 
                 {/*  */}
                 <div className="mt-20">
-                    <h2 className="text-xl font-bold text-center mb-8 text-gray-800">
+                    <h2 className="text-xl font-bold text-center mb-10 text-gray-800 ">
                         Why Choose Our Platform
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10">
 
 
-                        <div className="flex flex-col items-center text-center px-4">
-                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-600 mb-3">
+                        <div className="flex flex-col items-center text-center py-4 bg-green-100">
+                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-300 text-green-600 mb-3">
                                 ✓
                             </div>
                             <h3 className="font-semibold text-lg mb-1">Verified Sellers</h3>
@@ -178,8 +193,8 @@ const BecomeSeller = () => {
                             </p>
                         </div>
 
-                        <div className="flex flex-col items-center text-center px-4 border-l sm:border-l-0 sm:border-x border-gray-200">
-                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mb-3">
+                        <div className="flex flex-col items-center text-center py-4 bg-blue-100">
+                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-300 text-blue-600 mb-3">
                                 🔒
                             </div>
                             <h3 className="font-semibold text-lg mb-1">Secure Payments</h3>
@@ -188,8 +203,8 @@ const BecomeSeller = () => {
                             </p>
                         </div>
 
-                        <div className="flex flex-col items-center text-center px-4">
-                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 mb-3">
+                        <div className="flex flex-col items-center text-center py-4 bg-orange-100">
+                            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-orange-300 text-orange-600 mb-3">
                                 🌱
                             </div>
                             <h3 className="font-semibold text-lg mb-1">Local Focus</h3>
@@ -202,12 +217,12 @@ const BecomeSeller = () => {
 
                 </div>
 
-                <div className="bg-orange-50  flex items-center px-20 mt-20 mb-8">
-                    <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-green-800 mb-3">
+                <div className="bg-green-50 flex md:flex-row flex-col items-center py-8 px-0 md:px-20 my-10 ">
+                    <div className="flex-1 py-6">
+                        <h3 className="text-xl ml-4 font-semibold text-green-800 mb-7">
                             Who Can Become a Seller?
                         </h3>
-                        <ul className="list-disc list-inside text-gray-700 space-y-2">
+                        <ul className="list-disc list-inside text-gray-700 text-sm space-y-2 px-5">
                             <li>Farmers selling fresh fruits, vegetables, or crops</li>
                             <li>Home-based sellers offering homemade food or crafts</li>
                             <li>Local shop owners with traditional or handmade products</li>
@@ -217,10 +232,11 @@ const BecomeSeller = () => {
                     <div className="flex-1">
 
 
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-8  ">
-                            <h2 className="text-2xl font-bold mb-6 text-gray-800 ">
-                                Seller Registration Form
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                            <h2 className="text-xl md:text-2xl font-bold mb-8 text-orange-600 mt-10 md:mt-0">
+                                Start Selling with Us
                             </h2>
+
                             {/* Name & Email */}
                             <div className="">
                                 <div className="my-6">
@@ -312,10 +328,10 @@ const BecomeSeller = () => {
                             </div>
 
                             {/* Submit Button */}
-                            <div className="text-center mt-6">
+                            <div className=" text-end mt-6">
                                 <button
                                     type="submit"
-                                    className="btn btn-primary w-full"
+                                    className="btn btn-primary font-bold "
                                     disabled={submitting}
                                 >
                                     {submitting ? "Submitting..." : "Submit Request"}

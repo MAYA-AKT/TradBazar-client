@@ -98,7 +98,7 @@ const Header = () => {
 
 
                         {/* Profile dropdown lg decice */}
-                        <div className="hidden md:flex">
+                        <div className="hidden md:flex ">
                             {
                                 user ? <>
                                     <div className="dropdown dropdown-end ">
@@ -127,7 +127,7 @@ const Header = () => {
 
                                         <ul
                                             tabIndex={0}
-                                            className="menu menu-sm dropdown-content bg-base-100 space-y-2 z-10 mt-3 w-52 p-2 shadow"
+                                            className="menu menu-sm dropdown-content bg-base-100 space-y-2 z-10 mt-3 w-52 py-4 shadow"
                                         >
 
                                             {role === 'admin' && (
