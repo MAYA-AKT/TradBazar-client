@@ -5,6 +5,8 @@ import useAuth from "../../../hooks/useAuth";
 import StatsCardAdmin from "../adminDashboard/StatsCardAdmin";
 import SellerMiddleRow from "./SellerMiddleRow";
 import SellerSalesInsights from "./SellerSalesInsights";
+import VideoCall from "../../communication/VideoCall";
+
 
 
 
@@ -15,6 +17,8 @@ const SellerDashboard = () => {
     const { overview = {}, overviewLoading, overviewError } = useSellerOverview(user?.email);
 
 
+
+
     if (overviewLoading) return <p className="text-center mt-20">Loading...</p>;
     if (overviewError) return <p className="text-center mt-20">Error loading overview</p>;
 
@@ -22,6 +26,13 @@ const SellerDashboard = () => {
     return (
         <div className="px-10 ">
 
+
+            {/* vdo conference */}
+
+            
+
+
+            {/* end */}
             <h1 className="text-md font-semibold mb-4">Overview</h1>
             <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
 

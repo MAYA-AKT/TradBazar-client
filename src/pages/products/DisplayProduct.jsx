@@ -5,10 +5,12 @@ import { NavLink, useNavigate } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import useAddToCart from '../../hooks/useAddToCart';
 
+
 const DisplayProduct = ({ product, reviews }) => {
 
 
     const { user } = useAuth();
+
     const addToCart = useAddToCart();
     const navigate = useNavigate();
 
@@ -37,10 +39,30 @@ const DisplayProduct = ({ product, reviews }) => {
     };
 
 
+
+    // vdo conferance
+
     return (
         <>
             <div className="bg-gray-100 pt-5 pb-10">
                 <div className="max-w-7xl mx-auto bg-white p-6">
+
+
+
+
+                    {/* vdo conference */}
+                   
+                    {/* end */}
+
+
+
+
+
+
+
+
+
+
 
                     {/* TOP SECTION */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

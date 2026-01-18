@@ -18,7 +18,7 @@ const Category = () => {
             </h3>
 
 
-            <div className="my-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-8 gap-3 p-2 md:p-6 bg-white  shadow">
+            <div id="categories"  className="my-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-8 gap-3 p-2 md:p-6 bg-white  shadow">
                 {categories?.slice(0, 16).map((cat) => (
                     <NavLink
                         to={`/category/${encodeURIComponent(cat.name)}`}

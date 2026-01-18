@@ -41,7 +41,7 @@ const Checkout = () => {
         );
     }
 
-    const totalPrice = products.reduce(
+    const totalPrice = products?.reduce(
         (sum, p) => sum + p.price * p.quantity,
         0
     );

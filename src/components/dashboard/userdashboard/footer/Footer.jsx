@@ -1,71 +1,85 @@
 import React from 'react';
-
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { NavLink } from 'react-router';
 const Footer = () => {
     return (
         <>
-            <footer className="bg-green-800 text-gray-300 ">
-                <div className="container mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <footer className="bg-green-800  pt-10">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1  md:grid-cols-4 gap-10">
 
-                    {/* About */}
-                    <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">
-                            TradBazar
-                        </h3>
-                        <p className="text-sm leading-relaxed">
-                            Tradbazar is a multi-vendor e-commerce platform promoting
-                            authentic Bangladeshi farm, handmade, and homemade products.
+                    {/* About Section */}
+                    <div className="">
+                        <h3 className="text-xl font-bold text-white mb-3">TradBazar</h3>
+                        <p className="text-white text-sm leading-relaxed">
+                            TradBazar is Bangladesh’s trusted multi-vendor marketplace, connecting buyers with authentic handmade and traditional products.
+                            Enjoy <span className="font-semibold text-green-400">verified listings</span>, <span className="font-semibold text-blue-400">direct communication via notifications</span>, and <span className="font-semibold text-purple-400">video calls</span> to see products before ordering.
+                            Supporting local artisans and bringing Bangladeshi culture to your doorstep.
                         </p>
                     </div>
 
+
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">
-                            Quick Links
-                        </h3>
-                        <ul className="space-y-2 text-sm">
-                            <li className="hover:text-white cursor-pointer">Home</li>
-                            <li className="hover:text-white cursor-pointer">Shop</li>
-                            <li className="hover:text-white cursor-pointer">Categories</li>
-                            <li className="hover:text-white cursor-pointer">About Us</li>
+                        <h3 className="text-md font-semibold text-orange-400 mb-4">Quick Links</h3>
+                        <ul className="space-y-2 text-white text-sm">
+                            <li className=" text-white hover:orange-400"><NavLink to="/" className=" text-white hover:orange-400">Home</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/profile" className="hover:orange-400">Profile</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/orders" className="hover:orange-400">My Orders</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/become-seller" className="hover:orange-400">Become a Seller</NavLink></li>
+
+                            <li className=" text-white hover:orange-400"><NavLink to="/cart" className="">Cart</NavLink></li>
+
                         </ul>
                     </div>
 
-                    {/* For Sellers */}
-                    <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">
-                            For Sellers
-                        </h3>
-                        <ul className="space-y-2 text-sm">
-                            <li className="hover:text-white cursor-pointer">Seller Login</li>
-                            <li className="hover:text-white cursor-pointer">Seller Dashboard</li>
-                            <li className="hover:text-white cursor-pointer">Add Products</li>
-                            <li className="hover:text-white cursor-pointer">Seller Guidelines</li>
+                    {/* Categories + Support */}
+                    <div className=''>
+                        <h3 className="text-md font-semibold text-orange-400 mb-4">Categories & Support</h3>
+                        <ul className="space-y-2 text-sm ">
+                            <li className=" text-white hover:orange-400"><NavLink to="/category/vegetables" className="hover:orange-400">Vegetables</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/category/fruits" className="hover:orange-400">Fruits</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/category/handicrafts" className="hover:orange-400">Handicrafts</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/category/organic-products" className="hover:orange-400">Organic Products</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/category/home-decor" className="hover:orange-400">Home Decor</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/" className="hover:orange-400">FAQ</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/" className="">Shipping Info</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/" className="hover:orange-400">Track Order</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/" className="hover:orange-400">Notifications</NavLink></li>
+                            <li className=" text-white hover:orange-400"><NavLink to="/" className="hover:orange-400">Return Policy</NavLink></li>
                         </ul>
                     </div>
 
-                    {/* Contact */}
+                    {/* Contact Section */}
                     <div>
-                        <h3 className="text-white text-lg font-semibold mb-4">
-                            Contact
-                        </h3>
-                        <ul className="space-y-2 text-sm">
-                            <li>Email: support@banglamart.com</li>
-                            <li>Phone: +880 1XXXXXXXXX</li>
-                            <li>Location: Bangladesh</li>
+                        <h3 className="text-md font-semibold text-orange-400 mb-4">Contact Us</h3>
+                        <ul className="space-y-3 text-gray-300 text-sm">
+                            <li className="flex items-center gap-2 hover:text-orange-400 ">
+                                <FaPhone /> <span>+880 123 456 789</span>
+                            </li>
+                            <li className="flex items-center gap-2 hover:text-orange-400 ">
+                                <FaWhatsapp /> <span>+880 987 654 321</span>
+                            </li>
+                            <li className="flex items-center gap-2 hover:text-orange-400 ">
+                                <FaEnvelope /> <span>support@tradbazar.com</span>
+                            </li>
+                            <li className="flex items-center gap-2 hover:text-orange-400 ">
+                                <FaMapMarkerAlt /> <span>Dhaka, Bangladesh</span>
+                            </li>
                         </ul>
+                        <div className="flex gap-4 mt-4">
+                            <FaFacebookF className="w-5 h-5 text-orange-400  hover:text-orange-400  cursor-pointer" />
+                            <FaInstagram className="w-5 h-5 hover:text-orange-600 text-orange-400   cursor-pointer" />
+                            <FaWhatsapp className="w-5 h-5 hover:text-orange-600 cursor-pointer text-orange-400 " />
+                        </div>
                     </div>
 
                 </div>
 
-                {/* Bottom bar */}
-                <div className="border-t border-green-800 text-center py-4 text-sm">
-                    © {new Date().getFullYear()} Tradbazar. All rights reserved.
-                    <span className="block text-xs text-gray-400 mt-1">
-                        Final Year Project – Multi Vendor E-commerce System
-                    </span>
+                {/* Bottom copyright */}
+                <div className="border-t border-gray-600 mt-10 py-4 text-center text-white text-sm">
+                    &copy; {new Date().getFullYear()} TradBazar. All rights reserved.
                 </div>
             </footer>
-
         </>
     );
 };

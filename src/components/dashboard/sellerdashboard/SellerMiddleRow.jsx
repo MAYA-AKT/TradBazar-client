@@ -1,10 +1,17 @@
 import React from 'react';
 
-const SellerMiddleRow = ({recentOrders = [], lowStockProducts = []}) => {
+
+const SellerMiddleRow = ({ recentOrders = [], lowStockProducts = [] }) => {
+
+
+
+
+
+
     return (
         <div>
-           
- 
+
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                 {/* --- Recent Orders --- */}
@@ -16,7 +23,8 @@ const SellerMiddleRow = ({recentOrders = [], lowStockProducts = []}) => {
                             <tr>
                                 <th className="px-3 py-2 text-left">Order</th>
                                 <th className="px-3 py-2">Amount</th>
-                                <th className="px-3 py-2">Status</th>
+                                <th className="px-3 py-2 text-center">Status</th>
+                                <th className="px-3 py-2 text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,18 +38,23 @@ const SellerMiddleRow = ({recentOrders = [], lowStockProducts = []}) => {
                                     </td>
                                     <td className="px-3 py-2 text-center">
                                         <span className={`px-2 py-1 rounded-full text-xs font-semibold
-                                        ${order.orderStatus === 'delivered' && 'bg-green-100 text-green-700'}
-                                        ${order.orderStatus === 'pending' && 'bg-yellow-100 text-yellow-700'}
-                                        ${order.orderStatus === 'processing' && 'bg-blue-100 text-blue-700'}
-                                    `}>
+              ${order.orderStatus === 'delivered' && 'bg-green-100 text-green-700'}
+              ${order.orderStatus === 'pending' && 'bg-yellow-100 text-yellow-700'}
+              ${order.orderStatus === 'processing' && 'bg-blue-100 text-blue-700'}
+            `}>
                                             {order.orderStatus}
                                         </span>
                                     </td>
+                                    {/* Video Call Button */}
+                                   
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+
+                    
                 </div>
+
 
                 {/* --- Low Stock Products --- */}
                 <div className="bg-white rounded-xl shadow p-5">
@@ -70,10 +83,10 @@ const SellerMiddleRow = ({recentOrders = [], lowStockProducts = []}) => {
                 </div>
 
             </div>
-          
 
 
-          
+
+
 
         </div>
     );
