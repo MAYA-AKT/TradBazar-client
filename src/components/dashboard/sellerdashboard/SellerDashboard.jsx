@@ -19,6 +19,8 @@ import SellerCall from "../../videoConference/SellerCall";
 
 
 
+
+
 const StatCard = ({ title, value, icon }) => (
     <div className="flex items-center justify-between p-4 rounded shadow bg-white">
         <div>
@@ -38,9 +40,9 @@ const SellerDashboard = () => {
     const { user } = useAuth();
     const { overview = {}, isLoading, isError } = useSellerOverview(user?.email);
 
-   console.log('overview',overview);
-   
-  
+    console.log('overview', overview);
+
+
 
 
 
@@ -77,8 +79,8 @@ const SellerDashboard = () => {
         month: new Date(0, idx).toLocaleString("default", { month: "short" }),
         earnings: total,
     }));
-    console.log('chartData',chartData);
-    
+    console.log('chartData', chartData);
+
     const colors = [
         "#f97316",
         "#facc15",
@@ -100,10 +102,11 @@ const SellerDashboard = () => {
 
 
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
-
+        <div className="px-10 bg-gray-100 min-h-screen">
            
-           {/* Video Call Button */}
+           
+
+            {/* Video Call Button */}
             <SellerCall sellerEmail={user?.email} />
             {/* end */}
 

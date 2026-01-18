@@ -17,6 +17,7 @@ import { RxDashboard } from "react-icons/rx";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { MdStorefront } from "react-icons/md";
+import ProfileDropdown from "../profile/ProfileDropdown";
 
 
 const Header = () => {
@@ -98,7 +99,7 @@ const Header = () => {
 
 
                         {/* Profile dropdown lg decice */}
-                        <div className="hidden md:flex ">
+                        {/* <div className="hidden md:flex ">
                             {
                                 user ? <>
                                     <div className="dropdown dropdown-end ">
@@ -216,7 +217,8 @@ const Header = () => {
                                     </>
                             }
 
-                        </div>
+                        </div> */}
+                        <ProfileDropdown />
 
                         {/* Cart */}
                         <div className="hidden md:flex space-x-4">
@@ -419,5 +421,6 @@ const Header = () => {
         </div>
     );
 };
+
 
 export default Header;

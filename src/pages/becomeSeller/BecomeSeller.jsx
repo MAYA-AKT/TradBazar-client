@@ -31,7 +31,7 @@ const BecomeSeller = () => {
 
 
     const onSubmit = async (data) => {
-        console.log('seller data', data);
+       
 
         setSubmitting(true);
         try {
@@ -77,10 +77,10 @@ const BecomeSeller = () => {
                         <h1 className="text-xl md:text-2xl text-center font-bold text-green-800 mb-4">
                             Join as a Local Seller & Grow Your Business
                         </h1>
-                        <p className="text-gray-600 px-6 text-sm md:text-md text-center">
+                        <p className="text-gray-600 px-6  text-center">
                             Join our platform to sell your products directly to customers,
                             reach a wider audience, and get fair prices for your hard work.
-                            Share your traditional crafts, fresh produce, or homemade items today!
+                            Share your traditional crafts, fresh produce, or <br /> homemade items today!
                         </p>
                     </div>
 
