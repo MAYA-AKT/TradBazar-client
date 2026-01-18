@@ -12,7 +12,7 @@ const Category = () => {
 
 
     return (
-        <div className='my-10'>
+        <div className='mb-10 mt-5'>
             <h3 className="text-xl text-gray-800 ml-3 md:ml-0">
                 Categories
             </h3>
