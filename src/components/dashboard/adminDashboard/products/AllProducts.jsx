@@ -17,12 +17,12 @@ const AllProducts = () => {
 
     return (
         <div className="px-10">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-                Manage Products
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                Products 
             </h3>
 
             {/* Filter & Search Bar */}
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 shadow mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-base-200 p-4 shadow mb-6">
                 <input
                     type="text"
                     placeholder="Search products by name..."

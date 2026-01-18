@@ -36,10 +36,10 @@ const ManageSellerRequests = () => {
         return <LoadingSpiner/>
     }
     return (
-        <div>
-            <div className="max-w-7xl mx-auto mt-10">
-                <h2 className="text-2xl font-bold mb-6">Manage Seller Requests : {requests.length} </h2>
-                <table className="table w-full bg-white shadow rounded-lg">
+        <div className=' max-w-7xl mx-auto mt-10'>
+            <div className="">
+                <h2 className="text-xl font-bold mb-6"> Seller Requests </h2>
+                <table className="table w-full   ">
                     <thead>
                         <tr>
                             <th>Name</th>

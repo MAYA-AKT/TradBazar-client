@@ -71,7 +71,7 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
             <div className="">
 
 
-                <div className="overflow-x-auto bg-white">
+                <div className="overflow-x-auto bg-base-200">
                     <table className="min-w-full border-collapse">
                         <thead>
                             <tr className="bg-gray-100 text-gray-700 text-left">

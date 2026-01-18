@@ -74,7 +74,7 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
     }
 
     return (
-        <div className="">
+        <div className="max-w-7xl mx-auto">
             <div className="overflow-x-auto bg-white ">
                 <table className="min-w-full border-collapse">
                     <thead>
@@ -89,7 +89,7 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user, index) => (
+                        {users?.map((user, index) => (
                             <tr key={user._id} className="hover:bg-gray-100 transition">
                                 <td className="py-1 px-4 border-gray-200 border-b">{index + 1}</td>
                                 <td className="py-1 px-4 border-gray-200 border-b">
@@ -104,7 +104,16 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
 
 
 
-                                <td className="py-3 px-4 border-gray-200 border-b">{user.role}</td>
+                                <td
+                                    className={`  border-gray-200 border-b text-center ${user.role === "admin"
+                                            ? "text-blue-600 "
+                                            : user.role === "seller"
+                                                ? " text-orange-600"
+                                                : " text-green-600"
+                                        }`}
+                                >
+                                    {user.role}
+                                </td>
 
                                 <td className="py-3 px-4 border-gray-200 border-b text-center space-x-2">
                                     <button

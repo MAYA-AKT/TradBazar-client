@@ -16,8 +16,8 @@ const AllUsers = () => {
     return (
         <div>
             <div className="max-w-7xl mx-auto mt-10">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-                    Users : {totalUsers}
+                <h3 className="text-xl font-semibold text-gray-800 mb-6 ">
+                   Total Users : <span className='text-orange-400'> {totalUsers}</span>
                 </h3>
                 {/* Filter & Search Bar */}
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 shadow mb-6">

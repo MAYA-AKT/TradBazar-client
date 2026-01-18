@@ -52,7 +52,7 @@ const AdminOrders = () => {
 
     return (
         <div className="max-w-7xl mx-auto mt-10">
-            <h2 className="text-2xl font-bold mb-4 text-center my-10"> Orders Management</h2>
+            <h2 className="text-xl font-bold mb-4 my-10"> Orders Management</h2>
 
             {/* Search & Filter */}
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 my-6">

@@ -49,7 +49,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-76 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-green-50 w-76 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
           }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
@@ -65,36 +65,69 @@ const Sidebar = () => {
                 role === 'admin' && <>
 
 
-                  <NavLink to='/admin-dashboard'>
+                  <NavLink to='/admin-dashboard'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <AiOutlineHome className="inline mr-2" /> Dashboard
                   </NavLink>
 
 
                   <NavLink
-
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
                     to='/admin-dashboard/users'
 
                   >
                     <FaUsers className="inline mr-2" /> User Management
                   </NavLink>
 
-                  <NavLink to='/admin-dashboard/categories'>
+                  <NavLink to='/admin-dashboard/categories'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaListUl className="inline mr-2" /> Category Management
                   </NavLink>
 
-                  <NavLink to='/admin-dashboard/products'>
+                  <NavLink to='/admin-dashboard/products'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaBoxOpen className="inline mr-2" /> Product Management
                   </NavLink>
 
-                  <NavLink to='/admin-dashboard/orders'>
+                  <NavLink to='/admin-dashboard/orders'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaShoppingCart className="inline mr-2" /> Order Management
                   </NavLink>
 
-                 
-                  <NavLink to='/admin-dashboard/seller-requests'>
+
+                  <NavLink to='/admin-dashboard/seller-requests'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaUserCheck className="inline mr-2" /> Seller Approvals
                   </NavLink>
-                  <NavLink to='/admin-dashboard/coupon'>
+                  <NavLink to='/admin-dashboard/coupon'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaUserCheck className="inline mr-2" /> Coupon Managment
                   </NavLink>
                 </>
@@ -104,27 +137,57 @@ const Sidebar = () => {
 
               {
                 role === 'seller' && <>
-                  <NavLink to='/seller-dashboard'>
+                  <NavLink to='/seller-dashboard'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <AiOutlineHome className="inline mr-2" />Dashboard
                   </NavLink>
 
-                  <NavLink to='/seller-dashboard/add-product'>
+                  <NavLink to='/seller-dashboard/add-product'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaPlusCircle className="inline mr-2" /> Add New Product
                   </NavLink>
 
-                  <NavLink to='/seller-dashboard/myproducts'>
+                  <NavLink to='/seller-dashboard/myproducts'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <MdInventory className="inline mr-2" /> My Products
                   </NavLink>
 
-                  <NavLink to='/seller-dashboard/orders'>
+                  <NavLink to='/seller-dashboard/orders'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaShoppingCart className="inline mr-2" /> Customer Orders
                   </NavLink>
 
-                  <NavLink to='/seller-dashboard/earnings'>
+                  <NavLink to='/seller-dashboard/earnings'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaMoneyBillWave className="inline mr-2" /> Earnings Overview
                   </NavLink>
 
-                  <NavLink to='/profile'>
+                  <NavLink to='/profile'
+                    className={({ isActive }) =>
+                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      }`
+                    }
+                  >
                     <FaUserCircle className="inline mr-2" /> My Profile
                   </NavLink>
                 </>
