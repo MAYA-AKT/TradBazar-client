@@ -1,7 +1,5 @@
 import { useParams } from "react-router";
 import LoadingSpiner from "../error pages/LoadingSpiner";
-
-
 import ProductReviews from "./ProductReviews";
 import DisplayProduct from "./DisplayProduct";
 import ReletedProducts from "./ReletedProducts";
@@ -9,7 +7,7 @@ import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadg
 import useReview from "../../hooks/useReview";
 import useProduct from "../../hooks/useProduct";
 import AuthenticityAndSellerStory from "./AuthenticityAndSellerStory";
-import BuyerCall from "../../components/videoConference/BuyerCall";
+
 
 
 
@@ -36,11 +34,7 @@ const ProductDetails = () => {
 
             <DisplayProduct product={product} reviews={reviews} />
 
-            <div>
-                <h1 className="text-xl font-bold mb-4">Product Name</h1>
-                <BuyerCall  sellerEmail={product?.seller?.email} />
-            </div>
-
+           
             <AuthenticityAndSellerStory product={product} />
 
             <ReletedProducts productId={id} category={product.category} />

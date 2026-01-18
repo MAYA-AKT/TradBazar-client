@@ -66,7 +66,7 @@ const AdminMiddleRow = ({ recentOrders = [], pendingProducts = [] }) => {
                     <h2 className="text-xl font-semibold">Pending Products</h2>
                 </div>
                 {pendingProducts.length === 0 ? (
-                    <p className="text-gray-500">No pending products.</p>
+                    <p className="text-gray-500 text-center mt-10">No pending products.</p>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
