@@ -50,8 +50,8 @@ const Slider = () => {
                             <p className="text-sm ">
                                 New User Coupon
                             </p>
-                            <p className="text-sm md:text-xl md:font-bold tracking-wide text-green-300">
-                                WELCOME10
+                            <p className="text-sm md:text-lg md:font-bold tracking-wide text-green-300">
+                                NEWUSER20
                             </p>
                         </div>
                     </div>

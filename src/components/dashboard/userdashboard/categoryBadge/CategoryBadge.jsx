@@ -8,7 +8,7 @@ const CategoryBadge = () => {
 
 
      const { categories, isLoading, isError } = useCategories();
-
+    
 
      if(isLoading,isError){
         return <LoadingSpiner/>
@@ -16,7 +16,7 @@ const CategoryBadge = () => {
 
 
     return (
-        <div className="bg-[green-500]">
+        <div className="">
             <div className="relative hidden md:block  group ml-80  max-w-7xl mx-auto">
 
                 <p className="text-sm flex items-center text-blue-600 px-3 py-1 rounded-full cursor-pointer">

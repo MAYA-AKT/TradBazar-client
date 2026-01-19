@@ -13,9 +13,14 @@ const UserCategory = () => {
 
 
     const { categoryName } = useParams();
+    const decodedCategory = decodeURIComponent(categoryName); 
+   
+    
+   
     const [page, setPage] = useState(1);
 
-    const { products, isLoading, isError, totalPages } = useUserCategoryProducts(categoryName, page);
+    const { products, isLoading, isError, totalPages } = useUserCategoryProducts(decodedCategory, page);
+
 
 
     const { categories } = useCategories();
@@ -36,7 +41,7 @@ const UserCategory = () => {
                 <div className="w-1/4 bg-white p-4 hidden md:block h-fit">
                     <h3 className="text-md font-semibold mb-4">Categories</h3>
                     <ul className="-space-y-2">
-                        {categories.map((cat) => (
+                        {categories?.map((cat) => (
                             <li key={cat._id}>
                                 <NavLink
                                     to={`/category/${encodeURIComponent(cat.name)}`}

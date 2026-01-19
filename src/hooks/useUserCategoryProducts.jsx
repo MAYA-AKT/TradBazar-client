@@ -2,15 +2,15 @@ import React from 'react';
 import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
-const useUserCategoryProducts = (category, page, limit = 12) => {
+const useUserCategoryProducts = (decodedCategory, page, limit = 12) => {
     const axiosSecure = useAxiosSecure();
 
     const { data = {}, isLoading, isError, refetch } = useQuery({
-        queryKey: ["categoryProducts", category , page],
-        enabled: !!category,
+        queryKey: ["categoryProducts", decodedCategory , page],
+        enabled: !!decodedCategory,
          keepPreviousData: true,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/products/category?name=${category}&page=${page}&limit=${limit}`);
+            const res = await axiosSecure.get(`/products/category?name=${encodeURIComponent(decodedCategory)}&page=${page}&limit=${limit}`);
             return res.data;
         },
     });
