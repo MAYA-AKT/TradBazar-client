@@ -98,7 +98,7 @@ const CouponTable = ({ coupons, refetch }) => {
         <>
             <table className="table-auto w-full border-collapse">
                 <thead>
-                    <tr className="bg-gray-200 text-left">
+                    <tr className="bg-green-600 text-left text-white">
                         <th className="p-3 border-b">Code</th>
                         <th className="p-3 border-b">Discount</th>
                         <th className="p-3 border-b">Type</th>
@@ -106,7 +106,7 @@ const CouponTable = ({ coupons, refetch }) => {
                         <th className="p-3 border-b">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-green-50">
                     {coupons.map((coupon) => (
                         <tr key={coupon._id} className="border-b border-gray-300 hover:bg-gray-50">
                             <td className="p-3">{coupon.code}</td>

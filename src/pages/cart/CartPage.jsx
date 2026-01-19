@@ -7,8 +7,12 @@ import useUpdateCartQuantity from "../../hooks/useUpdateCartQuantity";
 import useDeleteCartItem from "../../hooks/useDeleteCartItem";
 import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadge/CategoryBadge";
 import toast from "react-hot-toast";
+import { useTitle } from "../../hooks/useTitle";
 
 const CartPage = () => {
+  // dynamic title
+    useTitle('Cart');
+
     const { user } = useAuth();
     const navigate = useNavigate();
     const { data: cart = [], isLoading } = useCart(user?.email);

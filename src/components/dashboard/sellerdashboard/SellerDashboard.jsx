@@ -5,13 +5,15 @@ import useAuth from "../../../hooks/useAuth";
 import StatsCardAdmin from "../adminDashboard/StatsCardAdmin";
 import SellerMiddleRow from "./SellerMiddleRow";
 import SellerSalesInsights from "./SellerSalesInsights";
-import VideoCall from "../../communication/VideoCall";
+import { useTitle } from "../../../hooks/useTitle";
+
 
 
 
 
 const SellerDashboard = () => {
-
+  // dynamic title
+    useTitle('Dashboard');
 
     const { user } = useAuth();
     const { overview = {}, overviewLoading, overviewError } = useSellerOverview(user?.email);

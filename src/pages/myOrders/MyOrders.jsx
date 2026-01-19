@@ -7,9 +7,11 @@ import useAuth from "../../hooks/useAuth";
 import MyOrderLeft from "./MyOrderLeft";
 import useCartCount from "../../hooks/useCartCount";
 import { Link } from "react-router";
+import { useTitle } from "../../hooks/useTitle";
 
 const MyOrders = () => {
-
+   // dynamic title
+     useTitle('My Orders');
     const { user } = useAuth();
      // cart count
  const { data: cartCount = 0 } = useCartCount(user?.email);

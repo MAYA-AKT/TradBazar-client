@@ -11,8 +11,8 @@ const AdminBottomRow = ({ revenueData = [], ordersData = [], productsData = [] }
     return (
         <div className=" grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* --- Revenue Over Time (Line Chart) --- */}
-            <div className="bg-white shadow rounded-lg p-6">
-                <h2 className="text-lg font-semibold mb-4 text-green-500">Revenue Over Time</h2>
+            <div className="bg-teal-50 shadow rounded-lg p-6">
+                <h2 className="text-lg font-semibold mb-4 text-teal-500">Revenue Over Time</h2>
                 {revenueData.length === 0 ? (
                     <p className="text-gray-500">No revenue data.</p>
                 ) : (
@@ -28,8 +28,8 @@ const AdminBottomRow = ({ revenueData = [], ordersData = [], productsData = [] }
             </div>
 
             {/* --- Orders by Status (Pie Chart) --- */}
-            <div className="bg-white shadow rounded-lg p-6">
-                <h2 className="text-lg font-semibold mb-4 text-blue-500">Orders by Status</h2>
+            <div className="bg-orange-50 shadow rounded-lg p-6">
+                <h2 className="text-lg font-semibold mb-4 text-orange-500">Orders by Status</h2>
                 {ordersData.length === 0 ? (
                     <p className="text-gray-500">No orders data.</p>
                 ) : (
@@ -55,8 +55,8 @@ const AdminBottomRow = ({ revenueData = [], ordersData = [], productsData = [] }
             </div>
 
             {/* --- Products by Category (Bar Chart) --- */}
-            <div className="bg-white shadow rounded-lg p-6">
-                <h2 className="text-lg font-semibold mb-4 text-orange-500">Products by Category</h2>
+            <div className="bg-blue-50 shadow rounded-lg p-6">
+                <h2 className="text-lg font-semibold mb-4 text-blue-500">Products by Category</h2>
                 {productsData.length === 0 ? (
                     <p className="text-gray-500">No product data.</p>
                 ) : (

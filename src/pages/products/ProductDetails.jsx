@@ -7,6 +7,7 @@ import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadg
 import useReview from "../../hooks/useReview";
 import useProduct from "../../hooks/useProduct";
 import AuthenticityAndSellerStory from "./AuthenticityAndSellerStory";
+import { useTitle } from "../../hooks/useTitle";
 
 
 
@@ -15,6 +16,8 @@ import AuthenticityAndSellerStory from "./AuthenticityAndSellerStory";
 
 
 const ProductDetails = () => {
+      // dynamic title
+        useTitle('Product details');
 
     const { id } = useParams();
     const { product, productLoading, productError } = useProduct(id);

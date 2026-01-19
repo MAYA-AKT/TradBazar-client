@@ -49,17 +49,17 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-green-50 w-76 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gradient-to-r from-orange-400 to-orange-600 w-76 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
           }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
 
-          <a href="/" className="px-10 text-2xl text-orange-500 font-bold cursor-pointer hidden md:flex">
+          <a href="/" className="px-10 text-2xl text-green-200 font-bold cursor-pointer hidden md:flex">
             tradBazar
           </a>
-          <hr className='mt-5 text-gray-300' />
+          <hr className='mt-5 text-white' />
           <div className='flex flex-col justify-between flex-1 mt-6 px-10'>
-            <nav className='flex flex-col space-y-2'>
+            <nav className='flex flex-col space-y-3'>
 
               {
                 role === 'admin' && <>
@@ -67,7 +67,7 @@ const Sidebar = () => {
 
                   <NavLink to='/admin-dashboard'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -76,8 +76,8 @@ const Sidebar = () => {
 
 
                   <NavLink
-                    className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                   className={({ isActive }) =>
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                     to='/admin-dashboard/users'
@@ -88,7 +88,7 @@ const Sidebar = () => {
 
                   <NavLink to='/admin-dashboard/categories'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -97,7 +97,7 @@ const Sidebar = () => {
 
                   <NavLink to='/admin-dashboard/products'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -106,7 +106,7 @@ const Sidebar = () => {
 
                   <NavLink to='/admin-dashboard/orders'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -115,8 +115,8 @@ const Sidebar = () => {
 
 
                   <NavLink to='/admin-dashboard/seller-requests'
-                    className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                     className={({ isActive }) =>
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -124,7 +124,7 @@ const Sidebar = () => {
                   </NavLink>
                   <NavLink to='/admin-dashboard/coupon'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -139,7 +139,7 @@ const Sidebar = () => {
                 role === 'seller' && <>
                   <NavLink to='/seller-dashboard'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -147,8 +147,8 @@ const Sidebar = () => {
                   </NavLink>
 
                   <NavLink to='/seller-dashboard/add-product'
-                    className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                   className={({ isActive }) =>
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -156,8 +156,8 @@ const Sidebar = () => {
                   </NavLink>
 
                   <NavLink to='/seller-dashboard/myproducts'
-                    className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                   className={({ isActive }) =>
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -166,7 +166,7 @@ const Sidebar = () => {
 
                   <NavLink to='/seller-dashboard/orders'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -175,7 +175,7 @@ const Sidebar = () => {
 
                   <NavLink to='/seller-dashboard/earnings'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >
@@ -184,7 +184,7 @@ const Sidebar = () => {
 
                   <NavLink to='/profile'
                     className={({ isActive }) =>
-                      `block rounded hover:text-orange-600 transition ${isActive ? "text-orange-600 " : " text-gray-600 "
+                      `block rounded hover:bg-green-100 hover:text-orange-500 transition ${isActive ? "bg-green-100  pl-3 py-1  text-orange-600" : " text-white"
                       }`
                     }
                   >

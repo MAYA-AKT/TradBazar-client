@@ -2,10 +2,12 @@ import React from 'react';
 import useUsers from '../../../../hooks/useUsers';
 import { useState } from 'react';
 import UsersTable from './UsersTable';
+import { useTitle } from '../../../../hooks/useTitle';
 
 
 const AllUsers = () => {
-
+  // dynamic title
+    useTitle('Users');
 
 
 
@@ -20,7 +22,7 @@ const AllUsers = () => {
                    Total Users : <span className='text-orange-400'> {totalUsers}</span>
                 </h3>
                 {/* Filter & Search Bar */}
-                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 shadow mb-6">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-green-50 p-4 shadow mb-6">
 
                     <input
                         type="text"

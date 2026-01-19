@@ -5,15 +5,20 @@ import TopProducts from '../components/dashboard/userdashboard/topProducts/TopPr
 import ChooseUs from '../components/dashboard/userdashboard/chooseUs/ChooseUs';
 import TopSellingProducts from '../components/dashboard/userdashboard/topSellingProduct/TopSellingProducts';
 import CategoryBadge from '../components/dashboard/userdashboard/categoryBadge/CategoryBadge';
+import { useTitle } from '../hooks/useTitle';
 
 
 
 const Home = () => {
+
+    // dynamic title
+    useTitle('Home');
+
     return (
         <div className=''>
-         <CategoryBadge/>
+            <CategoryBadge />
             <div className='max-w-7xl mx-auto '>
-             
+
                 <div className='mt-2' >
                     <Slider />
                 </div>

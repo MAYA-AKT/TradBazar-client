@@ -5,7 +5,10 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
+
 const AuthenticityAndSellerStory = ({ product }) => {
+      // dynamic title
+       
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [open, setOpen] = useState(false);

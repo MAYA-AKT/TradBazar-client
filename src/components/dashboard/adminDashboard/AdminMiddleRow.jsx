@@ -5,7 +5,7 @@ const AdminMiddleRow = ({ recentOrders = [], pendingProducts = [] }) => {
     return (
         <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* --- Recent Orders Table --- */}
-            <div className="bg-white shadow rounded-lg p-6">
+            <div className="bg-blue-50 shadow rounded-lg p-6">
                 <div className="flex items-center mb-4">
                     <FaShoppingCart className="text-blue-500 text-2xl mr-2" />
                     <h2 className="text-xl font-semibold">Recent Orders</h2>
@@ -15,7 +15,7 @@ const AdminMiddleRow = ({ recentOrders = [], pendingProducts = [] }) => {
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-blue-100 text-blue-700">
+                            <thead className="bg-yellow-100 text-yellow-700">
                                 <tr className="">
                                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Order ID</th>
                                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Seller</th>
@@ -60,7 +60,7 @@ const AdminMiddleRow = ({ recentOrders = [], pendingProducts = [] }) => {
             </div>
 
             {/* --- Pending Products Table --- */}
-            <div className="bg-white shadow rounded-lg p-6">
+            <div className="bg-green-50 shadow rounded-lg p-6">
                 <div className="flex items-center mb-4">
                     <FaBoxOpen className="text-yellow-500 text-2xl mr-2" />
                     <h2 className="text-xl font-semibold">Pending Products</h2>
@@ -70,7 +70,7 @@ const AdminMiddleRow = ({ recentOrders = [], pendingProducts = [] }) => {
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                            <thead>
+                            <thead className=''>
                                 <tr className="bg-yellow-100 text-yellow-700">
                                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Product Name</th>
                                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Seller</th>

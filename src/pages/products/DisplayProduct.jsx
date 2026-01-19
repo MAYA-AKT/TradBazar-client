@@ -6,8 +6,9 @@ import useAuth from '../../hooks/useAuth';
 import useAddToCart from '../../hooks/useAddToCart';
 
 
-const DisplayProduct = ({ product, reviews }) => {
 
+const DisplayProduct = ({ product, reviews }) => {
+  
 
     const { user } = useAuth();
 

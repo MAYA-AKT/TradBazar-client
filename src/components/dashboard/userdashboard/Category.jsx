@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router';
 import useUserCategories from '../../../hooks/userUserCategories';
+import { useTitle } from '../../../hooks/useTitle';
 
 const Category = () => {
+      // dynamic title
+        useTitle('Categories');
     const { categories, isLoading, isError } = useUserCategories();
     console.log(categories);
     

@@ -15,7 +15,7 @@ const SellerMiddleRow = ({ recentOrders = [], lowStockProducts = [] }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                 {/* --- Recent Orders --- */}
-                <div className="bg-white rounded-xl shadow p-5">
+                <div className="bg-blue-50 rounded-xl shadow p-5">
                     <h3 className="text-lg font-semibold mb-4">Recent Orders</h3>
 
                     <table className="w-full text-sm">
@@ -57,7 +57,7 @@ const SellerMiddleRow = ({ recentOrders = [], lowStockProducts = [] }) => {
 
 
                 {/* --- Low Stock Products --- */}
-                <div className="bg-white rounded-xl shadow p-5">
+                <div className="bg-purple-50 rounded-xl shadow p-5">
                     <h3 className="text-lg font-semibold mb-4">Low Stock Products</h3>
 
                     <table className="w-full text-sm">
@@ -68,7 +68,7 @@ const SellerMiddleRow = ({ recentOrders = [], lowStockProducts = [] }) => {
                                 <th className="px-3 py-2">Stock</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className=''>
                             {lowStockProducts?.map(product => (
                                 <tr key={product._id} className="border-b">
                                     <td className="px-3 py-2">{product.name}</td>

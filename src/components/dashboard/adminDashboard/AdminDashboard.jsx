@@ -4,10 +4,14 @@ import StatsCardAdmin from './StatsCardAdmin';
 import useAdminOverview from '../../../hooks/useAdminOverview';
 import AdminMiddleRow from './AdminMiddleRow';
 import AdminBottomRow from './AdminBottomRow';
+import { useTitle } from '../../../hooks/useTitle';
 
 const AdminDashboard = () => {
+  // dynamic title
+    useTitle('Dashboard');
+
     const { overview, isLoading, isError } = useAdminOverview();
-    console.log('overview admin', overview);
+   
 
     if (isLoading) return <p>Loading stats...</p>;
     if (isError) return <p>Error loading stats</p>;

@@ -6,10 +6,13 @@ import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { useTitle } from '../../../../hooks/useTitle';
 
 
 
 const AddCategory = () => {
+  // dynamic title
+    useTitle('Add Categories');
 
     const { register, handleSubmit, reset } = useForm();
     const [uploading, setUploading] = useState(false);
@@ -79,12 +82,12 @@ const AddCategory = () => {
         }
     };
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-6">
+        <div className=" mt-30 flex items-center justify-center p-6">
             <motion.div
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 100 }}
-                className="bg-white shadow-2xl rounded-3xl w-full max-w-lg p-8"
+                className="bg-green-50 shadow-2xl rounded-3xl w-full max-w-lg p-8"
             >
                 <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-400 to-orange-600 text-transparent bg-clip-text">
                     Add New Category
@@ -99,7 +102,7 @@ const AddCategory = () => {
                         <input
                             {...register("name", { required: true })}
                             placeholder="Enter category name"
-                            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
                         />
                     </div>
 
@@ -111,7 +114,7 @@ const AddCategory = () => {
                         <textarea
                             {...register("description")}
                             placeholder="Short description..."
-                            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 h-28 resize-none"
+                            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-orange-400 h-28 resize-none"
                         ></textarea>
                     </div>
 

@@ -2,8 +2,12 @@ import { useState } from "react";
 import useProducts from "../../../../hooks/useAdminProducts";
 import ProductsTable from "./ProductsTable";
 import LoadingSpiner from "../../../../pages/error pages/LoadingSpiner";
+import { useTitle } from "../../../../hooks/useTitle";
 
 const AllProducts = () => {
+  // dynamic title
+    useTitle('Products');
+
     const [status, setStatus] = useState("all");
     const [searchText, setSearchText] = useState("");
 
@@ -16,19 +20,19 @@ const AllProducts = () => {
     if (isError) return <p className="text-red-500 text-center">Failed to load products.</p>;
 
     return (
-        <div className="px-10">
+        <div className="px-20">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Products 
             </h3>
 
             {/* Filter & Search Bar */}
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-base-200 p-4 shadow mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-green-50 p-4 shadow mb-6">
                 <input
                     type="text"
                     placeholder="Search products by name..."
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    className="w-full sm:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-black-500"
+                    className="w-full sm:w-1/3 px-4 py-2 border border-gray-200  focus:outline-none focus:ring focus:ring-black-500"
                 />
                 <div className="flex gap-3 mb-4">
                     {statuses.map((sta) => (

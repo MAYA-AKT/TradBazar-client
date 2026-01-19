@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import MyProductTable from './MyProductTable';
 import { NavLink } from 'react-router';
 import useSellerProducts from '../../../hooks/useSellerProducts';
+import { useTitle } from '../../../hooks/useTitle';
 
 
 
 const MyProducts = () => {
+  // dynamic title
+    useTitle('My Products');
 
     const [status, setStatus] = useState("all");
     const [searchText, setSearchText] = useState("");
@@ -31,7 +34,7 @@ const MyProducts = () => {
                     Manage Products
                 </h3>
                 {/* Filter & Search Bar */}
-                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 shadow mb-6">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-green-50 p-4 shadow mb-6">
                     <input
                         type="text"
                         placeholder="Search products by name..."

@@ -71,10 +71,10 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
             <div className="">
 
 
-                <div className="overflow-x-auto bg-base-200">
+                <div className="overflow-x-auto ">
                     <table className="min-w-full border-collapse">
-                        <thead>
-                            <tr className="bg-gray-100 text-gray-700 text-left">
+                        <thead className='bg-green-500 text-white'>
+                            <tr className=" text-left">
                                 <th className="py-3 px-4 border-b">#</th>
                                 <th className="py-3 px-4 border-b">Image</th>
                                 <th className="py-3 px-4 border-b">Name</th>
@@ -89,7 +89,7 @@ const ProductsTable = ({ products, isLoading, isError, refetch }) => {
                                 <th className="py-3 px-4 border-b text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='bg-green-50'>
                             {products.map((product, index) => (
                                 <tr
                                     key={product._id}

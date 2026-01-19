@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import useAuth from "../../../hooks/useAuth";
 import useSellerEarnings from "../../../hooks/useSellerEarnings";
 import useSellerOrdersSummary from "../../../hooks/useSellerOrdersSummary";
@@ -7,25 +7,28 @@ import { BsBoxSeam } from "react-icons/bs";
 import { HiOutlineCash } from "react-icons/hi";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { GiTakeMyMoney } from "react-icons/gi";
+import { useTitle } from "../../../hooks/useTitle";
 
 
 const EarningsOverview = () => {
+  // dynamic title
+    useTitle('Earnings Overview');
+
     const { user } = useAuth();
-    const [page, setPage] = useState(1);
-    const [filterStatus, setFilterStatus] = useState("All");
-    console.log(filterStatus);
+   
+  
+   
 
     const { data: earnings, isLoading } = useSellerEarnings();
-    const { orders, totalPages, isLoading: ordersLoading } = useSellerOrdersSummary(
+    const { orders, isLoading: ordersLoading } = useSellerOrdersSummary(
         user?.email,
-        page,
-        6,
-        filterStatus
+       
+       
     );
-    console.log('orders summery',orders);
+  
 
 
-    const statusOptions = ["All", "Paid", "Pending"];
+  
 
     if (isLoading || ordersLoading) return <p>Loading...</p>;
 
@@ -93,31 +96,15 @@ const EarningsOverview = () => {
             {/* FILTER */}
             <div className="flex justify-between gap-2 pt-10">
                 <h3 className="text-xl font-semibold mb-4 text-gray-800">Recent Orders</h3>
-                <div className="space-x-2">
-                    {statusOptions.map(status => (
-                        <button
-                            key={status}
-                            className={`px-4 py-2 rounded ${filterStatus === status
-                                ? "bg-green-500 text-white"
-                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                                }`}
-                            onClick={() => {
-                                setPage(1);
-                                setFilterStatus(status);
-                            }}
-                        >
-                            {status}
-                        </button>
-                    ))}
-                </div>
+                
             </div>
 
             {/* RECENT ORDERS */}
-            <div className="">
+            <div className="max-w-3xl bg-blue-50">
 
-                <div className="bg-white">
-                    <table className="table w-full">
-                        <thead className="bg-gradient-to-r from-orange-500 to-orange-700 text-white">
+                <div className="">
+                    <table className="table ">
+                        <thead className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
                             <tr>
 
                                 <th>Product</th>
@@ -130,7 +117,7 @@ const EarningsOverview = () => {
                                 <tr key={order._id}>
 
                                     <td>
-                                        <img src={order.productImage} alt={order.productName} className="w-20 h-20 rounded mr-2 inline" />
+                                        <img src={order.productImage} alt={order.productName} className="w-15 h-15 rounded mr-2 inline" />
                                         {order.productName}
                                     </td>
                                     <td>{order.grandTotal}৳</td>
@@ -153,39 +140,7 @@ const EarningsOverview = () => {
                     </table>
                 </div>
 
-                {/* PAGINATION */}
-                <div className="flex justify-center gap-2 mt-3">
-                    {/* Previous button */}
-                    <button
-                        className="px-3 py-1 bg-gray-200 rounded"
-                        disabled={page === 1}
-                        onClick={() => setPage(prev => prev - 1)}
-                    >
-                        Prev
-                    </button>
-
-                    {/* Numbered buttons */}
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
-                        <button
-                            key={num}
-                            className={`px-3 py-1 rounded ${page === num ? "bg-green-500 text-white" : "bg-gray-200 hover:bg-gray-300"
-                                }`}
-                            onClick={() => setPage(num)}
-                        >
-                            {num}
-                        </button>
-                    ))}
-
-                    {/* Next button */}
-                    <button
-                        className="px-3 py-1 bg-gray-200 rounded"
-                        disabled={page === totalPages}
-                        onClick={() => setPage(prev => prev + 1)}
-                    >
-                        Next
-                    </button>
-                </div>
-
+                
             </div>
         </div>
     );

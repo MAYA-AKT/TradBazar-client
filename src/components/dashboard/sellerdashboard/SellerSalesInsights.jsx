@@ -8,7 +8,7 @@ const SellerSalesInsights = ({ revenueByDate = [], topProducts = [] }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* --- Revenue Line Chart --- */}
-            <div className="bg-white rounded-xl shadow p-5">
+            <div className="bg-green-50 rounded-xl shadow p-5">
                 <h3 className="text-lg font-semibold mb-4 text-green-500">Revenue Over Time</h3>
 
                 <ResponsiveContainer width="100%" height={300}>
@@ -27,7 +27,7 @@ const SellerSalesInsights = ({ revenueByDate = [], topProducts = [] }) => {
             </div>
 
             {/* --- Top Products Bar Chart --- */}
-            <div className="bg-white rounded-xl shadow p-5">
+            <div className="bg-blue-50 rounded-xl shadow p-5">
                 <h3 className="text-lg font-semibold mb-4 text-blue-500">Top Selling Products</h3>
 
                 <ResponsiveContainer width="100%" height={300}>

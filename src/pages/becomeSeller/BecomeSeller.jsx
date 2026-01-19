@@ -6,10 +6,13 @@ import useCategories from "../../hooks/useCategories";
 import districts from '../../../public/districts.json';
 import toast from "react-hot-toast";
 import LoadingSpiner from '../../pages/error pages/LoadingSpiner';
+import { useTitle } from "../../hooks/useTitle";
 
 
 
 const BecomeSeller = () => {
+      // dynamic title
+        useTitle('Become Seller');
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { categories, isLoading, isError } = useCategories();

@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useTitle } from "../../../../hooks/useTitle";
 
 const CreateCoupon = () => {
+  // dynamic title
+    useTitle('Add Coupons');
+
     const axiosSecure = useAxiosSecure();
 
     const {
@@ -37,17 +41,17 @@ const CreateCoupon = () => {
     };
 
     return (
-         <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded mt-50">
+         <div className="max-w-xl mx-auto p-8 bg-green-50 shadow-md  mt-50">
             <h2 className="text-2xl font-semibold mb-5 text-center">Add New Coupon</h2>
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 p-6">
                 
                 {/* Coupon Code */}
                 <div>
                     <label className="block font-medium mb-1">Coupon Code</label>
                     <input
                         type="text"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full focus:outline-0"
                         placeholder="EX: NEWUSER20"
                         {...register("code", { required: "Coupon code is required" })}
                     />
@@ -59,7 +63,7 @@ const CreateCoupon = () => {
                     <label className="block font-medium mb-1">Discount</label>
                     <input
                         type="number"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full  focus:outline-0"
                         placeholder="EX: 20"
                         {...register("discount", {
                             required: "Discount is required",
@@ -75,7 +79,7 @@ const CreateCoupon = () => {
                 <div>
                     <label className="block font-medium mb-1">Discount Type</label>
                     <select
-                        className="select select-bordered w-full"
+                        className="select select-bordered w-full  focus:outline-0"
                         {...register("type", { required: "Select a type" })}
                     >
                         <option value="">Select</option>
@@ -92,7 +96,7 @@ const CreateCoupon = () => {
                     <label className="block font-medium mb-1">Minimum Order Amount</label>
                     <input
                         type="number"
-                        className="input input-bordered w-full"
+                        className="input input-bordered w-full  focus:outline-0"
                         placeholder="EX: 500"
                         {...register("minAmount", {
                             required: "Minimum amount is required",

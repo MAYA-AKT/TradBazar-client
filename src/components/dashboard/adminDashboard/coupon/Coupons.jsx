@@ -3,9 +3,13 @@ import { NavLink } from "react-router";
 import useCoupons from "../../../../hooks/useCoupons";
 import CouponTable from "./CouponTable";
 import LoadingSpiner from "../../../../pages/error pages/LoadingSpiner";
+import { useTitle } from "../../../../hooks/useTitle";
 
 
 const Coupons = () => {
+  // dynamic title
+    useTitle('Coupons');
+
     const [search, setSearch] = useState("");
     const [page, setPage] = useState(1);
 
@@ -25,18 +29,18 @@ const Coupons = () => {
 
 
     return (
-        <div className="max-w-7xl mx-auto mt-10">
+        <div className="max-w-7xl mx-auto mt-10 h-screen">
             <h3 className="text-xl font-semibold text-gray-800 mb-6 ">
                 Coupon 
             </h3>
 
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 shadow mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-green-50 p-4 shadow mb-6">
                 <input
                     type="text"
                     value={search}
                     onChange={handleSearchChange}
                     placeholder="Search categories..."
-                    className="w-full sm:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
+                    className="w-full sm:w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
                 />
 
                 <NavLink
@@ -47,7 +51,7 @@ const Coupons = () => {
                 </NavLink>
             </div>
 
-            <div className="bg-white p-4 shadow rounded-lg">
+            <div className="bg-white p-4  ">
                 
                 {!isLoading && !isError && (
                     <>

@@ -3,7 +3,10 @@ import { IoIosNotifications } from "react-icons/io";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useNotifications from "../../hooks/useNotifications";
 
+
 const NotificationDropdown = ({ userEmail }) => {
+    
+   
     const [open, setOpen] = useState(false);
     const [reply, setReply] = useState({});
     const [replyingId, setReplyingId] = useState(null);
@@ -94,6 +97,8 @@ const NotificationDropdown = ({ userEmail }) => {
         document.addEventListener("keydown", handleEsc);
         return () => document.removeEventListener("keydown", handleEsc);
     }, []);
+
+   
 
     return (
         <div className="relative" ref={dropdownRef}>

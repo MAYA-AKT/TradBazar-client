@@ -3,8 +3,11 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import LoadingSpiner from '../../../../pages/error pages/LoadingSpiner';
+import { useTitle } from '../../../../hooks/useTitle';
 
 const ManageSellerRequests = () => {
+  // dynamic title
+    useTitle('Seller Requests');
 
     const axiosSecure = useAxiosSecure();
     const { data: requests = [], refetch ,isLoading,isError} = useQuery({
@@ -36,11 +39,11 @@ const ManageSellerRequests = () => {
         return <LoadingSpiner/>
     }
     return (
-        <div className=' max-w-7xl mx-auto mt-10'>
+        <div className=' max-w-7xl mx-auto mt-10 h-screen'>
             <div className="">
                 <h2 className="text-xl font-bold mb-6"> Seller Requests </h2>
-                <table className="table w-full   ">
-                    <thead>
+                <table className="table w-full  ">
+                    <thead className='bg-green-500 text-white '>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
@@ -52,7 +55,7 @@ const ManageSellerRequests = () => {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-green-50'>
                         {requests.map((req) => (
                             <tr key={req._id}>
                                 <td>{req.name}</td>

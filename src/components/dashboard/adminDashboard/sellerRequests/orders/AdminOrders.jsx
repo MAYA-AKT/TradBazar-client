@@ -4,9 +4,13 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import LoadingSpiner from "../../../../../pages/error pages/LoadingSpiner";
 import { AiOutlineEye } from "react-icons/ai";
+import { useTitle } from "../../../../../hooks/useTitle";
 
 
 const AdminOrders = () => {
+  // dynamic title
+    useTitle('Orders');
+
     const axiosSecure = useAxiosSecure();
 
     const [search, setSearch] = useState("");
@@ -55,7 +59,7 @@ const AdminOrders = () => {
             <h2 className="text-xl font-bold mb-4 my-10"> Orders Management</h2>
 
             {/* Search & Filter */}
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 my-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 my-6 bg-green-50 p-6">
                 <input
                     type="text"
                     placeholder="Search by email..."
@@ -70,7 +74,7 @@ const AdminOrders = () => {
                     className="select select-bordered  w-full sm:w-1/4 focus:border-0"
                 >
                     <option value="">All Status</option>
-                    <option value="pending" className="bg-green">Pending</option>
+                    <option value="pending" className="">Pending</option>
                     <option value="processing">Processing</option>
                     <option value="shipped">Shipped</option>
                     <option value="delivered">Delivered</option>
@@ -80,9 +84,9 @@ const AdminOrders = () => {
 
             {/* Orders Table */}
             <div className="overflow-x-auto bg-white shadow rounded-lg">
-                <table className="table-auto w-full">
+                <table className="table-auto w-full bg-green-50">
                     <thead>
-                        <tr className="bg-gray-200">
+                        <tr className="bg-green-500 text-white">
                             <th className="p-2">Order ID</th>
                             <th className="p-2">Customer Email</th>
                             <th className="p-2">Grand Total</th>
@@ -127,7 +131,7 @@ const AdminOrders = () => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-                <div className="flex justify-center mt-4 gap-2">
+                <div className="flex justify-center my-15 gap-2">
                     {Array.from({ length: totalPages }, (_, i) => (
                         <button
                             key={i}

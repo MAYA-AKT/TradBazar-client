@@ -6,17 +6,19 @@ import useAuth from '../hooks/useAuth';
 import NotificationDropdown from '../pages/notification/NotificationDropdown';
 
 const DashboardLayouts = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     return (
-        <div className="relative min-h-screen bg-white">
+        <div className="relative min-h-screen ">
             <Sidebar />
 
-            <main className="md:ml-70 p-4 ">
+            <main className="md:ml-70 p-4 bg-base-100">
                 <div className='flex justify-end items-center mr-8 space-x-2'>
-                    <ProfileDropdown/>
+                    <ProfileDropdown />
                     <NotificationDropdown userEmail={user?.email} />
                 </div>
-                <Outlet />
+                <div>
+                    <Outlet />
+                </div>
             </main>
         </div>
     );

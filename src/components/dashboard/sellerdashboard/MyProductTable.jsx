@@ -63,8 +63,8 @@ const MyProductTable = ({ MyProducts, isLoading, isError, totalPages, page, setP
         <div className="">
             <div className="overflow-x-auto bg-white shadow-md">
                 <table className="min-w-full border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 text-gray-700 text-left">
+                    <thead className=''>
+                        <tr className="bg-green-500 text-white text-left">
                             <th className="py-3 px-4 border-b">#</th>
                             <th className="py-3 px-4 border-b">Image</th>
                             <th className="py-3 px-4 border-b">Name</th>
@@ -77,7 +77,7 @@ const MyProductTable = ({ MyProducts, isLoading, isError, totalPages, page, setP
                             <th className="py-3 px-4 border-b text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-green-50'>
                         {MyProducts.map((product, index) => (
                             <tr key={product._id} className="hover:bg-gray-100 transition">
                                 <td className="py-1 px-4 border-gray-200 border-b">{index + 1}</td>

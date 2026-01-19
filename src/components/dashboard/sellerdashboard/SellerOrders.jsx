@@ -3,8 +3,12 @@ import useAuth from "../../../hooks/useAuth";
 import useShipOrder from "../../../hooks/useShipOrder";
 import useSellerOrders from "../../../hooks/useSellerOrders";
 import LoadingSpiner from "../../../pages/error pages/LoadingSpiner";
+import { useTitle } from "../../../hooks/useTitle";
 
 const SellerOrders = () => {
+  // dynamic title
+    useTitle('Orders');
+
     const { user } = useAuth();
     const sellerEmail = user?.email;
 
@@ -61,16 +65,16 @@ const SellerOrders = () => {
     };
 
     return (
-        <div className="max-w-7xl mx-auto mt-10">
+        <div className="max-w-7xl mx-auto px-20 mt-10">
             <h2 className="text-xl font-semibold mb-4 text-gray-800 py-5">
                  Order Management
             </h2>
 
             {/* Desktop Table */}
             <div className="hidden md:block">
-                <table className="w-full  rounded-lg overflow-hidden shadow-sm">
-                    <thead className="bg-gray-100">
-                        <tr className="text-left text-gray-700">
+                <table className="w-full   overflow-hidden shadow-sm">
+                    <thead className="bg-green-500">
+                        <tr className="text-left text-white">
 
                             <th className="p-3">Product</th>
                             <th className="p-3">Customer</th>
@@ -81,7 +85,7 @@ const SellerOrders = () => {
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody className="bg-green-50 ">
                         {orders?.map((order) => (
                             <tr
                                 key={order._id}
@@ -89,7 +93,7 @@ const SellerOrders = () => {
                             >
 
                                 <td className="flex items-center gap-2">
-                                    <img src={order.productImage} className="w-20 h-20 rounded" />
+                                    <img src={order.productImage} className="w-15 h-15 rounded" />
                                     {order.productName}
                                 </td>
                                 <td className="p-3">{order.userEmail}</td>
@@ -120,7 +124,7 @@ const SellerOrders = () => {
                                         <button
                                             type="button"
                                             onClick={() => setSelectedOrder(order)}
-                                            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                                            className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-500 transition"
                                         >
                                             Mark as Shipped
                                         </button>
@@ -180,7 +184,7 @@ const SellerOrders = () => {
                             <button
                                 type="button"
                                 onClick={() => setSelectedOrder(order)}
-                                className="mt-3 w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                                className="mt-3 w-full px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700"
                             >
                                 Mark as Shipped
                             </button>
@@ -200,7 +204,7 @@ const SellerOrders = () => {
                         key={i}
                         onClick={() => setPage(i + 1)}
                         className={`px-3 py-1 rounded border ${page === i + 1
-                            ? "bg-blue-600 text-white"
+                            ? "bg-orange-400 text-white"
                             : "bg-white text-gray-700 hover:bg-gray-100"
                             }`}
                     >

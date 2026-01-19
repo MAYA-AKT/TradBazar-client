@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutStripeForm from "./CheckoutStripeForm";
 import LoadingSpiner from "../error pages/LoadingSpiner";
+import { useTitle } from "../../hooks/useTitle";
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK_KEY);
 
 const StripePaymentPage = () => {
+      // dynamic title
+    useTitle('Payment');
 
     const { state: orderData } = useLocation();
     const axiosSecure = useAxiosSecure();

@@ -7,9 +7,13 @@ import useCategories from "../../../hooks/useCategories";
 import LoadingSpiner from "../../../pages/error pages/LoadingSpiner";
 
 import axios from "axios";
+import { useTitle } from "../../../hooks/useTitle";
 
 
 const AddProduct = () => {
+  // dynamic title
+    useTitle('Add Products');
+
     const { user } = useAuth();
     const { categories, isLoading, isError } = useCategories();
     const axiosSecure = useAxiosSecure();
@@ -51,7 +55,7 @@ const AddProduct = () => {
             });
     };
 
-    console.log('seller district ', user?.sellerRequest?.district);
+    
 
     // ✅ Submit form handler
     const onSubmit = async (data) => {
@@ -120,16 +124,16 @@ const AddProduct = () => {
 
 
     return (
-        <div className="max-w-7xl mx-auto p-8  mt-8">
+        <div className="max-w-7xl mx-auto px-30  mt-8">
             <h2 className="text-xl font-semibold mb-4 text-gray-800 py-5">
                 Add New Product
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="">
                 {/* Left side — Product info */}
-                <div className="">
-                    <h3 className="text-md font-semibold mb-2 text-gray-700">Product Details</h3>
-                    <div className="bg-white p-8">
+                <div className="bg-green-50">
+                    <h3 className="text-md font-semibold mb-2 text-orange-500 pt-3 pl-4">Product Details</h3>
+                    <div className=" p-8">
                         <div className=" gap-6 grid grid-cols-2 ">
                             {/* Product Name */}
                             <div>
@@ -137,7 +141,7 @@ const AddProduct = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter product name"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full focus:border-orange-400 focus:outline-0"
                                     {...register("name", { required: "Product name is required" })}
                                 />
                                 {errors.name && (
@@ -149,7 +153,7 @@ const AddProduct = () => {
                             <div>
                                 <label className="label-text font-medium">Category</label>
                                 <select
-                                    className="select select-bordered w-full"
+                                    className="select select-bordered w-full focus:border-orange-400 focus:outline-0"
                                     {...register("category", { required: "Category is required" })}
                                 >
                                     {
@@ -174,7 +178,7 @@ const AddProduct = () => {
                                 <input
                                     type="number"
                                     placeholder="Enter quantity"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full focus:border-orange-400 focus:outline-0"
                                     {...register("quantity", { required: "Quantity is required" })}
                                 />
                                 {errors.quantity && (
@@ -183,7 +187,7 @@ const AddProduct = () => {
                             </div>
                             <div>
                                 <label className="label-text font-medium">Unit</label>
-                                <select className="select select-bordered w-full" {...register("unit")}>
+                                <select className="select select-bordered w-full focus:border-orange-400 focus:outline-0" {...register("unit")}>
                                     <option value="">Select unit</option>
                                     <option value="kg">Kilogram (kg)</option>
                                     <option value="gm">Gram (gm)</option>
@@ -202,7 +206,7 @@ const AddProduct = () => {
                                     type="number"
 
                                     placeholder="Enter price"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full focus:border-orange-400 focus:outline-0"
                                     {...register("price", { required: "Price is required" })}
                                 />
                                 {errors.price && (
@@ -216,7 +220,7 @@ const AddProduct = () => {
                                 <input
                                     type="file"
                                     accept="image/*"
-                                    className="file-input file-input-bordered w-full"
+                                    className="file-input file-input-bordered w-full focus:border-orange-400 focus:outline-0"
                                     {...register("photo", { required: "Photo is required" })}
                                     onChange={handleImageUpload} // 🔥 upload to Cloudinary on select
                                 />
@@ -231,10 +235,10 @@ const AddProduct = () => {
                         </div>
                         {/* Description */}
                         <div className="my-6 ">
-                            <label className="label-text font-medium">Product Description</label>
+                            <label className="label-text  font-medium">Product Description</label>
                             <textarea
                                 placeholder="Write a short description..."
-                                className="textarea textarea-bordered w-full"
+                                className="textarea textarea-bordered w-full focus:border-orange-400 focus:outline-0"
                                 rows="4"
                                 {...register("description", { required: "Description is required" })}
                             ></textarea>
@@ -245,13 +249,13 @@ const AddProduct = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6 mt-10">
+                <div className="grid grid-cols-2 gap-6 mt-10 ">
                     {/* authenticity */}
-                    <div className=" ">
-                        <h3 className="text-md font-semibold mb-2 text-gray-700">Product Authenticity</h3>
-                        <div className=" gap-4 bg-white space-y-6 p-10">
-                            <div className="input input-bordered w-full bg-gray-100">
-                                <select {...register("productType")} required>
+                    <div className=" bg-green-50">
+                        <h3 className="text-md font-semibold mb-2 text-orange-500 pt-3 pl-4">Product Authenticity</h3>
+                        <div className=" gap-4  space-y-6 p-10">
+                            <div className="input input-bordered w-full border-1 focus:border-orange-400 focus:outline-0">
+                                <select {...register("productType")} required className="">
                                     <option value="">Select Product Type</option>
                                     <option value="Farm">Farm</option>
                                     <option value="Handmade">Handmade</option>
@@ -265,6 +269,7 @@ const AddProduct = () => {
                                     type="text"
                                     placeholder="Origin Village (optional)"
                                     {...register("originVillage")}
+                                    className="focus:border-orange-400 focus:outline-0"
                                 />
                             </div>
 
@@ -272,7 +277,7 @@ const AddProduct = () => {
                                 <textarea
                                     placeholder="Tell the story of this product (who makes it, how)"
                                     {...register("sellerStory")}
-                                    className="textarea textarea-bordered w-full"
+                                    className="textarea textarea-bordered w-full focus:border-orange-400 focus:outline-0"
                                 />
 
                             </div>
@@ -280,16 +285,16 @@ const AddProduct = () => {
                     </div>
 
                     {/* Seller info */}
-                    <div className="">
-                        <h3 className="text-md font-semibold mb-2 text-gray-700">Seller Information</h3>
-                        <div className="bg-white p-12">
+                    <div className="bg-green-50">
+                        <h3 className="text-md font-semibold mb-2 text-orange-500 pt-3 pl-4">Seller Information</h3>
+                        <div className=" p-12">
                             <div>
                                 <label className=" text-gray-500"> Name</label>
                                 <input
                                     type="text"
                                     value={user?.displayName || ""}
                                     readOnly
-                                    className="input input-bordered w-full bg-gray-100"
+                                    className="input  w-full bg-gray-100  input-bordered focus:border-orange-400 focus:outline-0"
                                 />
                             </div>
                             <div>
@@ -298,7 +303,7 @@ const AddProduct = () => {
                                     type="email"
                                     value={user?.email || ""}
                                     readOnly
-                                    className="input input-bordered w-full bg-gray-100"
+                                    className="input input-bordered w-full bg-gray-100 focus:border-orange-400 focus:outline-0"
                                 />
                             </div>
                             <div>
@@ -306,7 +311,7 @@ const AddProduct = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter district"
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full focus:border-orange-400 focus:outline-0"
                                     {...register("sellerDistrict")}
                                 />
 

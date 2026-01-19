@@ -5,9 +5,16 @@ import useSignleUser from '../../hooks/useSignleUser';
 import LoadingSpiner from '../error pages/LoadingSpiner';
 import { NavLink } from 'react-router';
 import useUserRole from '../../hooks/useUserRole';
+import { useTitle } from '../../hooks/useTitle';
 
 
 const Profile = () => {
+    // dynamic title
+      useTitle('Profile');
+
+
+
+
     const { user } = useAuth();
     const { role } = useUserRole();
 

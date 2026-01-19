@@ -9,8 +9,12 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import useSellerEarningsByDate from "../../hooks/useSellerEarningsByDate";
+import { useTitle } from "../../hooks/useTitle";
 
 const Checkout = () => {
+  // dynamic title
+    useTitle('Checkout');
+
     const { state } = useLocation();
     const navigate = useNavigate();
     const { user } = useAuth();

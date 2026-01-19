@@ -77,8 +77,8 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
         <div className="max-w-7xl mx-auto">
             <div className="overflow-x-auto bg-white ">
                 <table className="min-w-full border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 text-gray-700 text-left">
+                    <thead className='bg-green-500 text-white'>
+                        <tr className=" text-left">
                             <th className="py-3 px-4 border-b">#</th>
                             <th className="py-3 px-4 border-b">Image</th>
                             <th className="py-3 px-4 border-b">Name</th>
@@ -88,7 +88,7 @@ const UsersTable = ({ users, isLoading, isError, refetch }) => {
                             <th className="py-3 px-4 border-b text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-green-50'>
                         {users?.map((user, index) => (
                             <tr key={user._id} className="hover:bg-gray-100 transition">
                                 <td className="py-1 px-4 border-gray-200 border-b">{index + 1}</td>

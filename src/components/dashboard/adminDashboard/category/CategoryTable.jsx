@@ -81,8 +81,8 @@ const CategoryTable = () => {
 
             <div className="overflow-x-auto  rounded-lg shadow-md">
                 <table className="min-w-full border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 text-gray-700 text-left">
+                    <thead className='bg-green-500 text-white'>
+                        <tr className=" text-left">
                             <th className="py-3 px-4 border-b">#</th>
                             <th className="py-3 px-4 border-b">Image</th>
                             <th className="py-3 px-4 border-b">Name</th>
@@ -90,7 +90,7 @@ const CategoryTable = () => {
                             <th className="py-3 px-4 border-b text-center">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-green-50'>
                         {categories.map((cat, index) => (
                             <tr
                                 key={cat._id}

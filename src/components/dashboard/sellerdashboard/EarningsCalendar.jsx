@@ -60,8 +60,8 @@ const EarningsCalendar = () => {
                     <p>Loading calendar...</p>
                 ) : (
                     <>
-                        <div className="flex justify-center">
-                            <Calendar
+                        <div className="flex bg-green-100 py-5 justify-center">
+                            <Calendar 
                                 value={selectedDate}
                                 onChange={setSelectedDate}
                                 onActiveStartDateChange={handleActiveStartDateChange}
@@ -70,7 +70,7 @@ const EarningsCalendar = () => {
                         </div>
 
                         {/* Selected date summary */}
-                        <div className="mt-3 p-3 bg-gray-100 rounded text-center">
+                        <div className="mt-3 p-3 bg-green-200 rounded text-center">
                             <p className="text-sm text-gray-600">
                                 Earnings on{" "}
                                 <span className="font-semibold">

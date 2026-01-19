@@ -4,7 +4,7 @@ import { FiBox, FiPlus, FiLogOut } from "react-icons/fi";
 const SellerLayout = () => {
     return (
         <div>
-            <div className="flex min-h-screen">
+            <div className="flex ">
                 {/* Sidebar */}
                 <aside className="w-64 bg-base-200 p-5">
                     <h2 className="text-xl font-bold text-orange-500 mb-6">Seller Panel</h2>
