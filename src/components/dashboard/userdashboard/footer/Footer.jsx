@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaWhatsapp,FaLeaf, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaLeaf, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { NavLink } from 'react-router';
 
 
@@ -13,20 +13,23 @@ const Footer = () => {
                     <div className=" ">
                         <div className="flex items-center">
                             <a href="/" className="text-3xl mb-3 flex font-bold items-center text-green-400 cursor-pointer">
-                              <span><FaLeaf className="text-green-400" />  </span>  Bongo <span className="text-orange-200">Haat</span>
+                                <span><FaLeaf className="text-green-400" />  </span>  Bongo <span className="text-orange-200">Haat</span>
                             </a>
                         </div>
 
-                        <p className="text-white text-sm leading-relaxed">
-                            TradBazar is Bangladesh’s trusted multi-vendor marketplace, connecting buyers with authentic handmade and traditional products.
-                            Enjoy <span className="font-semibold text-green-400">verified listings</span>, <span className="font-semibold text-blue-400">direct communication via notifications</span>, and <span className="font-semibold text-purple-400">video calls</span> to see products before ordering.
+                        <p className="text-white text-sm leading-relaxed text-justify">
+                            BongoHaat is Bangladesh’s trusted multi-vendor marketplace, connecting buyers with authentic handmade and traditional products.
+                            Enjoy <span className="font-semibold text-green-400">verified listings</span>,{" "}
+                            <span className="font-semibold text-blue-400">direct communication via notifications</span>, and{" "}
+                            <span className="font-semibold text-purple-400">video calls</span> to see products before ordering.
                             Supporting local artisans and bringing Bangladeshi culture to your doorstep.
                         </p>
+
                     </div>
 
 
                     {/* Quick Links */}
-                    <div>
+                    <div className='md:ml-20'>
                         <h3 className="text-md font-semibold text-orange-400 mb-4">Quick Links</h3>
                         <ul className="space-y-2 text-white text-sm">
                             <li className=" text-white hover:orange-400"><NavLink to="/" className=" text-white hover:orange-400">Home</NavLink></li>

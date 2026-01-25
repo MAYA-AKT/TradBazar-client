@@ -9,7 +9,7 @@ import useCartCount from "../../hooks/useCartCount";
 import { Link } from "react-router";
 import { useTitle } from "../../hooks/useTitle";
 
-const MyOrders = () => {
+const UserOrders = () => {
    // dynamic title
      useTitle('My Orders');
     const { user } = useAuth();
@@ -94,4 +94,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default UserOrders;

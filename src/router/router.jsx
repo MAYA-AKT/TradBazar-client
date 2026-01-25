@@ -31,12 +31,14 @@ import Coupons from "../components/dashboard/adminDashboard/coupon/Coupons";
 
 import SellerOrders from "../components/dashboard/sellerdashboard/SellerOrders";
 import AdminOrders from "../components/dashboard/adminDashboard/sellerRequests/orders/AdminOrders";
-import MyOrders from "../pages/myOrders/myOrders";
-import Tracking from "../pages/myOrders/Tracking";
+
 import CartPage from "../pages/cart/CartPage";
 import CartCheckoutPage from "../pages/cart/CartCheckoutPage";
 import SellerEarningsOverview from "../components/dashboard/sellerdashboard/SellerEarningsOverview";
 import VideoCall from "../components/communication/VideoCall";
+
+import Tracking from "../pages/myOrders/Tracking";
+import UserOrders from "../pages/myOrders/UserOrders";
 
 
 
@@ -71,7 +73,7 @@ export const router = createBrowserRouter([
         path: 'myOrders',
         element: (
           <PrivateRoute>
-            <MyOrders />
+            <UserOrders />
           </PrivateRoute>
         )
       },
