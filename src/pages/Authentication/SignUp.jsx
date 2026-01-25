@@ -130,9 +130,9 @@ const SignUp = () => {
 
     return (
         <>
-            <div className="flex items-center justify-center bg-base-200 px-4">
+            <div className="flex items-center justify-center bg-base-200 px-4 py-20">
                 <div className="w-full max-w-md bg-base-100 shadow-lg rounded-2xl p-6">
-                    <h2 className="text-2xl font-bold text-center text-orange-500 mb-4">
+                    <h2 className=" text-xl md:text-2xl font-bold text-center text-orange-500 mb-4">
                         Create Your Account
                     </h2>
 
@@ -145,7 +145,7 @@ const SignUp = () => {
                             <input
                                 type="text"
                                 placeholder="Enter your name"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full focus:outline-0"
                                 {...register("name", { required: "Name is required" })}
                             />
                             {errors.name && (
@@ -161,7 +161,7 @@ const SignUp = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full focus:outline-0"
                                 {...register("email", {
                                     required: "Email is required",
                                     pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
@@ -181,7 +181,7 @@ const SignUp = () => {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter your password"
-                                    className="input input-bordered w-full pr-10"
+                                    className="input input-bordered w-full pr-10 focus:outline-0"
                                     {...register("password", {
                                         required: "Password is required",
                                         minLength: { value: 6, message: "Minimum 6 characters" },
@@ -208,7 +208,7 @@ const SignUp = () => {
                             <input
                                 type="file"
                                 accept="image/*"
-                                className="file-input file-input-bordered w-full"
+                                className="file-input file-input-bordered w-full focus:outline-0"
                                 {...register("photo")}
                                 onChange={handleImageUpload} // 🔥 upload to Cloudinary on select
                             />

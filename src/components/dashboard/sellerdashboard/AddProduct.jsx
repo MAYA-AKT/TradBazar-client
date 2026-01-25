@@ -45,7 +45,7 @@ const AddProduct = () => {
             formData
         )
             .then(response => {
-                console.log("Uploaded image URL:", response.data.secure_url);
+              
                 setImageUrl(response.data.secure_url);
                 setUploading(false);
             })

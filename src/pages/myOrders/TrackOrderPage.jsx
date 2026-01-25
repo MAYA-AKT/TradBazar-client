@@ -38,10 +38,7 @@ const TrackOrderPage = ({ order }) => {
 
     return (
         <div className=" p-4">
-            <div className="bg-white">
-                <h1 className="mb-3 py-4 pl-4 text-center">Track My Order</h1>
-            </div>
-
+            
             
             <div className="bg-white shadow p-6">
                 <p><b>Ordered On:</b> {new Date(order?.createdAt).toLocaleString()}</p>

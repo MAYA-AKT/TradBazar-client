@@ -17,9 +17,9 @@ const Home = () => {
     return (
         <div className=''>
             <CategoryBadge />
-            <div className='max-w-7xl mx-auto '>
+            <div className='max-w-7xl mx-auto  '>
 
-                <div className='mt-2' >
+                <div className='' >
                     <Slider />
                 </div>
                 <div >
@@ -35,6 +35,7 @@ const Home = () => {
                     <ChooseUs />
                 </div>
             </div>
+          
 
         </div>
     );

@@ -28,7 +28,7 @@ const Profile = () => {
 
     return (
         <>
-            <div className="  py-10 px-4">
+            <div className="  py-10 mb-20 px-4">
                 <div className="max-w-6xl mx-auto  flex flex-col md:flex-row overflow-hidden gap-4">
 
                     {/* ✅ Left Sidebar */}

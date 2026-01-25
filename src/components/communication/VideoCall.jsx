@@ -1,70 +1,118 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useLocation, useNavigate, useParams } from "react-router";
 import AgoraRTC from "agora-rtc-sdk-ng";
-import axios from "axios";
 
-const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+const APP_ID = "c7a28543c05e4c9a86dbcbba55f4a911";
 
-const VideoCall = ({ channelName }) => {
+const VideoCall = () => {
+    const { channelName } = useParams();
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    const { token, uid } = state || {};
+    const initializedRef = useRef(false);
+
+    const clientRef = useRef(null);
+    const tracksRef = useRef([]);
+
     useEffect(() => {
-        let localTracks = [];
-        let remoteUsers = {};
+        if (initializedRef.current) {
+            console.log("⚠️ Agora already initialized, skipping...");
+            return;
+        }
+        initializedRef.current = true;
 
-        const startCall = async () => {
-            const uid = Math.floor(Math.random() * 100000); // unique per user
+        const client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+        clientRef.current = client;
 
-            // get token from backend
-            const { data } = await axios.get("/agora/token", {
-                params: { channelName, uid }
-            });
+        const init = async () => {
+            try {
+                console.log("🎥 Joining channel:", channelName);
 
-            // join channel
-            await client.join(
-                import.meta.env.VITE_AGORA_APP_ID,
-                channelName,
-                data.token,
-                uid
-            );
+                await client.join(APP_ID, channelName, token, uid);
 
-            // create tracks
-            const localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
-            const localVideoTrack = await AgoraRTC.createCameraVideoTrack();
-            localTracks.push(localAudioTrack, localVideoTrack);
-
-            // play local video
-            localVideoTrack.play("local-player");
-
-            // publish tracks
-            await client.publish([localAudioTrack, localVideoTrack]);
-
-            // subscribe remote users
-            client.on("user-published", async (user, mediaType) => {
-                await client.subscribe(user, mediaType);
-                if (mediaType === "video") {
-                    user.videoTrack.play("remote-player");
+                let tracks = [];
+                try {
+                    tracks = await AgoraRTC.createMicrophoneAndCameraTracks();
+                    console.log("🎤🎥 Mic & camera tracks created");
+                } catch {
+                    console.warn("⚠️ No camera found — audio only");
+                    tracks = [await AgoraRTC.createMicrophoneAudioTrack()];
                 }
-                if (mediaType === "audio") {
-                    user.audioTrack.play();
-                }
-                remoteUsers[user.uid] = user;
-            });
 
-            client.on("user-unpublished", (user) => {
-                delete remoteUsers[user.uid];
-            });
+                tracksRef.current = tracks;
+                await client.publish(tracks);
+
+                if (tracks[1]) tracks[1].play("local-player");
+
+                client.on("user-published", async (user, mediaType) => {
+                    await client.subscribe(user, mediaType);
+                    if (mediaType === "video") user.videoTrack.play("remote-player");
+                    if (mediaType === "audio") user.audioTrack.play();
+                });
+
+                console.log("✅ Agora connected successfully");
+            } catch (err) {
+                console.error("🔥 Agora join failed:", err);
+            }
         };
 
-        startCall();
+        init();
 
-        return async () => {
-            localTracks.forEach((track) => track.close());
-            await client.leave();
+        return () => {
+            console.log("🧹 Cleanup triggered");
         };
-    }, [channelName]);
+    }, []);
+
+
+    // 🔴 END CALL FUNCTION
+    const endCall = async () => {
+        console.log("❌ Ending call...");
+
+        try {
+            tracksRef.current.forEach(track => {
+                track.stop();
+                track.close();
+            });
+
+            if (clientRef.current) {
+                await clientRef.current.leave();
+            }
+
+            console.log("✅ Call ended successfully");
+        } catch (err) {
+            console.error("⚠️ Error ending call:", err);
+        }
+
+        navigate(-1); // go back
+    };
 
     return (
-        <div className="grid grid-cols-2 gap-2 h-96">
-            <div id="local-player" className="bg-black w-full h-full rounded-lg"></div>
-            <div id="remote-player" className="bg-black w-full h-full rounded-lg"></div>
+        <div className=" h-[400px] md:h-[600px] my-20 max-w-7xl mx-auto bg-black flex flex-col">
+            <h2 className="text-white text-center p-2">
+                Live Product Verification Call
+            </h2>
+
+            <div className="flex flex-1 gap-2 p-2">
+                <div
+                    id="local-player"
+                    className="flex-1 bg-gray-800 rounded"
+                ></div>
+
+                <div
+                    id="remote-player"
+                    className="flex-1 bg-gray-800 rounded"
+                ></div>
+            </div>
+
+            {/* 🔴 CUT CALL BUTTON */}
+            <div className="p-4 flex justify-center">
+                <button
+                    onClick={endCall}
+                    className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-semibold"
+                >
+                    ❌ End Call
+                </button>
+            </div>
         </div>
     );
 };

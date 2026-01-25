@@ -36,6 +36,7 @@ import Tracking from "../pages/myOrders/Tracking";
 import CartPage from "../pages/cart/CartPage";
 import CartCheckoutPage from "../pages/cart/CartCheckoutPage";
 import SellerEarningsOverview from "../components/dashboard/sellerdashboard/SellerEarningsOverview";
+import VideoCall from "../components/communication/VideoCall";
 
 
 
@@ -131,6 +132,11 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
+      {
+        path: "/video-call/:channelName",
+        element: <PrivateRoute><VideoCall /></PrivateRoute>
+      }
+
 
 
     ]
@@ -237,7 +243,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-         index: true, 
+        index: true,
         element: (
           <PrivateRoute>
             <SellerDashboard />
@@ -267,9 +273,9 @@ export const router = createBrowserRouter([
             <SellerOrders />
           </SellerRoute>
         ),
-       
+
       },
-       {
+      {
         path: 'earnings',
         element: (
           <SellerRoute>

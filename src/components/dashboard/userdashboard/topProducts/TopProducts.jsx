@@ -39,7 +39,7 @@ const TopProducts = () => {
                                     />
                                 </div>
                                 <div className='p-4'>
-                                    <h3 className="text-md font-semibold text-gray-800">{product.name.toUpperCase()}</h3>
+                                    <h3 className="text-md font-semibold text-gray-800 capitalize">{product.name}</h3>
                                     <p className="text-gray-600 text-sm line-clamp-2">{product.description}</p>
                                     <p className="text-orange-400  mt-2">{product.price}৳ <span className='text-gray-500'>({product.quantity})</span></p>
 

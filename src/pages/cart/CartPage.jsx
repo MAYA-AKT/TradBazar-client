@@ -16,7 +16,7 @@ const CartPage = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const { data: cart = [], isLoading } = useCart(user?.email);
-    console.log('cartItems', cart);
+  
 
 
     const updateQty = useUpdateCartQuantity();
@@ -82,7 +82,7 @@ const CartPage = () => {
     return (
         <>
             <CategoryBadge />
-            <div className="max-w-7xl mx-auto p-4">
+            <div className="max-w-7xl mx-auto mt-5 mb-20 p-4">
 
 
 
@@ -114,7 +114,7 @@ const CartPage = () => {
                                             type="checkbox"
                                             checked={selectedItems.includes(item._id)}
                                             onChange={() => handleSelectItem(item._id)}
-                                            className="mr-3 w-5 h-5"
+                                            className="mr-3 w-4 h-4"
                                         />
 
 
@@ -122,17 +122,17 @@ const CartPage = () => {
                                             <img
                                                 src={item.image}
                                                 alt={item.name}
-                                                className="w-20 h-20 object-cover rounded"
+                                                className="w-15 h-15 object-cover rounded"
                                             />
-                                            <div className="pl-2">
-                                                <p className="font-semibold text-lg">{item.name}</p>
+                                            <div className="pl-2 space-y-1">
+                                                <p className="font-semibold text-md">{item.name}</p>
                                                 <p className="text-gray-500">Tk {item.price}</p>
-                                                <div className="flex items-center gap-3 my-3">
+                                                <div className="flex items-center gap-3 ">
                                                     <button
                                                         onClick={() =>
                                                             updateQty.mutate({ cartId: item._id, action: "dec" })
                                                         }
-                                                        className="w-8 h-8 border rounded hover:bg-gray-100"
+                                                        className="w-6 h-6 border rounded hover:bg-gray-100"
                                                     >
                                                         −
                                                     </button>
@@ -141,7 +141,7 @@ const CartPage = () => {
                                                         onClick={() =>
                                                             updateQty.mutate({ cartId: item._id, action: "inc" })
                                                         }
-                                                        className="w-8 h-8 border rounded hover:bg-gray-100"
+                                                        className="w-6 h-6 border rounded hover:bg-gray-100"
                                                     >
                                                         +
                                                     </button>

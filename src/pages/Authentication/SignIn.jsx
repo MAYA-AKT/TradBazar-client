@@ -68,9 +68,9 @@ const SignIn = () => {
     }, [user, role, authLoading, roleLoading, navigate, from]);
     return (
         <>
-            <div className="flex items-center justify-center mt-20  px-4">
+            <div className="flex items-center justify-center my-20  px-4">
                 <div className="w-full max-w-md  bg-white  p-6">
-                    <h2 className="text-2xl  font-bold text-center text-orange-500 ">
+                    <h2 className=" text-xl md:text-2xl py-4  font-bold text-center text-orange-500 ">
                         Signin Your Account 
                     </h2>
 
@@ -85,7 +85,7 @@ const SignIn = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full focus:outline-0"
                                 {...register("email", {
                                     required: "Email is required",
                                     pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
@@ -105,7 +105,7 @@ const SignIn = () => {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter your password"
-                                    className="input input-bordered w-full pr-10"
+                                    className="input input-bordered w-full pr-10 focus:outline-0"
                                     {...register("password", {
                                         required: "Password is required",
                                         minLength: { value: 6, message: "Minimum 6 characters" },

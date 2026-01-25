@@ -34,7 +34,7 @@ const OrderSummary = ({ order }) => {
                             </p>
 
                             <p className="text-sm text-gray-600 mt-2">
-                                Quantity: <b>{order.quantity}</b>
+                                Quantity: <b>{order?.quantity}</b>
                             </p>
                         </div>
                     </div>

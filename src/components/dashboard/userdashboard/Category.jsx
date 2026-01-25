@@ -6,8 +6,9 @@ import { useTitle } from '../../../hooks/useTitle';
 const Category = () => {
       // dynamic title
         useTitle('Categories');
+        
     const { categories, isLoading, isError } = useUserCategories();
-    console.log(categories);
+   
     
     if (isLoading) return <p>Loading categories...</p>;
     if (isError) return <p>Failed to load categories 😔</p>;
@@ -33,7 +34,7 @@ const Category = () => {
                             alt={cat.name}
                             className="w-full h-[120px] object-cover "
                         />
-                        <p className="text-center text-gray-700 mt-2 font-medium">{cat.name}</p>
+                        <p className="text-center text-gray-700 mt-2 font-medium capitalize">{cat.name}</p>
                     </NavLink>
                 ))}
             </div>

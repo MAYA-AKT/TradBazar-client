@@ -16,14 +16,16 @@ import { useTitle } from "../../hooks/useTitle";
 
 
 const ProductDetails = () => {
-      // dynamic title
-        useTitle('Product details');
+    // dynamic title
+    useTitle('Product details');
 
     const { id } = useParams();
+
     const { product, productLoading, productError } = useProduct(id);
     const { reviews, reviewLoading, reviewError } = useReview(product?._id);
 
 
+    
 
 
 
@@ -38,10 +40,15 @@ const ProductDetails = () => {
             <DisplayProduct product={product} reviews={reviews} />
 
            
+
+
+
             <AuthenticityAndSellerStory product={product} />
 
             <ReletedProducts productId={id} category={product.category} />
             <ProductReviews product={product} />
+
+
 
         </>
     );

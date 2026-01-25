@@ -23,7 +23,7 @@ const Slider = () => {
                     <div className=" inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/10"></div>
 
                    
-                    <div className="relative h-[220px] md:h-[450px] flex items-center">
+                    <div className="relative h-[220px] md:h-[470px] flex items-center">
                         <div className="max-w-7xl mx-auto px-4 md:px-12 w-full">
 
                           

@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { IoIosNotifications } from "react-icons/io";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useNotifications from "../../hooks/useNotifications";
+import { useNavigate } from "react-router";
 
 
 const NotificationDropdown = ({ userEmail }) => {
-    
-   
+
+
     const [open, setOpen] = useState(false);
     const [reply, setReply] = useState({});
     const [replyingId, setReplyingId] = useState(null);
-
+    const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const { notifications = [], setNotifications, isLoading, refetch } = useNotifications(userEmail);
 
@@ -98,15 +99,39 @@ const NotificationDropdown = ({ userEmail }) => {
         return () => document.removeEventListener("keydown", handleEsc);
     }, []);
 
-   
+    // vdo call
+    const joinVideo = async (channelName) => {
+        try {
+            const uid = Math.floor(Math.random() * 100000);
+
+            console.log("📞 Seller joining channel:", channelName, uid);
+
+            const res = await axiosSecure.get(
+                `/get-agora-token?channelName=${channelName}&uid=${uid}`
+            );
+
+            console.log("🎟 Seller token received channerName",channelName);
+
+            navigate(`/video-call/${channelName}`, {
+                state: {
+                    token: res.data.token,
+                    uid,
+                },
+            });
+        } catch (err) {
+            console.error("❌ Failed to join video call", err);
+        }
+    };
+
+
 
     return (
         <div className="relative" ref={dropdownRef}>
             {/* 🔔 Icon */}
             <div className="relative cursor-pointer" onClick={() => setOpen(!open)}>
-                <IoIosNotifications size={26} />
+                <IoIosNotifications className=" " size={26} />
                 {unreadCount > 0 && (
-                    <span className="absolute -top-1 left-4 bg-primary text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                    <span className="absolute -top-1 left-4 text-white bg-orange-400 md:bg-green-600   text-xs font-bold px-1.5 py-0.5 rounded-full">
                         {unreadCount}
                     </span>
                 )}
@@ -135,7 +160,7 @@ const NotificationDropdown = ({ userEmail }) => {
                     ${!n.isRead ? "bg-orange-100 font-semibold" : "bg-base-200"}
                     hover:bg-gray-100`}
                                 >
-                                    <p className="font-medium">{n.title}</p>
+                                    <p className="font-medium text-black">{n.title}</p>
                                     <p className="text-sm text-gray-600 mt-1">{n.message}</p>
                                     {n.productName && (
                                         <p className="text-xs text-gray-500 mt-1">Product: {n.productName}</p>
@@ -169,6 +194,17 @@ const NotificationDropdown = ({ userEmail }) => {
                                     {n.type === "ask-seller" && n.replied && (
                                         <p className="text-green-600 text-xs mt-2">✔ Replied</p>
                                     )}
+
+                                    {/* vdo call */}
+                                    {n.type === "video_call" && (
+                                        <button
+                                            onClick={() => joinVideo(n.channelName)}
+                                            className="mt-2 text-sm bg-green-600 text-white px-3 py-1 rounded"
+                                        >
+                                            Accept Video Call
+                                        </button>
+                                    )}
+
                                 </div>
                             ))
                         )}

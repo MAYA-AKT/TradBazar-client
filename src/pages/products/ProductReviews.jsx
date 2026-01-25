@@ -9,7 +9,7 @@ import useReview from "../../hooks/useReview";
 
 
 const ProductReviews = ({product}) => {
-    console.log('product',product);
+    
     
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
@@ -39,7 +39,7 @@ const ProductReviews = ({product}) => {
                 rating,
                 comment,
             };
-             console.log(reviewData);
+           
              
             const res = await axiosSecure.post("/reviews", reviewData);
 
@@ -203,7 +203,7 @@ const ProductReviews = ({product}) => {
                             ></textarea>
                         </div>
 
-                        <button className="bg-orange-500 text-white px-4 py-2 rounded">
+                        <button className="bg-orange-500 text-white px-4 py-2 rounded hover:cursor-pointer">
                             Submit Review
                         </button>
                     </form>

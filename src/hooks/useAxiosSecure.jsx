@@ -8,7 +8,8 @@ import useAuth from './useAuth';
 
 
 const axiosSecure = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: "https://tradbazar-server.vercel.app"
+    // baseURL:"http://localhost:3000"
 });
 
 

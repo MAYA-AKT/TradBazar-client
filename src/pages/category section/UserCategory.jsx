@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { NavLink, useParams } from 'react-router';
 import useUserCategoryProducts from '../../hooks/useUserCategoryProducts';
 import LoadingSpiner from '../error pages/LoadingSpiner';
-import useCategories from '../../hooks/useCategories';
+
 import { BsGridFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
 import CardView from '../../components/view/CardView';
 import GridView from '../../components/view/GridView';
 import { useEffect } from 'react';
+
+import useCategoryBadge from '../../hooks/useCategoryBadge';
 
 const UserCategory = () => {
 
@@ -23,7 +25,7 @@ const UserCategory = () => {
 
 
 
-    const { categories } = useCategories();
+     const { category } = useCategoryBadge();
     const [view, setView] = useState("card");
 
     useEffect(() => {
@@ -35,13 +37,13 @@ const UserCategory = () => {
         return <LoadingSpiner />
     }
     return (
-        <div className='bg-gray-100 '>
+        <div className='bg-gray-100 mb-20'>
             <div className="w-full md:max-w-7xl mx-auto p-4 flex gap-4">
                 {/* Left Sidebar - Categories */}
                 <div className="w-1/4 bg-white p-4 hidden md:block h-fit">
                     <h3 className="text-md font-semibold mb-4">Categories</h3>
                     <ul className="-space-y-2">
-                        {categories?.map((cat) => (
+                         {category?.map((cat) => (
                             <li key={cat._id}>
                                 <NavLink
                                     to={`/category/${encodeURIComponent(cat.name)}`}
@@ -53,7 +55,8 @@ const UserCategory = () => {
                                     {cat.name}
                                 </NavLink>
                             </li>
-                        ))}
+                        ))} 
+                      
                     </ul>
                 </div>
 

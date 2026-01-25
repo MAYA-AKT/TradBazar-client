@@ -12,7 +12,7 @@ import useSellerEarningsByDate from "../../hooks/useSellerEarningsByDate";
 import { useTitle } from "../../hooks/useTitle";
 
 const Checkout = () => {
-  // dynamic title
+    // dynamic title
     useTitle('Checkout');
 
     const { state } = useLocation();
@@ -25,7 +25,7 @@ const Checkout = () => {
     const today = new Date();
     const month = today.getMonth() + 1; // JS months are 0-based
     const year = today.getFullYear();
-    const {  refetch } = useSellerEarningsByDate(user?.email, month, year);
+    const { refetch } = useSellerEarningsByDate(user?.email, month, year);
 
     const {
         handleSubmit,
@@ -85,7 +85,7 @@ const Checkout = () => {
             }));
             // Send all orders to backend
             const res = await axiosSecure.post("/orders", { orders });
-             refetch();
+            refetch();
 
             if (res.data.success) {
                 toast.success("Orders placed successfully!");
@@ -179,11 +179,14 @@ const Checkout = () => {
                     <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded mb-6">
                         <h3 className="font-semibold text-gray-800 mb-2">Order Instructions</h3>
                         <ul className="text-sm text-gray-700 list-disc list-inside space-y-1">
-                            <li>Please double-check your billing and shipping information.</li>
-                            <li>Orders are usually processed within 24 hours.</li>
-                            <li>For handmade items, slight variations may occur.</li>
-                            <li>You will receive a tracking ID once your order is confirmed.</li>
+                            <li>Please review your billing and shipping details carefully before placing the order.</li>
+                            <li>After confirmation, your order is reviewed and processed within <strong>24 hours</strong>.</li>
+                            <li>Once shipped, you can track your order status anytime from the <strong>Order Tracking</strong> page.</li>
+                            <li>Delivery usually takes <strong>2–5 working days</strong> depending on your location.</li>
+                            <li>For handmade or authentic products, minor variations may naturally occur.</li>
+                            <li>A tracking ID and order updates will be available after the order is confirmed.</li>
                         </ul>
+
                     </div>
                 </div>
 
@@ -203,7 +206,7 @@ const Checkout = () => {
                 <h3 className="text-xl text-gray-700 mb-4">
                     Selected Products
                 </h3>
-                <div className=" bg-white p-10">
+                <div className=" bg-white mb-20 p-10">
                     <DisplayOrderProduct products={products} />
                 </div>
             </div>
@@ -213,122 +216,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-
-
-
-
-
-
-
-// import { useNavigate, useParams, useSearchParams } from "react-router";
-// import useAuth from "../../hooks/useAuth";
-// import useAxiosSecure from "../../hooks/useAxiosSecure";
-// import useProduct from "../../hooks/useProduct";
-// import { useForm } from "react-hook-form";
-// import UserInfoSection from "./UserInfoSection";
-// import ShippingInfo from './ShippingInfo';
-// import LoadingSpiner from "../error pages/LoadingSpiner";
-// import toast from 'react-hot-toast';
-// import CategoryBadge from "../../components/dashboard/userdashboard/categoryBadge/CategoryBadge";
-// import DisplayOrderProduct from "./displayOrderProduct";
-
-// const Checkout = () => {
-//     const { user } = useAuth();
-//     const { id } = useParams();
-//     const axiosSecure = useAxiosSecure();
-//     const [searchParams] = useSearchParams();
-//     const quantity = parseInt(searchParams.get("quantity") || 1);
-//     const navigate = useNavigate();
-
-//     const { product, productLoading, productError } = useProduct(id);
-
-//     const totalPrice = product?.price * quantity;
-//     const grandTotal = totalPrice + 60;
-
-
-//     const { register, handleSubmit, formState: { errors } } = useForm();
-
-//     // COD Order Submit
-//     const onSubmit = async (data) => {
-//         try {
-//             // If user selected Stripe → Don't run COD API
-//             if (data.paymentMethod === "STRIPE") {
-//                 console.log("Stripe selected → COD order not created");
-//                 return;
-//             }
-
-//             const orderInfo = {
-//                 userEmail: user?.email,
-//                 productId: product?._id,
-//                 address: data.address,
-//                 phone: data.phone,
-//                 district: data.district,
-//                 area: data.area,
-//                 quantity,
-//                 totalPrice,
-//                 shippingCost: 60,
-//                 grandTotal,
-//                 sellerInfo: {
-//                     name: product?.seller?.name,
-//                     email: product?.seller?.email,
-//                     district: product?.seller?.district,
-//                 },
-//                 paymentMethod: "COD",
-//                 paymentStatus: "Pending",
-//             };
-
-//             console.log("COD Order Info:", orderInfo);
-
-//             const res = await axiosSecure.post("/orders", orderInfo);
-
-//             if (res.data.success) {
-//                 toast.success("Order placed successfully!");
-//                 navigate(`/product/${product?._id}`)
-//             }
-//         } catch (err) {
-//             console.error(err);
-//             alert(err.response?.data?.message || "Failed to place order");
-//         }
-//     };
-
-//     if (productLoading || productError) {
-//         return <LoadingSpiner />
-//     }
-
-//     return (
-//         <div className="">
-//             <CategoryBadge />
-//             <div className='bg-gray-100 min-h-screen'>
-//                 <div className='max-w-7xl mx-auto md:flex gap-4 py-5'>
-
-//                     {/* left side  */}
-//                     <div className='mx-3 md:mx-0 md:w-4/6 p-10 bg-white '>
-//                         <UserInfoSection register={register} errors={errors} />
-//                     </div>
-
-//                     {/* right side */}
-//                     <div className='my-4 mx-3 md:mx-0 md:my-0 md:w-2/6 p-6 bg-white '>
-//                         <ShippingInfo
-//                             handleSubmit={handleSubmit}
-//                             onSubmit={onSubmit}
-//                             product={product}
-//                             quantity={quantity}
-//                         />
-//                     </div>
-
-//                 </div>
-
-//                 {/* display ordered Product  */}
-//                 <div className="py-5 p-6 max-w-7xl mx-auto bg-white ">
-//                     <DisplayOrderProduct
-//                     product={product}
-//                     quantity={quantity}
-//                 />
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Checkout;

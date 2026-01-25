@@ -36,7 +36,7 @@ const StripePaymentPage = () => {
 
 
     return (
-        <div className=" flex  justify-center items-center p-3 md:p-0 ">
+        <div className=" flex  justify-center items-center p-3 md:p-0 mb-60 mt-20 ">
             <div className="bg-white shadow-lg rounded-lg max-w-xl w-full p-9 mt-10 md:mt-20 ">
                 <h2 className="text-xl font-bold mb-4 text-center pb-6">Complete Your Payment</h2>
 

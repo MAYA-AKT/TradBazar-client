@@ -39,7 +39,7 @@ const Coupons = () => {
                     type="text"
                     value={search}
                     onChange={handleSearchChange}
-                    placeholder="Search categories..."
+                    placeholder="Search coupon..."
                     className="w-full sm:w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-orange-500"
                 />
 

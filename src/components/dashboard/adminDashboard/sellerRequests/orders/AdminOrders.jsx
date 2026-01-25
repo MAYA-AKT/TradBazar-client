@@ -33,7 +33,7 @@ const AdminOrders = () => {
     });
 
     const orders = data?.orders || [];
-    console.log('orders',orders);
+
     
     const totalPages = data?.totalPages || 1;
 

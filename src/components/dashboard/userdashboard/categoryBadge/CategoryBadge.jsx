@@ -1,13 +1,13 @@
 import React from 'react';
-import useCategories from '../../../../hooks/useCategories';
 import LoadingSpiner from '../../../../pages/error pages/LoadingSpiner';
 import { IoIosArrowDown } from "react-icons/io";
 import { NavLink } from 'react-router';
+import useCategoryBadge from '../../../../hooks/useCategoryBadge';
 
 const CategoryBadge = () => {
 
 
-     const { categories, isLoading, isError } = useCategories();
+     const { category, isLoading, isError } = useCategoryBadge();
     
 
      if(isLoading,isError){
@@ -17,9 +17,9 @@ const CategoryBadge = () => {
 
     return (
         <div className="">
-            <div className="relative hidden md:block  group ml-80  max-w-7xl mx-auto">
+            <div className="relative z-50 hidden md:block  group ml-80">
 
-                <p className="text-sm flex items-center text-blue-600 px-3 py-1 rounded-full cursor-pointer">
+                <p className="text-md flex items-center w-[120px] bg-green-500 my-2 ml-10 text-white font-bold px-3 py-1 rounded-full cursor-pointer">
                     Category <span className="ml-2">
                         <IoIosArrowDown />
                     </span>
@@ -30,11 +30,11 @@ const CategoryBadge = () => {
                     opacity-0 invisible group-hover:opacity-100 group-hover:visible 
                     transition-all duration-200 z-50">
                     <ul className="flex flex-col text-sm w-55 p-4">
-                        {categories?.map((cat) => (
+                        {category?.map((cat) => (
                             <NavLink
                                 to={`/category/${encodeURIComponent(cat.name)}`}
                                 key={cat._id}
-                                className="py-1 px-2 hover:bg-gray-100 cursor-pointer text-gray-700"
+                                className="py-1 px-2 hover:bg-gray-100 hover:text-orange-400 cursor-pointer text-gray-700"
                             >
                                 {cat.name}
                             </NavLink>

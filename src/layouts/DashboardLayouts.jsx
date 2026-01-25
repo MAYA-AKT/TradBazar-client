@@ -14,7 +14,9 @@ const DashboardLayouts = () => {
             <main className="md:ml-70 p-4 bg-base-100">
                 <div className='flex justify-end items-center mr-8 space-x-2'>
                     <ProfileDropdown />
-                    <NotificationDropdown userEmail={user?.email} />
+                    <div className='text-green-600 '>
+                        <NotificationDropdown userEmail={user?.email} />
+                    </div>
                 </div>
                 <div>
                     <Outlet />

@@ -3,9 +3,9 @@ import React from 'react';
 const ChooseUs = () => {
     return (
         <>
-            <section className="bg-gray-50 my-10 p-16">
+            <section className="bg-gray-50 my-10 p-6 md:p-16">
                 <div className="container mx-auto">
-                    <h2 className="text-3xl font-bold text-center mb-10">
+                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
                         Why Choose <span className="text-primary">TradBazar</span>
                     </h2>
 

@@ -1,12 +1,98 @@
-# React + Vite
+# 🛒 TradBazar – Multi-Vendor Authentic Products Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TradBazar is a full-stack multi-vendor e-commerce platform .  
+It connects **buyers**, **verified sellers**, and **admin** to ensure **authentic traditional and organic products** with transparency and trust.
 
-Currently, two official plugins are available:
+A key highlight of this project is **product authenticity verification** and **live video interaction between buyer and seller before purchase**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Live Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 **Role-Based System** (Admin, Seller, Buyer)
+- ✅ **Product Authenticity Verification** (Admin approval)
+- 🛍 **Multi-Vendor Marketplace**
+- 🎥 **Live Video Call Before Purchase** (Buyer ↔ Seller)
+- 🔔 **Smart Notification System** (No chat app needed)
+- 🧾 **Order Tracking System**
+- 🔍 **Real-Time Search (Product & Category)**
+- 💬 **Ask Seller Questions (via Notifications)**
+- 📱 **Fully Responsive UI**
+
+---
+
+## 🎯 Unique Project Features
+
+### 1️⃣ Product Authenticity System
+- Sellers submit products
+- Admin verifies authenticity
+- Only verified products are visible to buyers
+
+### 2️⃣ Live Product Preview (Video Call)
+- Buyers can request a **live video call**
+- Sellers receive a notification
+- Helps buyers inspect products **before ordering**
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React.js**
+- **Tailwind CSS**
+- **React Router**
+- **React Query**
+- **Axios**
+- **Agora RTC (Video Call)**
+
+### Backend
+- **Node.js**
+- **Express.js**
+- **MongoDB**
+- **JWT Authentication**
+
+### Tools & Services
+- **Cloudinary** – Image storage
+- **Agora** – Video conferencing
+- **Firebase** – Authentication
+- **SweetAlert2** – Alerts & confirmations
+
+---
+
+## 🧩 User Roles
+
+### 👤 Buyer
+- Browse verified products
+- Ask seller questions
+- Request live video call
+- Place orders & track delivery
+
+### 🧑‍🌾 Seller
+- Add & manage products
+- Receive buyer questions
+- Join video calls
+- View order summary
+
+### 🛡 Admin
+- Verify product authenticity
+- Manage users & products
+- Monitor platform activity
+
+---
+
+## 📦 Installation & Setup
+
+```bash
+# Clone repository
+git clone https://github.com/your-username/tradbazar.git
+
+# Frontend
+cd tradbazar-client
+npm install
+npm run dev
+
+# Backend
+cd tradbazar-server
+npm install
+npm run dev
+

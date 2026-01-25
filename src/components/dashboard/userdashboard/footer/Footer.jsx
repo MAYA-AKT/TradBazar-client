@@ -1,6 +1,8 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaWhatsapp,FaLeaf, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { NavLink } from 'react-router';
+
+
 const Footer = () => {
     return (
         <>
@@ -8,8 +10,13 @@ const Footer = () => {
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1  md:grid-cols-4 gap-10">
 
                     {/* About Section */}
-                    <div className="">
-                        <h3 className="text-xl font-bold text-white mb-3">TradBazar</h3>
+                    <div className=" ">
+                        <div className="flex items-center">
+                            <a href="/" className="text-3xl mb-3 flex font-bold items-center text-green-400 cursor-pointer">
+                              <span><FaLeaf className="text-green-400" />  </span>  Bongo <span className="text-orange-200">Haat</span>
+                            </a>
+                        </div>
+
                         <p className="text-white text-sm leading-relaxed">
                             TradBazar is Bangladesh’s trusted multi-vendor marketplace, connecting buyers with authentic handmade and traditional products.
                             Enjoy <span className="font-semibold text-green-400">verified listings</span>, <span className="font-semibold text-blue-400">direct communication via notifications</span>, and <span className="font-semibold text-purple-400">video calls</span> to see products before ordering.
@@ -57,10 +64,10 @@ const Footer = () => {
                                 <FaPhone /> <span>+880 123 456 789</span>
                             </li>
                             <li className="flex items-center gap-2 hover:text-orange-400 ">
-                                <FaWhatsapp /> <span>+880 987 654 321</span>
+                                <FaWhatsapp /> <span>+01407533436</span>
                             </li>
                             <li className="flex items-center gap-2 hover:text-orange-400 ">
-                                <FaEnvelope /> <span>support@tradbazar.com</span>
+                                <FaEnvelope /> <span>support@BongoHaat.com</span>
                             </li>
                             <li className="flex items-center gap-2 hover:text-orange-400 ">
                                 <FaMapMarkerAlt /> <span>Dhaka, Bangladesh</span>
@@ -77,7 +84,7 @@ const Footer = () => {
 
                 {/* Bottom copyright */}
                 <div className="border-t border-gray-600 mt-10 py-4 text-center text-white text-sm">
-                    &copy; {new Date().getFullYear()} TradBazar. All rights reserved.
+                    &copy; {new Date().getFullYear()} BongoHaat. All rights reserved.
                 </div>
             </footer>
         </>

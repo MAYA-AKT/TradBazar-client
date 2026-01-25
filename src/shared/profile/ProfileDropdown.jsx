@@ -2,13 +2,13 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import useUserRole from '../../hooks/useUserRole';
 import LoadingSpiner from '../../pages/error pages/LoadingSpiner';
-import { AiOutlineHome } from "react-icons/ai";
 import { RxDashboard } from "react-icons/rx";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { MdStorefront } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { NavLink } from 'react-router';
+import toast from 'react-hot-toast';
 
 
 const ProfileDropdown = () => {
@@ -19,7 +19,7 @@ const ProfileDropdown = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                alert("User log OUt");
+                toast.success("User log OUt");
 
             }).catch(err => {
                 console.log(err);
@@ -55,7 +55,7 @@ const ProfileDropdown = () => {
 
                                 </div>
                                 <div className="">
-                                    <h3 className=" text-gray-600 pl-1"><IoIosArrowDown /></h3>
+                                    <h3 className=" text-white pl-1"><IoIosArrowDown /></h3>
                                 </div>
 
                             </div>
@@ -145,7 +145,7 @@ const ProfileDropdown = () => {
 
                     </> :
                         <>
-                            <div>
+                            <div className='text-white font-bold'>
                                 <NavLink to='/signup'>Sign Up</NavLink>
                             </div>
                         </>

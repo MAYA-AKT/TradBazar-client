@@ -49,22 +49,6 @@ const DisplayProduct = ({ product, reviews }) => {
                 <div className="max-w-7xl mx-auto bg-white p-6">
 
 
-
-
-                    {/* vdo conference */}
-                   
-                    {/* end */}
-
-
-
-
-
-
-
-
-
-
-
                     {/* TOP SECTION */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
@@ -79,7 +63,7 @@ const DisplayProduct = ({ product, reviews }) => {
 
                         {/* PRODUCT DETAILS */}
                         <div>
-                            <span className="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                            <span className="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full capitalize">
                                 {category}
                             </span>
 
@@ -116,7 +100,7 @@ const DisplayProduct = ({ product, reviews }) => {
 
                             {/* Quantity Selector */}
                             <div className="flex items-center gap-2 mt-6">
-                                <p>Quantity:</p>
+                               
 
                                 <button
                                     className="px-3 py-1 bg-gray-200 text-xl rounded"
@@ -145,7 +129,7 @@ const DisplayProduct = ({ product, reviews }) => {
                                 <NavLink
                                     to='/cart'
                                     onClick={handleAddToCart}
-                                    className="flex items-center justify-center gap-2 bg-[#628141] text-white py-3 rounded-lg text-lg font-medium shadow w-full md:w-1/2"
+                                    className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg text-lg font-medium shadow w-full md:w-1/2"
                                 >
                                     <FaShoppingCart className="text-xl" />
                                     Add to Cart
@@ -164,7 +148,7 @@ const DisplayProduct = ({ product, reviews }) => {
                                             },
                                         })
                                     }
-                                    className="flex items-center justify-center gap-2 bg-orange-400 hover:bg-orange-500 text-white py-3 rounded-lg text-lg font-medium shadow w-full md:w-1/2"
+                                    className="flex items-center justify-center gap-2 bg-orange-400 hover:bg-orange-500 text-white py-3 rounded-lg text-lg font-medium shadow w-full md:w-1/2 hover:cursor-pointer"
                                 >
                                     <FaArrowRight className="text-xl" />
                                     Order Now

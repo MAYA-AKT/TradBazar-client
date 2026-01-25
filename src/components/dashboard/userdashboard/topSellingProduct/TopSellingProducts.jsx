@@ -46,11 +46,11 @@ const TopSellingProducts = () => {
                                         />
 
                                         <div className="p-2">
-                                            <h3 className="font-semibold text-lg truncate">
+                                            <h3 className="font-semibold text-md truncate capitalize">
                                                 {p.name}
                                             </h3>
 
-                                            <p className="text-sm text-gray-500">
+                                            <p className="text-sm text-gray-500 capitalize">
                                                 {p.category}
                                             </p>
 
@@ -60,7 +60,7 @@ const TopSellingProducts = () => {
 
                                             <div className="flex bg-gray-50 px-2 justify-between items-center mt-3">
                                                 <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">
-                                                    🔥 Best Seller
+                                                    🔥 Best Sell
                                                 </span>
 
                                                 <span className="text-xs text-gray-600">

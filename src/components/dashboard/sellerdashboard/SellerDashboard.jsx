@@ -12,14 +12,13 @@ import { useTitle } from "../../../hooks/useTitle";
 
 
 const SellerDashboard = () => {
-  // dynamic title
+    // dynamic title
     useTitle('Dashboard');
 
     const { user } = useAuth();
     const { overview = {}, overviewLoading, overviewError } = useSellerOverview(user?.email);
 
-
-
+    
 
     if (overviewLoading) return <p className="text-center mt-20">Loading...</p>;
     if (overviewError) return <p className="text-center mt-20">Error loading overview</p>;
@@ -31,7 +30,7 @@ const SellerDashboard = () => {
 
             {/* vdo conference */}
 
-            
+
 
 
             {/* end */}

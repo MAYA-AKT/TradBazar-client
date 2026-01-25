@@ -72,7 +72,7 @@ const BecomeSeller = () => {
 
 
     return (
-        <div className="max-w-7xl mx-auto mt-8 md:mt-20">
+        <div className="max-w-7xl mx-auto mt-8 md:my-20">
 
             <div className="">
                 <div className="">
@@ -88,8 +88,8 @@ const BecomeSeller = () => {
                     </div>
 
 
-                    <div className="space-y-8 my-20 md:my-30">
-                        {/* Feature 1 */}
+                    {/* <div className="space-y-8 my-20 md:my-30">
+                       
                         <div className="text-center">
                             <h3 className="text-md font-semibold text-orange-400">
                                 Direct Customers
@@ -100,7 +100,7 @@ const BecomeSeller = () => {
                             <div className="w-12 h-1 bg-green-500 mx-auto mt-4 rounded"></div>
                         </div>
 
-                        {/* Features Row */}
+                      
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
                             <div>
                                 <h3 className="text-md font-semibold text-blue-400">
@@ -120,7 +120,7 @@ const BecomeSeller = () => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
 
                 </div>
@@ -236,7 +236,7 @@ const BecomeSeller = () => {
 
 
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                            <h2 className="text-xl md:text-2xl font-bold mb-8 text-orange-600 mt-10 md:mt-0">
+                            <h2 className="text-xl md:text-2xl font-bold mb-8 text-orange-400 mt-10 md:mt-0">
                                 Start Selling with Us
                             </h2>
 
