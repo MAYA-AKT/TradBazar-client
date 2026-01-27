@@ -8,9 +8,9 @@ import useAuth from './useAuth';
 
 
 const axiosSecure = axios.create({
-   baseURL: "https://tradbazar-server.vercel.app"
-//    baseURL:"http://103.191.240.201:3000"
-    //   baseURL:"http://localhost:3000"
+//    baseURL: "https://tradbazar-server.vercel.app"
+  baseURL:"http://103.191.240.201:3000"
+    // baseURL:"http://localhost:3000"
 });
 
 
