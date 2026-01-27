@@ -271,7 +271,7 @@ const Header = () => {
                                     </> :
                                         <>
                                             <div className="mt-4  text-orange-600">
-                                                <NavLink to='/signup'>Sign Up</NavLink>
+                                                <NavLink to='/signin'>Sign In</NavLink>
                                             </div>
                                         </>
                                 }

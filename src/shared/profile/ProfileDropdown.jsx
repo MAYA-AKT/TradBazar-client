@@ -146,7 +146,7 @@ const ProfileDropdown = () => {
                     </> :
                         <>
                             <div className='text-white font-bold'>
-                                <NavLink to='/signup'>Sign Up</NavLink>
+                                <NavLink to='/signin'>Sign in</NavLink>
                             </div>
                         </>
                 }
