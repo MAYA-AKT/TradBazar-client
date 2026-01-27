@@ -4,12 +4,13 @@ import { useForm } from "react-hook-form";
 import ShippingInfo from "./ShippingInfo";
 import toast from "react-hot-toast";
 import districts from "../../../public/districts.json";
-import DisplayOrderProduct from "./displayOrderProduct";
+
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import useSellerEarningsByDate from "../../hooks/useSellerEarningsByDate";
 import { useTitle } from "../../hooks/useTitle";
+import DisplayProduct from "../products/DisplayProduct";
 
 const Checkout = () => {
     // dynamic title
@@ -207,7 +208,7 @@ const Checkout = () => {
                     Selected Products
                 </h3>
                 <div className=" bg-white mb-20 p-10">
-                    <DisplayOrderProduct products={products} />
+                    <DisplayProduct products={products} />
                 </div>
             </div>
 
